@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('controllers').controller('NavbarController', ['$scope', '$location', 'NavigationServices', function ($scope, $location, NavigationServices) {
+    angular.module('controllers').controller('NavigationController', ['$scope', '$location', 'NavigationServices', function ($scope, $location, NavigationServices) {
 
         // var vm = this;
 

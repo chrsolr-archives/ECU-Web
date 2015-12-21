@@ -29,6 +29,7 @@
         </style>
     </head>
     <body>
+        <nav ng-controller="NavigationController as vm">
         <header class="navigation-bar-wrapper">
             <div class="navigation-bar-brand">
                 <a href="/">
@@ -68,12 +69,23 @@
                     <span>CONTACT</span>
                 </i>
             </a>
-    
-    
+            <div ng-if="vm.isLoggedIn">
+                <a href="/admin/dashboard">
+                    <i class="pe-7s-edit pe-lg pe-va">
+                        <span>Dashboard</span>
+                    </i>
+                </a>
+                <a href="" class="logout">
+                    <i class="pe-7s-close-circle pe-lg pe-va">
+                        <span>Logout</span>
+                    </i>
+                </a>
+            </div>
             <a href="http://www.iamrelos.com" target="_blank">
                 Created By: IamRelos
             </a>
         </aside>
+        </nav>
 
         <div id="ng-view-main" ng-view></div>
         
