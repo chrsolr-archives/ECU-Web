@@ -29,11 +29,6 @@
 
                 $rootScope.$on('$routeChangeStart', function(event, next, current) {
 
-                    // if ($location.url() === '/' || $location.url() === '/no-access')
-                    //     NavigationServices.displayNavigationBar(false);
-                    // else
-                    //     NavigationServices.displayNavigationBar(true);
-
                     // if (Parse.User.current()) {
                     //     var query = (new Parse.Query(Parse.Role));
                     //     query.equalTo("name", "Admin");
@@ -47,7 +42,7 @@
                     //     $location.path('/');
                     // }
 
-                    // NavigationServices.closeSideBar()
+                    NavigationServices.closeSideBar();
                 });
             }
         ]);

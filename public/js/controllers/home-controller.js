@@ -3,7 +3,7 @@
 
     angular.module('controllers').controller('HomeController', ['$location', function($location) {
 
-        // var vm = this;
+         var vm = this;
 
         // if (Parse.User.current()) $location.path('/dashboard');
 

@@ -38,12 +38,12 @@
                     </span>
                 </a>
             </div>
-            <span class="navigation-bar-menu-icon animated fadeIn">
+            <span class="navigation-bar-menu-icon animated fadeIn" ng-click="vm.toggleSideBar()">
                 <i class="glyphicon glyphicon-option-vertical"></i>
             </span>
         </header>
         
-        <aside class="navigation-bar-sidebar-wrapper">
+        <aside class="navigation-bar-sidebar-wrapper" ng-class="vm.isSideBarOpen ? 'navigation-bar-sidebar-toggle' : ''">
             <a href="/">
                 <i class="pe-7s-home pe-lg pe-va">
                     <span>HOME</span>
@@ -75,7 +75,7 @@
                         <span>Dashboard</span>
                     </i>
                 </a>
-                <a href="" class="logout">
+                <a href="" target="_self" ng-click="vm.logout()">
                     <i class="pe-7s-close-circle pe-lg pe-va">
                         <span>Logout</span>
                     </i>
@@ -106,9 +106,9 @@
             (function ($) {
                 'use strict';
     
-                $('.navigation-bar-menu-icon').on('click', function () {
-                    $('.navigation-bar-sidebar-wrapper').toggleClass('navigation-bar-sidebar-toggle');
-                });
+                // $('.navigation-bar-menu-icon').on('click', function () {
+                //     $('.navigation-bar-sidebar-wrapper').toggleClass('navigation-bar-sidebar-toggle');
+                // });
     
                 $('.banner-title').addClass('animated fadeInDown');
                 $('.banner-subtitle').addClass('animated fadeInUp');
