@@ -1,1 +1,3 @@
-# ECU-Web
+# El Comite Urbano - Website
+
+Website build on NodeJS.
