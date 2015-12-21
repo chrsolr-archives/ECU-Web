@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var config = require('../config/config');
 var path = require('path');
+var morgan = require('morgan');
 
 // instantiate express app
 var app = express();
@@ -14,10 +15,12 @@ module.exports = function () {
     app.use(bodyParser.json());
     
     //Parse.initialize("ZbsmNrnAoWvV4miJsVzkr4qwSlodOyFzhYWHECbI", "PdB18ikRbBJPjuErs8b2I8kNwczL17bGceMc7qD8");
+    
+    app.use(morgan('dev'));
 
     // static roots
     app.use('/css', express.static(path.resolve('./public/css')));
-    app.use('/lib', express.static(path.resolve('./public/lib')));
+    app.use('/libs', express.static(path.resolve('./public/libs')));
     app.use('/js', express.static(path.resolve('./public/js')));
     app.use('/scripts', express.static(path.resolve('./node_modules')));
     app.use('/views', express.static(path.resolve('./public/views')));

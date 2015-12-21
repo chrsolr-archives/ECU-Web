@@ -26,6 +26,7 @@
     "body-parser": "latest",
     "bootstrap": "latest",
     "cors": "latest",
-    "express": "latest"
+    "express": "latest",
+    "morgan": "^1.6.1"
   }
 }
