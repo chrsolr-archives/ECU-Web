@@ -33,6 +33,7 @@
 .navigation-bar-wrapper .navigation-bar-brand a .navigation-bar-brand-title span {
   color: #F96816;
   font-weight: 700;
+  font-family: 'Ubuntu', sans-serif;
 }
 .navigation-bar-wrapper .navigation-bar-menu-icon {
   border-left: 2px solid #F96816;
