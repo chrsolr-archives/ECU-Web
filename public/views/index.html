@@ -29,6 +29,51 @@
         </style>
     </head>
     <body>
+        <header class="navigation-bar-wrapper">
+            <div class="navigation-bar-brand">
+                <a href="/">
+                    <span class="navigation-bar-brand-title animated fadeIn">
+                        COMITE<span class="text-bold text-font-ubuntu">URBANO</span>
+                    </span>
+                </a>
+            </div>
+            <span class="navigation-bar-menu-icon animated fadeIn">
+                <i class="glyphicon glyphicon-option-vertical"></i>
+            </span>
+        </header>
+        
+        <aside class="navigation-bar-sidebar-wrapper">
+            <a href="/">
+                <i class="pe-7s-home pe-lg pe-va">
+                    <span>HOME</span>
+                </i>
+            </a>
+            <a href="/news">
+                <i class="pe-7s-news-paper pe-lg pe-va">
+                    <span>NEWS</span>
+                </i>
+            </a>
+            <a href="/videos">
+                <i class="pe-7s-video pe-lg pe-va">
+                    <span>VIDEOS</span>
+                </i>
+            </a>
+            <a href="/about">
+                <i class="pe-7s-info pe-lg pe-va">
+                    <span>ABOUT</span>
+                </i>
+            </a>
+            <a href="/contact">
+                <i class="pe-7s-mail pe-lg pe-va">
+                    <span>CONTACT</span>
+                </i>
+            </a>
+    
+    
+            <a href="http://www.iamrelos.com" target="_blank">
+                Created By: IamRelos
+            </a>
+        </aside>
 
         <div id="ng-view-main" ng-view></div>
         
@@ -44,5 +89,19 @@
         <script src="/js/services/navigation-services.js"></script>
         <script src="/js/controllers/navbar-controller.js"></script>
         <script src="/js/controllers/home-controller.js"></script>
+        
+        <script type="text/javascript">
+            (function ($) {
+                'use strict';
+    
+                $('.navigation-bar-menu-icon').on('click', function () {
+                    $('.navigation-bar-sidebar-wrapper').toggleClass('navigation-bar-sidebar-toggle');
+                });
+    
+                $('.banner-title').addClass('animated fadeInDown');
+                $('.banner-subtitle').addClass('animated fadeInUp');
+    
+            })(jQuery);
+        </script>
     </body>
 </html>

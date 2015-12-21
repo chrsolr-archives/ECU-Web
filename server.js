@@ -10,5 +10,4 @@ app.listen(config.server.port, function (err) {
 	if (err) throw err;
 
 	console.info('Application running at port: ' + config.server.port);
-
 });
