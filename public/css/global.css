@@ -37,18 +37,8 @@ a:focus {
   box-shadow: 0 0 5px black;
   border: 1px dotted #F96816;
 }
-.social-media-share {
-  list-style: none;
-  text-align: center;
-  padding: 0;
-  margin-bottom: 20px;
-}
-.social-media-share li {
-  display: inline-block;
-  padding: 0 20px;
-  text-align: center;
-  width: 16.66666667%;
-}
-.social-media-share li:first-child {
-  padding-left: 0;
+@media "screen and (min-width: 544px) and (max-width: 767px)" {
+  .section-title {
+    font-size: 20vw;
+  }
 }

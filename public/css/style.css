@@ -37,20 +37,10 @@ a:focus {
   box-shadow: 0 0 5px black;
   border: 1px dotted #F96816;
 }
-.social-media-share {
-  list-style: none;
-  text-align: center;
-  padding: 0;
-  margin-bottom: 20px;
-}
-.social-media-share li {
-  display: inline-block;
-  padding: 0 20px;
-  text-align: center;
-  width: 16.66666667%;
-}
-.social-media-share li:first-child {
-  padding-left: 0;
+@media "screen and (min-width: 544px) and (max-width: 767px)" {
+  .section-title {
+    font-size: 20vw;
+  }
 }
 .navigation-bar-wrapper {
   position: fixed;
@@ -165,7 +155,7 @@ a:focus {
   -webkit-transform: translate3d(-50%, 0, 0);
   transform: translate3d(-50%, 0, 0);
 }
-@media only screen and (min-width: 1200px) {
+@media "screen and (min-width: 1200px)" {
   .navigation-bar-sidebar-toggle {
     -webkit-transform: translate3d(-25%, 0, 0);
     -moz-transform: translate3d(-25%, 0, 0);
@@ -174,7 +164,7 @@ a:focus {
     transform: translate3d(-25%, 0, 0);
   }
 }
-@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px) {
+@media "screen and (min-width: 992px) and (max-width: 1199px)", "screen and (min-width: 768px) and (max-width: 991px)" {
   .navigation-bar-sidebar-toggle {
     -webkit-transform: translate3d(-50%, 0, 0);
     -moz-transform: translate3d(-50%, 0, 0);
@@ -183,7 +173,7 @@ a:focus {
     transform: translate3d(-50%, 0, 0);
   }
 }
-@media only screen and (min-width: 544px) and (max-width: 767px), only screen and (max-width: 543px) {
+@media "screen and (min-width: 544px) and (max-width: 767px)", "screen and (max-width: 543px)" {
   .navigation-bar-sidebar-toggle {
     -webkit-transform: translate3d(-100%, 0, 0);
     -moz-transform: translate3d(-100%, 0, 0);
@@ -266,7 +256,7 @@ a:focus {
 .banner-image .banner-social .social-media-share-home li a:hover {
   color: #F96816;
 }
-@media only screen and (min-width: 544px) and (max-width: 767px) {
+@media "screen and (min-width: 544px) and (max-width: 767px)", "screen and (max-width: 543px)" {
   .banner-image .banner-social {
     height: 50px;
   }
