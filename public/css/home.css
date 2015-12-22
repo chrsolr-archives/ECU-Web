@@ -72,7 +72,7 @@
 .banner-image .banner-social .social-media-share-home li a:hover {
   color: #F96816;
 }
-@media "screen and (min-width: 544px) and (max-width: 767px)", "screen and (max-width: 543px)" {
+@media only screen and (min-width: 544px) and (max-width: 767px), only screen and (max-width: 543px) {
   .banner-image .banner-social {
     height: 50px;
   }
