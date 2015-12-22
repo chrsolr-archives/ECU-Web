@@ -19,7 +19,7 @@
             openSideBar: function(){
                 isSideBarOpen = true;
                 $rootScope.$broadcast('navigation:sidebar', isSideBarOpen);
-            },
+            }
         }
     }]);
 })();

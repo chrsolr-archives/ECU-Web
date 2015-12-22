@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    Parse.initialize("ZbsmNrnAoWvV4miJsVzkr4qwSlodOyFzhYWHECbI", "PdB18ikRbBJPjuErs8b2I8kNwczL17bGceMc7qD8");
+    Parse.initialize("Mw0dWtJQYVzYlA4vHybSNmuyLJSjzpEpTarhZMEQ", "gXEJhvTtHQcSNrryJ7u9IK4euVWOu00QEGnaK7ow");
 
     angular.module('services', []);
     angular.module('controllers', []);
@@ -10,8 +10,8 @@
     var modules = ['services', 'controllers', 'filters', 'ngRoute', 'ui.bootstrap', 'angular-loading-bar', 'ngAnimate'];
 
     angular.module('app', modules)
-        .config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider',
-            function($routeProvider, $locationProvider, cfpLoadingBarProvider) {
+        .config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider',
+            function($routeProvider, $locationProvider, cfpLoadingBarProvider, $sceProvider) {
                 $routeProvider.when('/', {
                     templateUrl: '/views/home.html',
                     caseInsensitiveMatch: true
@@ -22,6 +22,8 @@
                 $locationProvider.html5Mode(true);
 
                 cfpLoadingBarProvider.includeSpinner = false;
+
+                $sceProvider.enabled(false);
             }
 
         ]).run(['$rootScope', '$location', 'NavigationServices',
