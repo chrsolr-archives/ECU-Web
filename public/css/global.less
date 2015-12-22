@@ -1,1 +1,72 @@
 @import 'variables.less';
+
+a {
+  text-decoration: none;
+  
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+
+.row {
+  margin: 0;
+}
+
+.height-350 {
+  height: 350px;
+}
+
+.height-300 {
+  height: 300px;
+}
+
+.section-title {
+  font-size: 3vw;
+  font-family: @ubuntu;
+  font-weight: @font-weight-thin;
+  margin-bottom: @space-level-3;
+  display: block;
+  text-align: right;
+  border-bottom: 1px dotted @color-font-accent;
+  padding-bottom: @space-level-2;
+}
+
+.section-bg-dark {
+  background-color: @color-bg-primary;
+  padding: @space-level-4 0;
+}
+
+.section-bg-light {
+  background-color: @color-bg-secondary;
+  padding: @space-level-4 0;
+}
+
+.media-video-wrapper {
+  background-color: black;
+  box-shadow: 0 0 5px black;
+  border: 1px dotted @color-bg-accent;
+}
+
+.social-media-share {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  margin-bottom: @space-level-4;
+
+  li {
+    display: inline-block;
+    padding: 0 @space-level-4;
+    text-align: center;
+    width: 100%/6;
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+}
+
+@media @media-small {
+  .section-title {
+    //font-size: 1vw;
+  }
+}
