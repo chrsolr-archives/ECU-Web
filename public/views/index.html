@@ -31,16 +31,20 @@
     <body>
         <nav ng-controller="NavigationController as vm">
         <header class="navigation-bar-wrapper">
-            <div class="navigation-bar-brand">
-                <a href="/">
-                    <span class="navigation-bar-brand-title animated fadeIn">
-                        COMITE<span>URBANO</span>
+            <div class="container">
+                <div class="navigation-bar-brand">
+                    <a href="/">
+                        <span class="navigation-bar-brand-title animated fadeIn">
+                            COMITE<span>URBANO</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="navigation-menu-icon-wrapper">
+                    <span class="navigation-bar-menu-icon animated fadeIn" ng-click="vm.toggleSideBar()">
+                        <i class="glyphicon glyphicon-option-vertical"></i>
                     </span>
-                </a>
-            </div>
-            <span class="navigation-bar-menu-icon animated fadeIn" ng-click="vm.toggleSideBar()">
-                <i class="glyphicon glyphicon-option-vertical"></i>
-            </span>
+                </div>
+                </div>
         </header>
         
         <aside class="navigation-bar-sidebar-wrapper" ng-class="vm.isSideBarOpen ? 'navigation-bar-sidebar-toggle' : ''">

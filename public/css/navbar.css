@@ -33,13 +33,16 @@
 .navigation-bar-wrapper .navigation-bar-brand a .navigation-bar-brand-title span {
   color: #F96816;
   font-weight: 700;
+  font-family: 'Ubuntu', sans-serif;
 }
-.navigation-bar-wrapper .navigation-bar-menu-icon {
+.navigation-bar-wrapper .navigation-menu-icon-wrapper {
+  display: inline-block;
+  float: right;
+}
+.navigation-bar-wrapper .navigation-menu-icon-wrapper .navigation-bar-menu-icon {
   border-left: 2px solid #F96816;
   border-right: 2px solid #F96816;
-  position: absolute;
-  right: 20px;
-  top: 50%;
+  line-height: 100px;
   padding: 0 5px;
   font-size: 25px;
   -webkit-transform: translateY(-50%);
@@ -52,7 +55,7 @@
   -o-transition: all .2s;
   transition: all .2s;
 }
-.navigation-bar-wrapper .navigation-bar-menu-icon:hover {
+.navigation-bar-wrapper .navigation-menu-icon-wrapper .navigation-bar-menu-icon:hover {
   color: #F96816;
   cursor: pointer;
 }

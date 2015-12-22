@@ -22,6 +22,7 @@ module.exports = function () {
     app.use('/css', express.static(path.resolve('./public/css')));
     app.use('/libs', express.static(path.resolve('./public/libs')));
     app.use('/js', express.static(path.resolve('./public/js')));
+    app.use('/images', express.static(path.resolve('./public/images')));
     app.use('/scripts', express.static(path.resolve('./node_modules')));
     app.use('/views', express.static(path.resolve('./public/views')));
 
