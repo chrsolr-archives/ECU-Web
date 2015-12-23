@@ -9,6 +9,8 @@
 
                 var news = Parse.Object.extend("News");
                 var query = new Parse.Query(news);
+                query.descending('createdAt');
+                query.limit(8);
                 query.find({
                     success: function(objects) {
                         var data = [];

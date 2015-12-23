@@ -11,7 +11,6 @@
             });
 
             NewsServices.getNews().then(function(data){
-                console.log(data);
                 vm.news = data;
             });
         }]);
