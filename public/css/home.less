@@ -87,6 +87,31 @@
     }
 }
 
+#carousel-tweets {
+    min-height: 200px;
+
+    .social-media-post-wrapper {
+        vertical-align: middle;
+        padding: @space-level-4;
+
+        i {
+            font-size: 10vw;
+            display: block;
+            margin-bottom: @space-level-4;
+        }
+
+        p {
+            font-family: @ubuntu;
+            font-size: 2vw;
+            color: white;
+
+            a {
+                color: @color-font-accent;
+            }
+        }
+    }
+}
+
 @media @media-small, @media-x-small {
   .banner-image .banner-social {
     height: @navigation-height / 2;
@@ -99,4 +124,12 @@
       }
     }
   }
+
+    #carousel-tweets {
+        .social-media-post-wrapper {
+            p {
+                font-size: 3.5vw;
+            }
+        }
+    }
 }

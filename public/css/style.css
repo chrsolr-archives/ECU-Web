@@ -80,6 +80,13 @@ a:focus {
   color: #a1a1a1;
   font-size: 16px;
 }
+.carousel-indicators li {
+  display: none;
+}
+.carousel-control.right,
+.carousel-control.left {
+  display: none;
+}
 @media only screen and (max-width: 543px) {
   .section-title {
     font-size: 6vw;
@@ -309,6 +316,26 @@ a:focus {
 .banner-image .banner-social .social-media-share-home li a:hover {
   color: #F96816;
 }
+#carousel-tweets {
+  min-height: 200px;
+}
+#carousel-tweets .social-media-post-wrapper {
+  vertical-align: middle;
+  padding: 20px;
+}
+#carousel-tweets .social-media-post-wrapper i {
+  font-size: 10vw;
+  display: block;
+  margin-bottom: 20px;
+}
+#carousel-tweets .social-media-post-wrapper p {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 2vw;
+  color: white;
+}
+#carousel-tweets .social-media-post-wrapper p a {
+  color: #F96816;
+}
 @media only screen and (min-width: 544px) and (max-width: 767px), only screen and (max-width: 543px) {
   .banner-image .banner-social {
     height: 50px;
@@ -317,6 +344,9 @@ a:focus {
     font-size: 20px;
     line-height: 50px !important;
   }
+  #carousel-tweets .social-media-post-wrapper p {
+    font-size: 3.5vw;
+  }
 }
 body {
   background-color: #181818;
@@ -324,4 +354,43 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   padding-top: 100px;
+}
+body #ng-view-main {
+  min-height: 100vh;
+}
+body .footer-wrapper .footer-brand a {
+  color: #fafafa;
+  text-decoration: none;
+  display: block;
+}
+body .footer-wrapper .footer-brand a:hover {
+  color: #fafafa;
+}
+body .footer-wrapper .footer-brand a .footer-brand-title {
+  position: relative;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 100px;
+}
+body .footer-wrapper .footer-brand a .footer-brand-title span {
+  color: #F96816;
+  font-weight: 700;
+  font-family: 'Ubuntu', sans-serif;
+}
+body .footer-wrapper ul {
+  margin: 0 0 10px 0;
+  padding: 0;
+  text-align: center;
+}
+body .footer-wrapper ul li {
+  display: inline-block;
+  padding: 0 10px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+}
+body .footer-wrapper ul li a {
+  color: #fafafa;
+}
+body .footer-wrapper ul li a:hover {
+  color: #F96816;
 }

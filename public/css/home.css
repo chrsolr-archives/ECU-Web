@@ -72,6 +72,26 @@
 .banner-image .banner-social .social-media-share-home li a:hover {
   color: #F96816;
 }
+#carousel-tweets {
+  min-height: 200px;
+}
+#carousel-tweets .social-media-post-wrapper {
+  vertical-align: middle;
+  padding: 20px;
+}
+#carousel-tweets .social-media-post-wrapper i {
+  font-size: 10vw;
+  display: block;
+  margin-bottom: 20px;
+}
+#carousel-tweets .social-media-post-wrapper p {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 2vw;
+  color: white;
+}
+#carousel-tweets .social-media-post-wrapper p a {
+  color: #F96816;
+}
 @media only screen and (min-width: 544px) and (max-width: 767px), only screen and (max-width: 543px) {
   .banner-image .banner-social {
     height: 50px;
@@ -79,5 +99,8 @@
   .banner-image .banner-social li a {
     font-size: 20px;
     line-height: 50px !important;
+  }
+  #carousel-tweets .social-media-post-wrapper p {
+    font-size: 3.5vw;
   }
 }
