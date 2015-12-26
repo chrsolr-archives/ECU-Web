@@ -112,6 +112,46 @@
     }
 }
 
+.subscribe-wrapper {
+    padding: @space-level-4 0;
+
+    .content {
+        //position: absolute;
+        //top: 50%;
+        //left: 50%;
+        //bottom: 0;
+        //right: 0;
+        //-webkit-transform: translate3d(-50%, -50%, 0);
+        //-moz-transform: translate3d(-50%, -50%, 0);
+        //-ms-transform: translate3d(-50%, -50%, 0);
+        //-o-transform: translate3d(-50%, -50%, 0);
+        //transform: translate3d(-50%, -50%, 0);
+
+
+        .title {
+            text-align: center;
+            color: @color-font-light;
+            display: block;
+            font-size: @font-size-huge;
+            font-family: @ubuntu;
+            font-weight: @font-weight-semi-bold;
+            color: @color-font-accent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: @color-font-light;
+            display: block;
+            margin-bottom: @space-level-4;
+            font-size: @font-size-large;
+        }
+
+        input {
+            margin-bottom: @space-level-2;
+        }
+    }
+}
+
 @media @media-small, @media-x-small {
   .banner-image .banner-social {
     height: @navigation-height / 2;

@@ -92,6 +92,28 @@
 #carousel-tweets .social-media-post-wrapper p a {
   color: #F96816;
 }
+.subscribe-wrapper {
+  padding: 20px 0;
+}
+.subscribe-wrapper .content .title {
+  text-align: center;
+  color: #fafafa;
+  display: block;
+  font-size: 50px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+  color: #F96816;
+}
+.subscribe-wrapper .content .subtitle {
+  text-align: center;
+  color: #fafafa;
+  display: block;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.subscribe-wrapper .content input {
+  margin-bottom: 10px;
+}
 @media only screen and (min-width: 544px) and (max-width: 767px), only screen and (max-width: 543px) {
   .banner-image .banner-social {
     height: 50px;

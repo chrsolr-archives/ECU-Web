@@ -87,6 +87,31 @@ a:focus {
 .carousel-control.left {
   display: none;
 }
+.form-control-ecu-accent {
+  background-color: transparent;
+  color: #F96816;
+  border: 1px dotted #F96816;
+}
+.form-control-ecu-accent:active,
+.form-control-ecu-accent:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid #F96816;
+  color: white;
+  background-color: #280f01;
+}
+.btn-ecu-accent {
+  background-color: transparent;
+  color: #F96816;
+  border: 1px dotted #F96816;
+}
+.btn-ecu-accent:hover,
+.btn-ecu-accent:active,
+.btn-ecu-accent:focus {
+  color: white;
+  background-color: #F96816;
+}
 @media only screen and (max-width: 543px) {
   .section-title {
     font-size: 6vw;

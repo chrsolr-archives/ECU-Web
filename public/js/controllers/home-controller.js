@@ -28,5 +28,9 @@
             vm.sanitizeHTML = function (html) {
                 return $sce.trustAsHtml(html);
             };
+
+            vm.subscribe = function(){
+                alert('Subscribe');
+            }
         }]);
 })();

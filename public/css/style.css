@@ -87,6 +87,31 @@ a:focus {
 .carousel-control.left {
   display: none;
 }
+.form-control-ecu-accent {
+  background-color: transparent;
+  color: #F96816;
+  border: 1px dotted #F96816;
+}
+.form-control-ecu-accent:active,
+.form-control-ecu-accent:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid #F96816;
+  color: white;
+  background-color: #280f01;
+}
+.btn-ecu-accent {
+  background-color: transparent;
+  color: #F96816;
+  border: 1px dotted #F96816;
+}
+.btn-ecu-accent:hover,
+.btn-ecu-accent:active,
+.btn-ecu-accent:focus {
+  color: white;
+  background-color: #F96816;
+}
 @media only screen and (max-width: 543px) {
   .section-title {
     font-size: 6vw;
@@ -335,6 +360,28 @@ a:focus {
 }
 #carousel-tweets .social-media-post-wrapper p a {
   color: #F96816;
+}
+.subscribe-wrapper {
+  padding: 20px 0;
+}
+.subscribe-wrapper .content .title {
+  text-align: center;
+  color: #fafafa;
+  display: block;
+  font-size: 50px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+  color: #F96816;
+}
+.subscribe-wrapper .content .subtitle {
+  text-align: center;
+  color: #fafafa;
+  display: block;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.subscribe-wrapper .content input {
+  margin-bottom: 10px;
 }
 @media only screen and (min-width: 544px) and (max-width: 767px), only screen and (max-width: 543px) {
   .banner-image .banner-social {

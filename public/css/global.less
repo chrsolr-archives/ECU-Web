@@ -101,6 +101,33 @@ a {
 .carousel-indicators li { display: none; }
 .carousel-control.right, .carousel-control.left { display: none; }
 
+.form-control-ecu-accent {
+  background-color: transparent;
+  color: @color-font-accent;
+  border: 1px dotted @color-bg-accent;
+
+  &:active, &:focus {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid @color-bg-accent;
+    color: white;
+    background-color: darken(@color-bg-accent, 45%);
+  }
+}
+
+.btn-ecu-accent {
+  background-color: transparent;
+  color: @color-font-accent;
+  border: 1px dotted @color-bg-accent;
+
+  &:hover, &:active, &:focus {
+    color: white;
+    background-color: @color-bg-accent;
+  }
+}
+
+
 @media @media-x-small {
   .section-title {
     font-size: 6vw;
