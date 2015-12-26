@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('controllers').controller('HomeController', ['$sce', 'GlobalServices', 'NewsServices', 'tweets',
-        function ($sce, GlobalServices, NewsServices, tweets) {
+    angular.module('controllers').controller('HomeController', ['$sce', 'GlobalServices', 'NewsServices', 'YoutubeServices', 'tweets',
+        function ($sce, GlobalServices, NewsServices, YoutubeServices, tweets) {
 
             var vm = this;
 
@@ -18,6 +18,11 @@
                 widgetId: '680180390867283968'
             }).then(function(data) {
                 vm.tweets = data.data.tweets;
+            });
+
+            YoutubeServices.getYouTubeVideos().then(function(data){
+                vm.youtube = data;
+                console.log(vm.youtube);
             });
 
             vm.sanitizeHTML = function (html) {

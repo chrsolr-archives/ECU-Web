@@ -24,7 +24,7 @@ module.exports = function (app, express) {
                     videos: []
                 };
 
-                for(item of json.items){
+                json.items.forEach(function(item, index, array){
                     var imageUrl = "";
 
                     if (item.snippet.thumbnails.maxres != null)
@@ -50,7 +50,7 @@ module.exports = function (app, express) {
 
 
                     data.videos.push(video);
-                };
+                });
 
                 res.send(data);
             }
