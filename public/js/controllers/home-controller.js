@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('controllers').controller('HomeController', ['$sce', 'GlobalServices', 'NewsServices', 'YoutubeServices', 'tweets',
-        function ($sce, GlobalServices, NewsServices, YoutubeServices, tweets) {
+    angular.module('controllers').controller('HomeController', ['$sce', 'GlobalServices', 'NewsServices', 'YoutubeServices', 'SoundcloudServices', 'tweets',
+        function ($sce, GlobalServices, NewsServices, YoutubeServices, SoundcloudServices, tweets) {
 
             var vm = this;
 
@@ -22,6 +22,10 @@
 
             YoutubeServices.getYouTubeVideos().then(function(data){
                 vm.youtube = data;
+            });
+
+            SoundcloudServices.getSoundcouldSongs().then(function(data){
+                vm.songs = data.data;
             });
 
             vm.sanitizeHTML = function (html) {

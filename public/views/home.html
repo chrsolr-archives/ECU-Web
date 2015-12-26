@@ -115,9 +115,31 @@
                     <span class="title">Suscribete!!!</span>
                     <span class="subtitle">Suscribete para recivir notificaciones sobre las ultimas noticias, eventos y proximos shows.</span>
                     <form name="form" class="form-inline text-center" ng-submit="vm.subscribe()">
-                        <input type="email" class="form-control form-control-ecu-accent" placeholder="email" name="email" ng-minlength="6" ng-model="vm.subscribeEmail" required>
+                        <input type="email" class="form-control form-control-ecu-accent" placeholder="email"
+                               name="email" ng-minlength="6" ng-model="vm.subscribeEmail" required>
                         <input type="submit" class="btn btn-ecu-accent" ng-disabled="form.$invalid">
                     </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-bg-light">
+        <div class="container">
+            <span class="section-title">Soundcloud</span>
+            <div class="row">
+                <div class="col-sm-6 col-md-4" ng-repeat="song in vm.songs | limitTo:12">
+                    <figure class="media-image-wrapper height-300">
+                        <a href="{{song.url}}" target="_blank">
+                            <img src="{{song.imageUrl}}" alt="Soundcloud Cover" class="img-responsive" width="100%">
+                        </a>
+
+                        <div class="content">
+                            <span class="title">
+                                <a href="{{song.url}}" target="_blank">{{song.title}}</a>
+                            </span>
+                        </div>
+                    </figure>
                 </div>
             </div>
         </div>

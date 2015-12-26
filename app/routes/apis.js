@@ -57,6 +57,36 @@ module.exports = function (app, express) {
         })
     });
 
+    api.get('/soundcloud', function (req, res) {
+        var url = 'http://api.soundcloud.com/users/146006073/tracks.json?client_id=500f3c5cdcf76cb1bcc8c35e97864840';
+
+        request(url, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var songs = [];
+                var json = JSON.parse(response.body);
+
+                json.forEach(function(item, index, array) {
+                    var cover = item.artwork_url;
+
+                    cover = (cover) ? cover.replace("large", "t500x500") : "https://i1.sndcdn.com/avatars-000138805507-sejp8z-t500x500.jpg";
+
+                    var track = {
+                        title: item.title,
+                        trackId: item.id,
+                        url: item.permalink_url,
+                        imageUrl: cover,
+                        dateCreated: item.created_at
+                    };
+
+                    songs.push(track);
+                });
+
+                res.send({success: true, message: '', data: songs});
+            }
+
+        })
+    });
+
     api.post('/subscribe', function(req, res){
         var email = req.body.email;
 
