@@ -22,7 +22,6 @@
 
             YoutubeServices.getYouTubeVideos().then(function(data){
                 vm.youtube = data;
-                console.log(vm.youtube);
             });
 
             vm.sanitizeHTML = function (html) {
@@ -30,7 +29,13 @@
             };
 
             vm.subscribe = function(){
-                alert('Subscribe');
+                GlobalServices.subscribe(vm.subscribeEmail).then(function(data){
+                    if (!data.success) console.error(data);
+
+                    alert(data.message);
+
+                    vm.subscribeEmail = '';
+                });
             }
         }]);
 })();

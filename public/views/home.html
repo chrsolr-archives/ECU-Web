@@ -114,9 +114,9 @@
                 <div class="content">
                     <span class="title">Suscribete!!!</span>
                     <span class="subtitle">Suscribete para recivir notificaciones sobre las ultimas noticias, eventos y proximos shows.</span>
-                    <form class="form-inline text-center" ng-submit="vm.subscribe()">
-                        <input type="text" class="form-control form-control-ecu-accent" placeholder="email">
-                        <input type="submit" class="btn btn-ecu-accent">
+                    <form name="form" class="form-inline text-center" ng-submit="vm.subscribe()">
+                        <input type="email" class="form-control form-control-ecu-accent" placeholder="email" name="email" ng-minlength="6" ng-model="vm.subscribeEmail" required>
+                        <input type="submit" class="btn btn-ecu-accent" ng-disabled="form.$invalid">
                     </form>
                 </div>
             </div>

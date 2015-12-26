@@ -30,6 +30,19 @@
                 }
 
                 return q.promise;
+            },
+            subscribe: function(email) {
+                var q = $q.defer();
+
+                $http.post('/api/subscribe', {email: email})
+                .success(function(data){
+                    q.resolve(data);
+                })
+                .error(function(error){
+                    q.reject(error);
+                });
+
+                return q.promise;
             }
         }
     }]);

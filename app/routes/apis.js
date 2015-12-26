@@ -1,6 +1,6 @@
 var config = require('../../config/config');
 var request = require('request');
-
+var Parse = require('parse/node').Parse;
 
 module.exports = function (app, express) {
 
@@ -55,5 +55,45 @@ module.exports = function (app, express) {
                 res.send(data);
             }
         })
+    });
+
+    api.post('/subscribe', function(req, res){
+        var email = req.body.email;
+
+        if (!email) res.send({success: false, message: 'Email is empty.'});
+
+        var Subscription = Parse.Object.extend("Subscription");
+        var query = new Parse.Query(Subscription);
+        query.equalTo("canonical", email.toUpperCase());
+        query.first({
+            success: function(object) {
+                if (object) {
+                    if (!object.get('isActive')) {
+                        res.send({success: false, message: 'Email already found but is not active.'});
+                    }
+
+                    res.send({success: false, message: 'Email already found.'});
+                } else {
+                    var Subscription = Parse.Object.extend("Subscription");
+                    var subscription = new Subscription();
+
+                    subscription.set("email", email);
+                    subscription.set("isActive", true);
+                    subscription.set("canonical", email.toUpperCase());
+
+                    subscription.save(null, {
+                        success: function(subscription) {
+                            res.send({success: true, message: 'Gracias por suscribirte!!!', data: subscription.toJSON()});
+                        },
+                        error: function(subscription, error) {
+                            res.send({success: false, message: 'Failed to create new object, with error code: ' + error.message});
+                        }
+                    });
+                }
+            },
+            error: function(error) {
+                res.send({success: false, message: 'Error code: ' + error.message});
+            }
+        });
     });
 };

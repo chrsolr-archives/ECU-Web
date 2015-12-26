@@ -28,6 +28,7 @@
     "cors": "latest",
     "express": "latest",
     "morgan": "^1.6.1",
+    "parse": "^1.6.13",
     "request": "^2.67.0"
   }
 }
