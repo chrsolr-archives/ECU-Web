@@ -15,6 +15,12 @@
                 $routeProvider.when('/', {
                     templateUrl: '/views/home.html',
                     caseInsensitiveMatch: true
+                }).when('/policies', {
+                    templateUrl: '/views/policies.html',
+                    caseInsensitiveMatch: true
+                }).when('/termsofuse', {
+                    templateUrl: '/views/terms-of-use.html',
+                    caseInsensitiveMatch: true
                 }).otherwise({
                     redirectTo: '/'
                 });

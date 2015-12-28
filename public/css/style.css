@@ -115,6 +115,12 @@ a:focus {
   color: white;
   background-color: #F96816;
 }
+#policies-wrapper a {
+  color: #F96816;
+}
+#policies-wrapper a:hover {
+  text-decoration: underline;
+}
 @media only screen and (max-width: 543px) {
   .section-title {
     font-size: 6vw;
@@ -398,12 +404,23 @@ a:focus {
     font-size: 3.5vw;
   }
 }
+html,
+body {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
 body {
   background-color: #181818;
   color: #fafafa;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   padding-top: 100px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
 }
 body #ng-view-main {
   min-height: 100vh;

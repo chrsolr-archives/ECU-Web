@@ -2,12 +2,23 @@
 @import 'navbar.less';
 @import 'home.less';
 
+html, body {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
 body {
     background-color: @color-bg-primary;
     color: @color-font-light;
     font-family: @roboto;
     font-weight: @font-weight-regular;
     padding-top: @navigation-height;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-overflow-scrolling: touch;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
 
     #ng-view-main {
         min-height: 100vh;
