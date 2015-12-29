@@ -136,16 +136,12 @@ module.exports = function (app, express) {
         var sendgrid = require('sendgrid')('this.relos', 'this.r3l0s');
 
         sendgrid.send({
-            to:       ['twenty40@gmail.com', 'iamrelos@gmail.com'],
+            to:       ['elcomiteurbanoradio@gmail.com', 'iamrelos@gmail.com'],
             from:     contact.email,
             subject:  contact.subject,
             text:     'From: ' + contact.name + '\n' + 'Email: ' + contact.email + '\n\n' + contact.body
         }, function (err, json) {
-
-            // check for errors
             if (err) throw err;
-
-            // return json
             return res.status(200).send(json);
         });
 
