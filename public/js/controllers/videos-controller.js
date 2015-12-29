@@ -10,6 +10,7 @@
                 vm.videos = data.videos;
                 vm.prev = data.prev;
                 vm.next = data.next;
+                animateIn();
             });
 
             vm.previousVideos = function () {
