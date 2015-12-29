@@ -40,7 +40,7 @@ module.exports = function () {
         './public/js/controllers/global-controller.js',
         './public/js/controllers/navbar-controller.js',
         './public/js/controllers/home-controller.js',
-        './public/js/controllers/videos-controller.js',
+        './public/js/controllers/videos-controller.js'
     ], {
         mangle: true,
         compress: {
@@ -55,9 +55,7 @@ module.exports = function () {
         }
     });
 
-    //fs.writeFile('./public/js/application.min.js', uglified.code, function (err){
-    //    if (err) throw err;
-    //});
+    //fs.writeFileSync('./public/js/application.min.js', uglified.code);
 
     // routes
     require('../app/routes/apis')(app, express);
