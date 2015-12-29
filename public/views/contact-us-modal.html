@@ -1,0 +1,18 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Contact Us</h3>
+    </div>
+    <div class="modal-body">
+        <form name="form" ng-submit="global.sendContactUs()">
+            <input class="form-control form-control-ecu-accent" name="name" type="text" placeholder="Enter your name" ng-model="global.contact.name" ng-minlength="4" required>
+            <input class="form-control form-control-ecu-accent" name="email" type="email" placeholder="Enter your email" ng-model="global.contact.email" ng-minlength="6" required>
+            <input class="form-control form-control-ecu-accent" name="subject" type="text" placeholder="Enter your subject" ng-model="global.contact.subject" ng-minlength="4" required>
+            <textarea class="form-control form-control-ecu-accent" name="body" placeholder="Enter message" ng-model="global.contact.body" ng-minlength="4" required></textarea>
+            <div class="modal-footer">
+                <button class="btn btn-ecu-accent" type="submit" ng-disabled="form.$invalid">Send</button>
+                <button class="btn btn-ecu-accent" ng-click="$close()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+</div>

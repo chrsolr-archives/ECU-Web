@@ -29,7 +29,7 @@
             }
         </style>
     </head>
-    <body>
+    <body ng-controller="GlobalController as global">
         <nav ng-controller="NavigationController as vm">
         <header class="navigation-bar-wrapper">
             <div class="container">
@@ -69,7 +69,7 @@
                     <span>ABOUT</span>
                 </i>
             </a>
-            <a href="/contact">
+            <a style="cursor: pointer" target="_self" ng-click="global.contactUs()">
                 <i class="pe-7s-mail pe-lg pe-va">
                     <span>CONTACT</span>
                 </i>
@@ -137,6 +137,7 @@
         <script src="/js/services/news-services.js"></script>
         <script src="/js/services/youtube-services.js"></script>
         <script src="/js/services/soundcloud-services.js"></script>
+        <script src="/js/controllers/global-controller.js"></script>
         <script src="/js/controllers/navbar-controller.js"></script>
         <script src="/js/controllers/home-controller.js"></script>
         

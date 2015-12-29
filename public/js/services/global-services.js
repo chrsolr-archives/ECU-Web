@@ -43,6 +43,19 @@
                 });
 
                 return q.promise;
+            },
+            contactUs: function(contact){
+                var q = $q.defer();
+
+                $http.post('/api/contactus', {contact: contact})
+                    .success(function(data){
+                        q.resolve(data);
+                    })
+                    .error(function(error){
+                        q.reject(error);
+                    });
+
+                return q.promise;
             }
         }
     }]);
