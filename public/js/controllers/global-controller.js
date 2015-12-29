@@ -22,18 +22,15 @@
                 })
             };
 
-            NavBar({
-                id: 'navigation-bar-wrapper'
-            });
+            NavBar();
 
-
-            function NavBar(opts) {
+            function NavBar() {
                 var docWindow = angular.element($window);
-                var $nav = angular.element(document.querySelector('.' + opts.id));
+                var $nav = angular.element(document.querySelector('.navigation-bar-wrapper'));
+                var $sideBar = angular.element(document.querySelector('.navigation-bar-sidebar-wrapper'));
                 var lastPosition = 0;
                 var isScrolled = false;
-                var delta = opts.delta || 5;
-                var speed = opts.speed || 200;
+                var delta = 5;
 
                 docWindow.bind("scroll", function () {
                     isScrolled = true;
@@ -46,27 +43,11 @@
                         return;
 
                     if ((top > lastPosition) && (top > $nav.outerHeight())) {
-
-                        angular.element(document.querySelector('.navigation-bar-sidebar-wrapper')).removeClass('navigation-bar-sidebar-toggle');
-
-                        $nav.css({
-                            top: '-' + Number($nav.outerHeight() + 10) + 'px',
-                            WebkitTransition: 'top ' + speed + 'ms',
-                            MozTransition: 'top ' + speed + 'ms',
-                            MsTransition: 'top ' + speed + 'ms',
-                            OTransition: 'top ' + speed + 'ms',
-                            transition: 'top ' + speed + 'ms'
-                        }, speed);
+                        $nav.addClass('navigation-bar-toggle');
+                        $sideBar.removeClass('navigation-bar-sidebar-toggle');
                     } else {
                         if (top + docWindow.height() < angular.element($document).height()) {
-                            $nav.css({
-                                top: '0px',
-                                WebkitTransition: 'top ' + speed + 'ms',
-                                MozTransition: 'top ' + speed + 'ms',
-                                MsTransition: 'top ' + speed + 'ms',
-                                OTransition: 'top ' + speed + 'ms',
-                                transition: 'top ' + speed + 'ms'
-                            }, speed);
+                            $nav.removeClass('navigation-bar-toggle');
                         }
                     }
 
