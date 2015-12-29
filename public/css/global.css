@@ -115,6 +115,13 @@ a:focus {
   color: white;
   background-color: #F96816;
 }
+.btn-oval {
+  border-radius: 25px;
+  padding: 10px 25px;
+}
+.hover-pointer {
+  cursor: pointer;
+}
 #policies-wrapper a {
   color: #F96816;
 }
@@ -145,6 +152,64 @@ a:focus {
 }
 .modal-dialog .modal-content .modal-footer {
   border: none;
+}
+.pager .previous button,
+.pager .next button {
+  background-color: transparent;
+  color: #F96816;
+  border: 1px dotted #F96816;
+}
+.pager .previous button:hover,
+.pager .next button:hover,
+.pager .previous button:active,
+.pager .next button:active,
+.pager .previous button:focus,
+.pager .next button:focus {
+  color: white;
+  background-color: #F96816;
+}
+.pager li > button,
+.pager li > span {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 25px;
+}
+.pager li > button:hover,
+.pager li > button:focus {
+  text-decoration: none;
+}
+.pager .next > button,
+.pager .next > span {
+  float: right;
+}
+.pager .previous > button,
+.pager .previous > span {
+  float: left;
+}
+.pager .disabled > button,
+.pager .disabled > button:hover,
+.pager .disabled > button:focus,
+.pager .disabled > span {
+  cursor: not-allowed;
+}
+#loading-bar .bar {
+  background-color: #F96816;
+  height: 3px;
+}
+#loading-bar .peg {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  top: 0;
+  height: 2px;
+  opacity: 1;
+  -moz-box-shadow: #F96816 1px 0 6px 1px;
+  -ms-box-shadow: #F96816 1px 0 6px 1px;
+  -webkit-box-shadow: #F96816 1px 0 6px 1px;
+  box-shadow: #F96816 1px 0 6px 1px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
 }
 @media only screen and (max-width: 543px) {
   .section-title {

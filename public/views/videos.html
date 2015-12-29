@@ -1,0 +1,38 @@
+<div id="videos-wrapper" ng-controller="VideosController as vm">
+    <section class="section-bg-dark">
+        <div class="container">
+            <span class="section-title">Videos</span>
+            <div id="videos-content" class="row animated">
+                <div class="col-md-6" ng-repeat="video in vm.videos">
+                    <figure class="media-image-wrapper height-300">
+                        <a href="/videos/details/{{video.id}}">
+                            <img src="{{video.imageUrl}}" alt="{{video.title}}" class="img-responsive" width="100%">
+                        </a>
+
+                        <div class="content">
+                            <span class="title">
+                                <a href="/videos/details/{{video.id}}">{{video.title | limitTo:50}}...</a>
+                            </span>
+                            <span class="subtitle">
+                                <small>{{video.description | limitTo:75 }}...</small>
+                            </span>
+                        </div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <nav>
+            <ul class="pager">
+                <li class="previous hover-pointer" ng-class="vm.prev ? '' : 'disabled'" ng-click="vm.previousVideos()">
+                    <button  ng-disabled="!vm.prev"><span aria-hidden="true">&larr;</span> Previous</button>
+                </li>
+                <li class="next hover-pointer" ng-class="vm.next ? '' : 'disabled'" ng-click="vm.nextVideos()" >
+                    <button ng-disabled="!vm.next">Next <span aria-hidden="true">&rarr;</span></button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

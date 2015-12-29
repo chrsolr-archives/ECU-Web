@@ -18,9 +18,12 @@ module.exports = function (app, express) {
             if (!error && response.statusCode == 200) {
                 var json = JSON.parse(response.body);
 
+                //console.log(json);
+
                 var data = {
                     next: json.nextPageToken,
                     prev: json.prevPageToken,
+                    totalItems: json.pageInfo.totalResults,
                     videos: []
                 };
 

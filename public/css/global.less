@@ -131,6 +131,15 @@ a {
   }
 }
 
+.btn-oval {
+  border-radius: 25px;
+  padding: 10px 25px;
+}
+
+.hover-pointer {
+  cursor: pointer;
+}
+
 #policies-wrapper {
   a {
     color: @color-font-accent;
@@ -172,6 +181,78 @@ a {
       border:none;
     }
   }
+}
+
+.pager .previous button, .pager .next button {
+  background-color: transparent;
+  color: @color-font-accent;
+  border: 1px dotted @color-bg-accent;
+
+  &:hover, &:active, &:focus {
+    color: white;
+    background-color: @color-bg-accent;
+  }
+}
+
+.pager {
+
+  li {
+    > button,
+    > span {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 25px;
+    }
+
+    > button:hover,
+    > button:focus {
+      text-decoration: none;
+    }
+  }
+
+  .next {
+    > button,
+    > span {
+      float: right;
+    }
+  }
+
+  .previous {
+    > button,
+    > span {
+      float: left;
+    }
+  }
+
+  .disabled {
+    > button,
+    > button:hover,
+    > button:focus,
+    > span {
+      cursor: not-allowed;
+    }
+  }
+}
+
+#loading-bar .bar {
+  background-color: @color-bg-accent;
+  height: 3px;
+}
+
+#loading-bar .peg {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  top: 0;
+  height: 2px;
+  opacity: 1;
+  -moz-box-shadow: @color-bg-accent 1px 0 6px 1px;
+  -ms-box-shadow: @color-bg-accent 1px 0 6px 1px;
+  -webkit-box-shadow: @color-bg-accent 1px 0 6px 1px;
+  box-shadow: @color-bg-accent 1px 0 6px 1px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
 }
 
 @media @media-x-small {

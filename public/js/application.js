@@ -15,6 +15,9 @@
                 $routeProvider.when('/', {
                     templateUrl: '/views/home.html',
                     caseInsensitiveMatch: true
+                }).when('/videos', {
+                    templateUrl: '/views/videos.html',
+                    caseInsensitiveMatch: true
                 }).when('/about', {
                     templateUrl: '/views/about.html',
                     caseInsensitiveMatch: true
