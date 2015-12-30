@@ -1,0 +1,36 @@
+<div ng-controller="NewsDetailsController as vm">
+    <section class="section-bg-dark">
+        <div class="container">
+            <figure class="media-image-wrapper">
+                <img src="{{vm.news.imageUrl}}" alt="News Image" class="img-responsive" width="100%">
+            </figure>
+        </div>
+    </section>
+
+    <section class="section-bg-light">
+        <div class="container">
+            <span class="section-title">{{vm.news.title}}</span>
+            <p style="white-space: pre-line" ng-bind-html="vm.sanitizeHTML(vm.news.description)"></p>
+        </div>
+    </section>
+
+    <section class="section-bg-dark">
+        <div class="container">
+            <span class="share-title">Share</span>
+            <ul class="social-media-share">
+                <li>
+                    <a class="fa fa-2x fa-facebook" target="_blank"
+                       href="https://www.facebook.com/sharer/sharer.php?u=http://elcomiteurbano.com/news/details/{{vm.news.permalink}}"></a>
+                </li>
+                <li>
+                    <a class="fa fa-2x fa-twitter" target="_blank"
+                       href="https://twitter.com/share?text={{vm.news.title}}&url=http://elcomiteurbano.com/news/details/{{vm.news.permalink}}"></a>
+                </li>
+                <li>
+                    <a class="fa fa-2x fa-google" target="_blank"
+                       href="https://plus.google.com/share?url=http://elcomiteurbano.com/news/details/{{vm.news.permalink}}"></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>

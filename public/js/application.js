@@ -18,6 +18,9 @@
                 }).when('/news', {
                     templateUrl: '/views/news.html',
                     caseInsensitiveMatch: true
+                }).when('/news/details/:permalink', {
+                    templateUrl: '/views/news-details.html',
+                    caseInsensitiveMatch: true
                 }).when('/videos', {
                     templateUrl: '/views/videos.html',
                     caseInsensitiveMatch: true

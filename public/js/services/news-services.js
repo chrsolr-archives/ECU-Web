@@ -31,6 +31,22 @@
                 });
 
                 return q.promise;
+            }, getNewsByPermalink: function(permalink){
+                var q = $q.defer();
+
+                var news = Parse.Object.extend("News");
+                var query = new Parse.Query(news);
+                query.equalTo('permalink', permalink);
+                query.first({
+                    success: function(object) {
+                        q.resolve(object.toJSON());
+                    },
+                    error: function(error) {
+                        q.reject("Error: " + error.code + " " + error.message);
+                    }
+                });
+
+                return q.promise;
             }
         }
     }]);
