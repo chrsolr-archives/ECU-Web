@@ -282,11 +282,22 @@ a {
     }
 
     a {
-      color: white;
+      color: white !important;
 
       &:hover, &:focus {
-        color: @color-font-accent;
+        color: @color-font-accent !important;
+        text-decoration: none !important;
       }
+    }
+  }
+}
+
+#media-details {
+  a {
+    color: @color-bg-accent;
+
+    &:hover, &:focus {
+      text-decoration: underline;
     }
   }
 }

@@ -236,11 +236,19 @@ a:focus {
   padding-left: 0;
 }
 .social-media-share li a {
-  color: white;
+  color: white !important;
 }
 .social-media-share li a:hover,
 .social-media-share li a:focus {
+  color: #F96816 !important;
+  text-decoration: none !important;
+}
+#media-details a {
   color: #F96816;
+}
+#media-details a:hover,
+#media-details a:focus {
+  text-decoration: underline;
 }
 @media only screen and (max-width: 543px) {
   .section-title,
