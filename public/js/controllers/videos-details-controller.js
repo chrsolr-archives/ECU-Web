@@ -8,7 +8,6 @@
 
             YoutubeServices.getYouTubeVideoById($routeParams.id).then(function(res){
                 vm.video = res.data;
-                document.title = vm.video.title;
             });
         }]);
 })();

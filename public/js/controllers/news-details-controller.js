@@ -8,7 +8,6 @@
 
             NewsServices.getNewsByPermalink($routeParams.permalink).then(function (data) {
                 vm.news = data;
-                document.title = vm.news.title;
             });
 
             vm.sanitizeHTML = function (html) {
