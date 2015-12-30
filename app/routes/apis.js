@@ -69,8 +69,6 @@ module.exports = function (app, express) {
             if (!error && response.statusCode == 200) {
                 var json = JSON.parse(response.body);
 
-                console.log(json.items[0].snippet);
-
                 var data = {
                     id: id,
                     title: json.items[0].snippet.title,
