@@ -75,7 +75,7 @@ module.exports = function (app, express) {
                     videoUrl: "https://www.youtube.com/embed/" + id,
                     publishedAt: json.items[0].snippet.publishedAt,
                     description: json.items[0].snippet.description
-                }
+                };
 
                 res.json({success: true, message: '', data: data});
             }
