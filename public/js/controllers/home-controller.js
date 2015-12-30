@@ -10,7 +10,7 @@
                 vm.featuredVideo = data;
             });
 
-            NewsServices.getNews().then(function(data){
+            NewsServices.getNews(8).then(function(data){
                 vm.news = data;
             });
 

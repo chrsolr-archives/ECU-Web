@@ -4,13 +4,17 @@
     angular.module('services').factory('NewsServices', ['$q', function ($q) {
 
         return {
-            getNews: function(){
+            getNews: function(limit){
                 var q = $q.defer();
+
+                var queryLimit = limit || 50;
 
                 var news = Parse.Object.extend("News");
                 var query = new Parse.Query(news);
                 query.descending('createdAt');
-                query.limit(8);
+
+                query.limit(queryLimit);
+
                 query.find({
                     success: function(objects) {
                         var data = [];

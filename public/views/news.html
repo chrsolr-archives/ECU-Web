@@ -1,0 +1,25 @@
+<div id="news-wrapper" ng-controller="NewsController as vm">
+    <section class="section-bg-dark">
+        <div class="container">
+            <span class="section-title">Noticias</span>
+            <div class="row">
+                <div class="col-sm-6" ng-repeat="news in vm.news">
+                    <figure class="media-image-wrapper height-350">
+                        <a href="/news/details/{{news.permalink}}">
+                            <img src="{{news.imageUrl}}" alt="News Image" class="img-responsive" width="100%">
+                        </a>
+
+                        <div class="content">
+                            <span class="title">
+                                <a href="/news/details/{{news.permalink}}">{{news.title}}</a>
+                            </span>
+                            <span class="subtitle">
+                                <small>{{news.description | limitTo:75 }}...</small>
+                            </span>
+                        </div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

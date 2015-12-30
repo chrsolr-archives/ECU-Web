@@ -40,6 +40,7 @@ module.exports = function () {
         './public/js/controllers/global-controller.js',
         './public/js/controllers/navbar-controller.js',
         './public/js/controllers/home-controller.js',
+        './public/js/controllers/news-controller.js',
         './public/js/controllers/videos-controller.js',
         './public/js/controllers/videos-details-controller.js'
     ], {
