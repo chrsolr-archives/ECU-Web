@@ -60,6 +60,30 @@ module.exports = function (app, express) {
         })
     });
 
+    api.get('/youtube/:id', function (req, res) {
+        var id = req.params.id;
+        var key = config.apis_keys.youtube;
+        var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + id + '&key=' + key;
+
+        request(url, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var json = JSON.parse(response.body);
+
+                console.log(json.items[0].snippet);
+
+                var data = {
+                    id: id,
+                    title: json.items[0].snippet.title,
+                    videoUrl: "https://www.youtube.com/embed/" + id,
+                    publishedAt: json.items[0].snippet.publishedAt,
+                    description: json.items[0].snippet.description
+                }
+
+                res.json({success: true, message: '', data: data});
+            }
+        })
+    });
+
     api.get('/soundcloud', function (req, res) {
         var url = 'http://api.soundcloud.com/users/146006073/tracks.json?client_id=500f3c5cdcf76cb1bcc8c35e97864840';
 

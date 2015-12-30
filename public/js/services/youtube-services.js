@@ -19,6 +19,18 @@
                     });
 
                 return q.promise;
+            }, getYouTubeVideoById: function(id){
+                var q = $q.defer();
+
+                $http.get('/api/youtube/' + id)
+                    .success(function(data){
+                        q.resolve(data);
+                    })
+                    .error(function(error){
+                        q.reject(error);
+                    });
+
+                return q.promise;
             }
         }
     }]);
