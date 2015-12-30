@@ -1,4 +1,8 @@
 <div id="media-details" ng-controller="NewsDetailsController as vm">
+
+    <title>{{vm.news.title}}</title>
+    <meta name="description" content="{{vm.sanitizeHTML(vm.news.description)}}">
+
     <section class="section-bg-dark">
         <div class="container">
             <figure class="media-image-wrapper">
