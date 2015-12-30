@@ -17,8 +17,9 @@ module.exports = function () {
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
     
-    Parse.initialize("Mw0dWtJQYVzYlA4vHybSNmuyLJSjzpEpTarhZMEQ", "gXEJhvTtHQcSNrryJ7u9IK4euVWOu00QEGnaK7ow");
-    
+    Parse.initialize(config.apis_keys.parse_app_key, config.apis_keys.parse_client_key);
+
+    app.use(require('prerender-node').set('prerenderToken', config.apis_keys.prerender_key));
     app.use(morgan('dev'));
 
     // static roots
