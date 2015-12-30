@@ -41,6 +41,7 @@
                 });
 
                 $locationProvider.html5Mode(true);
+                $locationProvider.hashPrefix('!');
 
                 cfpLoadingBarProvider.includeSpinner = false;
 
