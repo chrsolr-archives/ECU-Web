@@ -253,13 +253,17 @@ a:focus {
 .soundcloud-player-wrapper {
   position: fixed;
   border-top: 1px dashed #F96816;
-  height: auto;
+  height: 70px;
   bottom: -1px;
   left: 0;
   right: 0;
   width: 100%;
   z-index: 300;
   box-sizing: border-box;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 .soundcloud-player-wrapper span {
   color: #fafafa;
@@ -276,28 +280,44 @@ a:focus {
 .soundcloud-player-wrapper ul li {
   display: inline;
 }
-.soundcloud-player-wrapper .player-buttons-wrapper {
-  display: inline-block;
+.soundcloud-player-wrapper .mini-player {
+  border-bottom: 2px solid #181818;
 }
-.soundcloud-player-wrapper .album-info-wrapper {
+.soundcloud-player-wrapper .mini-player .player-buttons-wrapper {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.soundcloud-player-wrapper .mini-player .album-info-wrapper {
   display: inline-block;
   margin-left: 15px;
 }
-.soundcloud-player-wrapper .album-info-wrapper span {
+.soundcloud-player-wrapper .mini-player .album-info-wrapper span {
   color: #fafafa !important;
 }
-.soundcloud-player-wrapper .options-wrapper {
+.soundcloud-player-wrapper .mini-player .options-wrapper {
   display: inline-block;
   float: right;
 }
-.soundcloud-player-wrapper .options-wrapper span,
-.soundcloud-player-wrapper .options-wrapper a {
+.soundcloud-player-wrapper .mini-player .options-wrapper span,
+.soundcloud-player-wrapper .mini-player .options-wrapper a {
   color: #fafafa;
   margin-right: 15px;
 }
-.soundcloud-player-wrapper .options-wrapper span:hover,
-.soundcloud-player-wrapper .options-wrapper a:hover {
+.soundcloud-player-wrapper .mini-player .options-wrapper span:hover,
+.soundcloud-player-wrapper .mini-player .options-wrapper a:hover {
   color: #F96816;
+}
+.soundcloud-player-wrapper .playlist-wrapper {
+  height: 100%;
+  margin-top: 20px;
+}
+.soundcloud-player-wrapper .playlist-wrapper ul li span {
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.soundcloud-player-toggle {
+  height: 100%;
 }
 @media only screen and (max-width: 543px) {
   .section-title,

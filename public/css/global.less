@@ -305,13 +305,17 @@ a {
 .soundcloud-player-wrapper {
   position: fixed;
   border-top: 1px dashed @color-bg-accent;
-  height: auto;
+  height: 70px;
   bottom: -1px;
   left: 0;
   right: 0;
   width: 100%;
   z-index: 300;
   box-sizing: border-box;
+  -webkit-transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 
   span {
     color: @color-font-light;
@@ -332,33 +336,56 @@ a {
     }
   }
 
-  .player-buttons-wrapper {
-    display: inline-block;
-  }
+  .mini-player {
+    border-bottom: 2px solid @color-bg-primary;
 
-  .album-info-wrapper {
-    display: inline-block;
-    margin-left: @space-level-3;
-
-    span {
-      color: @color-font-light !important;
+    .player-buttons-wrapper {
+      display: inline-block;
+      margin-bottom: @space-level-4;
     }
-  }
 
-  .options-wrapper {
-    display: inline-block;
-    float: right;
+    .album-info-wrapper {
+      display: inline-block;
+      margin-left: @space-level-3;
 
-    span, a {
-      color: @color-font-light;
-      margin-right: @space-level-3;
+      span {
+        color: @color-font-light !important;
+      }
+    }
 
-      &:hover {
-        color: @color-font-accent;
+    .options-wrapper {
+      display: inline-block;
+      float: right;
 
+      span, a {
+        color: @color-font-light;
+        margin-right: @space-level-3;
+
+        &:hover {
+          color: @color-font-accent;
+        }
       }
     }
   }
+
+  .playlist-wrapper {
+    height: 100%;
+    margin-top: @space-level-4;
+
+    ul {
+      li {
+        span {
+          display: block;
+          text-align: left;
+          margin-bottom: @space-level-2;
+        }
+      }
+    }
+  }
+}
+
+.soundcloud-player-toggle {
+  height: 100%;
 }
 
 @media @media-x-small {
