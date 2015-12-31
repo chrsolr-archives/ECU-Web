@@ -5,6 +5,9 @@
         function ($sce, GlobalServices, NewsServices, YoutubeServices, SoundcloudServices, tweets) {
 
             var vm = this;
+            vm.isAudioPlaying = false;
+            vm.track = new Audio();
+            vm.selectedTrackIndex = 0;
 
             GlobalServices.getFeaturedVideo().then(function (data) {
                 vm.featuredVideo = data;
@@ -26,6 +29,7 @@
 
             SoundcloudServices.getSoundcouldSongs().then(function(data){
                 vm.songs = data.data;
+                vm.selectedTrack = vm.songs[vm.selectedTrackIndex];
             });
 
             vm.sanitizeHTML = function (html) {
@@ -40,6 +44,34 @@
 
                     vm.subscribeEmail = '';
                 });
-            }
+            };
+
+            vm.playSong = function(index) {
+                if (index < 0) index = 0;
+
+                if (index >= vm.songs.length) index = vm.songs.length - 1;
+
+                vm.selectedTrack = vm.songs[index];
+                vm.selectedTrackIndex = index;
+
+                if (vm.isAudioPlaying){
+                    vm.track.pause();
+                }
+
+                vm.track = new Audio(vm.selectedTrack.stream_url);
+                vm.track.play();
+                vm.isAudioPlaying = true;
+            };
+
+            vm.stopSong = function() {
+                if (vm.isAudioPlaying){
+                    vm.track.pause();
+                    vm.isAudioPlaying = false;
+                }
+            };
+
+            vm.downloadSong = function(index){
+                window.location.replace(vm.songs[index].download_url);
+            };
         }]);
 })();

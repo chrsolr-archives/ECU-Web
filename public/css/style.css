@@ -250,6 +250,43 @@ a:focus {
 #media-details a:focus {
   text-decoration: underline;
 }
+.soundcloud-player-wrapper {
+  position: fixed;
+  border-top: 1px dashed #F96816;
+  height: auto;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 300;
+  box-sizing: border-box;
+}
+.soundcloud-player-wrapper span {
+  color: #fafafa;
+}
+.soundcloud-player-wrapper span:hover {
+  color: #F96816;
+}
+.soundcloud-player-wrapper .player-buttons-wrapper {
+  display: inline-block;
+}
+.soundcloud-player-wrapper .album-info-wrapper {
+  display: inline-block;
+  margin-left: 15px;
+}
+.soundcloud-player-wrapper .options-wrapper {
+  display: inline-block;
+  float: right;
+}
+.soundcloud-player-wrapper .options-wrapper span,
+.soundcloud-player-wrapper .options-wrapper a {
+  color: #fafafa;
+  margin-right: 15px;
+}
+.soundcloud-player-wrapper .options-wrapper span:hover,
+.soundcloud-player-wrapper .options-wrapper a:hover {
+  color: #F96816;
+}
 @media only screen and (max-width: 543px) {
   .section-title,
   .share-title {

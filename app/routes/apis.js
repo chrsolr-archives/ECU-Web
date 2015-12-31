@@ -83,7 +83,8 @@ module.exports = function (app, express) {
     });
 
     api.get('/soundcloud', function (req, res) {
-        var url = 'http://api.soundcloud.com/users/146006073/tracks.json?client_id=500f3c5cdcf76cb1bcc8c35e97864840';
+
+        var url = 'http://api.soundcloud.com/users/146006073/tracks.json?client_id=' + config.apis_keys.soundcloud_client_id;
 
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -100,7 +101,9 @@ module.exports = function (app, express) {
                         trackId: item.id,
                         url: item.permalink_url,
                         imageUrl: cover,
-                        dateCreated: item.created_at
+                        dateCreated: item.created_at,
+                        stream_url: item.stream_url + '?client_id=' + config.apis_keys.soundcloud_client_id,
+                        download_url: item.download_url + '?client_id=' + config.apis_keys.soundcloud_client_id
                     };
 
                     songs.push(track);

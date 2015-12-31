@@ -302,6 +302,50 @@ a {
   }
 }
 
+.soundcloud-player-wrapper {
+  position: fixed;
+  border-top: 1px dashed @color-bg-accent;
+  height: auto;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 300;
+  box-sizing: border-box;
+
+  span {
+    color: @color-font-light;
+
+    &:hover {
+      color: @color-font-accent;
+    }
+  }
+
+  .player-buttons-wrapper {
+    display: inline-block;
+  }
+
+  .album-info-wrapper {
+    display: inline-block;
+    margin-left: @space-level-3;
+  }
+
+  .options-wrapper {
+    display: inline-block;
+    float: right;
+
+    span, a {
+      color: @color-font-light;
+      margin-right: @space-level-3;
+
+      &:hover {
+        color: @color-font-accent;
+
+      }
+    }
+  }
+}
+
 @media @media-x-small {
   .section-title, .share-title {
     font-size: 6vw;

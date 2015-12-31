@@ -136,7 +136,8 @@
 
                         <div class="content">
                             <span class="title">
-                                <a href="{{song.url}}" target="_blank">{{song.title}}</a>
+                                <!--<a href="{{song.url}}" target="_blank">{{song.title}}</a>-->
+                                <a class="hover-pointer" target="_self" ng-click="vm.playSong($index)">{{song.title}}</a>
                             </span>
                         </div>
                     </figure>
@@ -145,4 +146,23 @@
         </div>
     </section>
 
+    <section class="soundcloud-player-wrapper section-bg-light">
+        <div class="container">
+            <!--<span class="section-title">{{vm.selectedTrack.title}}</span>-->
+            <!--<img src="{{vm.selectedTrack.imageUrl}}" class="img-responsive" width="50%">-->
+            <div class="player-buttons-wrapper">
+                <span class="pe-7s-prev pe-2x pe-va hover-pointer" ng-click="vm.playSong(vm.selectedTrackIndex - 1)"></span>
+                <span class="pe-7s-play pe-3x pe-va hover-pointer" ng-hide="vm.isAudioPlaying" ng-click="vm.playSong(vm.selectedTrackIndex)"></span>
+                <span class="pe-7s-close pe-3x pe-va hover-pointer" ng-hide="!vm.isAudioPlaying" ng-click="vm.stopSong()"></span>
+                <span class="pe-7s-next pe-2x pe-va hover-pointer" ng-click="vm.playSong(vm.selectedTrackIndex + 1)"></span>
+            </div>
+            <div class="album-info-wrapper">
+                <span class="title">{{vm.selectedTrack.title}}</span>
+            </div>
+            <div class="options-wrapper">
+                <a class="fa fa-2x fa-va fa-soundcloud hover-pointer" target="_blank" href="{{vm.selectedTrack.url}}"></a>
+                <span class="pe-7s-cloud-download pe-2x pe-va hover-pointer" ng-click="vm.downloadSong(vm.selectedTrackIndex)"></span>
+            </div>
+        </div>
+    </section>
 </div>

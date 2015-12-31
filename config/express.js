@@ -48,18 +48,18 @@ module.exports = function () {
     ], {
         mangle: true,
         compress: {
-            sequences: true,
-            dead_code: true,
-            conditionals: true,
-            booleans: true,
-            unused: true,
-            if_return: true,
-            join_vars: true,
-            drop_console: true
+            //sequences: true,
+            //dead_code: true,
+            //conditionals: true,
+            //booleans: true,
+            //unused: true,
+            //if_return: true,
+            //join_vars: true,
+            //drop_console: true
         }
     });
 
-    //fs.writeFileSync('./public/js/application.min.js', uglified.code);
+    fs.writeFileSync('./public/js/application.min.js', uglified.code);
 
     // routes
     require('../app/routes/apis')(app, express);
