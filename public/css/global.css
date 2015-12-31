@@ -263,9 +263,18 @@ a:focus {
 }
 .soundcloud-player-wrapper span {
   color: #fafafa;
+  text-align: center;
 }
 .soundcloud-player-wrapper span:hover {
   color: #F96816;
+}
+.soundcloud-player-wrapper ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.soundcloud-player-wrapper ul li {
+  display: inline;
 }
 .soundcloud-player-wrapper .player-buttons-wrapper {
   display: inline-block;
@@ -273,6 +282,9 @@ a:focus {
 .soundcloud-player-wrapper .album-info-wrapper {
   display: inline-block;
   margin-left: 15px;
+}
+.soundcloud-player-wrapper .album-info-wrapper span {
+  color: #fafafa !important;
 }
 .soundcloud-player-wrapper .options-wrapper {
   display: inline-block;
@@ -298,10 +310,56 @@ a:focus {
   .share-title {
     font-size: 4.5vw;
   }
+  .soundcloud-player-wrapper ul {
+    text-align: center;
+  }
+  .soundcloud-player-wrapper .player-buttons-wrapper {
+    display: block;
+    width: 100%;
+  }
+  .soundcloud-player-wrapper .album-info-wrapper {
+    display: block;
+    margin-left: 0;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .soundcloud-player-wrapper .album-info-wrapper span {
+    text-align: center;
+    display: block;
+  }
+  .soundcloud-player-wrapper .options-wrapper {
+    display: block;
+    float: left;
+    width: 100%;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .section-title,
   .share-title {
     font-size: 3.5vw;
+  }
+}
+@media only screen and (min-width: 544px) and (max-width: 767px), only screen and (max-width: 543px) {
+  .soundcloud-player-wrapper ul {
+    text-align: center;
+  }
+  .soundcloud-player-wrapper .player-buttons-wrapper {
+    display: block;
+    width: 100%;
+  }
+  .soundcloud-player-wrapper .album-info-wrapper {
+    display: block;
+    margin-left: 0;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .soundcloud-player-wrapper .album-info-wrapper span {
+    text-align: center;
+    display: block;
+  }
+  .soundcloud-player-wrapper .options-wrapper {
+    display: block;
+    float: left;
+    width: 100%;
   }
 }

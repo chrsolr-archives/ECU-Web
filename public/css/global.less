@@ -315,9 +315,20 @@ a {
 
   span {
     color: @color-font-light;
+    text-align: center;
 
     &:hover {
       color: @color-font-accent;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline;
     }
   }
 
@@ -328,6 +339,10 @@ a {
   .album-info-wrapper {
     display: inline-block;
     margin-left: @space-level-3;
+
+    span {
+      color: @color-font-light !important;
+    }
   }
 
   .options-wrapper {
@@ -356,10 +371,73 @@ a {
   .section-title, .share-title {
     font-size: 4.5vw;
   }
+
+  .soundcloud-player-wrapper {
+
+    ul {
+      text-align: center;
+    }
+
+    .player-buttons-wrapper {
+      display: block;
+      width: 100%;
+    }
+
+    .album-info-wrapper {
+      display: block;
+      margin-left: 0;
+      margin-bottom: @space-level-1;
+      width: 100%;
+
+      span {
+        text-align: center;
+        display: block;
+      }
+    }
+
+    .options-wrapper {
+      display: block;
+      float: left;
+      width: 100%;
+    }
+  }
 }
 
 @media @media-medium {
   .section-title, .share-title {
     font-size: 3.5vw;
+  }
+}
+
+@media @media-small, @media-x-small {
+
+  .soundcloud-player-wrapper {
+
+    ul {
+      text-align: center;
+    }
+
+    .player-buttons-wrapper {
+      display: block;
+      width: 100%;
+    }
+
+    .album-info-wrapper {
+      display: block;
+      margin-left: 0;
+      margin-bottom: @space-level-1;
+      width: 100%;
+
+      span {
+        text-align: center;
+        display: block;
+      }
+    }
+
+    .options-wrapper {
+      display: block;
+      float: left;
+      width: 100%;
+    }
   }
 }
