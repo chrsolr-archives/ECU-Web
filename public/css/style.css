@@ -252,8 +252,8 @@ a:focus {
 }
 .soundcloud-player-wrapper {
   position: fixed;
-  border-top: 1px dashed #F96816;
-  height: 70px;
+  border-top: 1px solid #F96816;
+  height: 80px;
   bottom: -1px;
   left: 0;
   right: 0;
@@ -276,27 +276,24 @@ a:focus {
   list-style: none;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 .soundcloud-player-wrapper ul li {
   display: inline;
 }
-.soundcloud-player-wrapper .mini-player {
-  border-bottom: 2px solid #181818;
-}
-.soundcloud-player-wrapper .mini-player .player-buttons-wrapper {
-  display: inline-block;
-  margin-bottom: 20px;
-}
 .soundcloud-player-wrapper .mini-player .album-info-wrapper {
-  display: inline-block;
-  margin-left: 15px;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.soundcloud-player-wrapper .mini-player .album-info-wrapper span {
-  color: #fafafa !important;
+.soundcloud-player-wrapper .mini-player .album-info-wrapper .title {
+  display: block;
+  font-family: 'Ubuntu', sans-serif;
+  vertical-align: middle;
+  line-height: 40px;
+  font-size: 16px;
 }
-.soundcloud-player-wrapper .mini-player .options-wrapper {
-  display: inline-block;
-  float: right;
+.soundcloud-player-wrapper .mini-player .album-info-wrapper .title:hover {
+  color: #fafafa;
 }
 .soundcloud-player-wrapper .mini-player .options-wrapper span,
 .soundcloud-player-wrapper .mini-player .options-wrapper a {
@@ -310,6 +307,8 @@ a:focus {
 .soundcloud-player-wrapper .playlist-wrapper {
   height: 100%;
   margin-top: 20px;
+  border-top: 2px solid #181818;
+  padding-top: 20px;
 }
 .soundcloud-player-wrapper .playlist-wrapper ul li span {
   display: block;
@@ -317,7 +316,7 @@ a:focus {
   margin-bottom: 10px;
 }
 .soundcloud-player-toggle {
-  height: 100%;
+  height: 100% !important;
 }
 @media only screen and (max-width: 543px) {
   .section-title,
@@ -330,28 +329,6 @@ a:focus {
   .share-title {
     font-size: 4.5vw;
   }
-  .soundcloud-player-wrapper ul {
-    text-align: center;
-  }
-  .soundcloud-player-wrapper .player-buttons-wrapper {
-    display: block;
-    width: 100%;
-  }
-  .soundcloud-player-wrapper .album-info-wrapper {
-    display: block;
-    margin-left: 0;
-    margin-bottom: 5px;
-    width: 100%;
-  }
-  .soundcloud-player-wrapper .album-info-wrapper span {
-    text-align: center;
-    display: block;
-  }
-  .soundcloud-player-wrapper .options-wrapper {
-    display: block;
-    float: left;
-    width: 100%;
-  }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .section-title,
@@ -360,27 +337,8 @@ a:focus {
   }
 }
 @media only screen and (min-width: 544px) and (max-width: 767px), only screen and (max-width: 543px) {
-  .soundcloud-player-wrapper ul {
-    text-align: center;
-  }
-  .soundcloud-player-wrapper .player-buttons-wrapper {
-    display: block;
-    width: 100%;
-  }
-  .soundcloud-player-wrapper .album-info-wrapper {
-    display: block;
-    margin-left: 0;
-    margin-bottom: 5px;
-    width: 100%;
-  }
-  .soundcloud-player-wrapper .album-info-wrapper span {
-    text-align: center;
-    display: block;
-  }
-  .soundcloud-player-wrapper .options-wrapper {
-    display: block;
-    float: left;
-    width: 100%;
+  .soundcloud-player-wrapper {
+    height: 160px;
   }
 }
 .navigation-bar-wrapper {

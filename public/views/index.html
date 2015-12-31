@@ -25,14 +25,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
         <title>El Comite Urbano</title>
-        
+
         <link rel="stylesheet" href="/scripts/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/libs/pe-icon-7-stroke/css/pe-icon-7-stroke.css"/>
         <link rel="stylesheet" href="/libs/pe-icon-7-stroke/css/helper.css"/>
         <link rel="stylesheet" href="/css/animate.css"/>
         <link rel="stylesheet" href="/scripts/angular-loading-bar/build/loading-bar.css"/>
         <link rel="stylesheet" href="/css/style.css"/>
-    
+
         <style>
             [ng\:cloak],
             [ng-cloak],
@@ -62,7 +62,7 @@
                 </div>
                 </div>
         </header>
-        
+
         <aside class="navigation-bar-sidebar-wrapper" ng-class="vm.isSideBarOpen ? 'navigation-bar-sidebar-toggle' : ''">
             <a href="/">
                 <i class="pe-7s-home pe-lg pe-va">
@@ -138,11 +138,9 @@
         </footer>
 
         <section class="soundcloud-player-wrapper section-bg-light">
-            <div class="container">
-                <!--<span class="section-title">{{vm.selectedTrack.title}}</span>-->
-                <!--<img src="{{vm.selectedTrack.imageUrl}}" class="img-responsive" width="50%">-->
-                <div class="mini-player">
-                    <div class="player-buttons-wrapper">
+            <div class="mini-player row">
+                <div class="container">
+                    <div class="player-buttons-wrapper col-md-3">
                         <ul>
                             <li><span class="pe-7s-prev pe-2x pe-va hover-pointer" ng-click="global.playSong(global.selectedTrackIndex - 1)"></span></li>
                             <li ng-hide="global.isAudioPlaying"><span class="pe-7s-play pe-3x pe-va hover-pointer" ng-click="global.playSong(global.selectedTrackIndex)"></span></li>
@@ -150,10 +148,10 @@
                             <li><span class="pe-7s-next pe-2x pe-va hover-pointer" ng-click="vm.playSong(global.selectedTrackIndex + 1)"></span></li>
                         </ul>
                     </div>
-                    <div class="album-info-wrapper">
+                    <div class="album-info-wrapper col-md-6">
                         <span class="title">{{global.selectedTrack.title}}</span>
                     </div>
-                    <div class="options-wrapper">
+                    <div class="options-wrapper col-md-3">
                         <ul>
                             <li><a class="fa fa-2x fa-va fa-soundcloud hover-pointer" target="_blank" href="{{global.selectedTrack.url}}"></a></li>
                             <li><span class="pe-7s-cloud-download pe-2x pe-va hover-pointer" ng-click="global.downloadSong(global.selectedTrackIndex)"></span></li>
@@ -161,15 +159,14 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="playlist-wrapper">
-                    <ul ng-repeat="song in global.songs | limitTo: 12">
-                        <li><span class="hover-pointer" ng-click="global.playSong($index)">{{$index + 1}} &bull; &nbsp;{{song.title}}</span></li>
-                    </ul>
-                </div>
+            </div>
+            <div class="playlist-wrapper container">
+                <ul ng-repeat="song in global.songs | limitTo: 12">
+                    <li><span class="hover-pointer" ng-click="global.playSong($index)">{{$index + 1}} &bull; &nbsp;{{song.title}}</span></li>
+                </ul>
             </div>
         </section>
-        
+
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
         <script src="/scripts/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -186,7 +183,7 @@
                 'use strict';
                 $('.banner-title').addClass('animated fadeIn');
                 $('.banner-subtitle').addClass('animated fadeIn');
-    
+
             })(jQuery);
         </script>
     </body>
