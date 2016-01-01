@@ -86,6 +86,7 @@
                         $nav.addClass('navigation-bar-toggle');
                         $sideBar.removeClass('navigation-bar-sidebar-toggle');
                         angular.element(document.querySelector('.soundcloud-player-wrapper')).addClass('soundcloud-player-hide');
+                        angular.element(document.querySelector('.soundcloud-player-wrapper')).removeClass('soundcloud-player-toggle');
                     } else {
                         if (top + docWindow.height() < angular.element($document).height()) {
                             $nav.removeClass('navigation-bar-toggle');
