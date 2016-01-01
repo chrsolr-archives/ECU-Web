@@ -318,6 +318,9 @@ a:focus {
 .soundcloud-player-toggle {
   height: 100% !important;
 }
+.soundcloud-player-hide {
+  bottom: -81px !important;
+}
 @media only screen and (max-width: 543px) {
   .section-title,
   .share-title {
@@ -339,6 +342,9 @@ a:focus {
 @media only screen and (min-width: 544px) and (max-width: 767px), only screen and (max-width: 543px) {
   .soundcloud-player-wrapper {
     height: 160px;
+  }
+  .soundcloud-player-hide {
+    bottom: -161px !important;
   }
 }
 .navigation-bar-wrapper {
