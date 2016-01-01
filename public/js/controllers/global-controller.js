@@ -1,13 +1,18 @@
 (function () {
     'use strict';
 
-    angular.module('controllers').controller('GlobalController', ['$location', 'NavigationServices', '$uibModal', '$uibModalStack', 'GlobalServices', '$interval', '$window', '$document', 'SoundcloudServices',
-        function ($location, NavigationServices, $uibModal, $uibModalStack, GlobalServices, $interval, $window, $document, SoundcloudServices) {
+    angular.module('controllers').controller('GlobalController', ['$scope', '$location', 'NavigationServices', '$uibModal', '$uibModalStack', 'GlobalServices', '$interval', '$window', '$document', 'SoundcloudServices',
+        function ($scope, $location, NavigationServices, $uibModal, $uibModalStack, GlobalServices, $interval, $window, $document, SoundcloudServices) {
 
             var global = this;
+            global.audioPlayerSupported = ((typeof window.Audio != 'undefined'));
             global.isAudioPlaying = false;
-            global.track = new Audio();
             global.selectedTrackIndex = 0;
+
+            console.log(global.audioPlayerSupported);
+            console.log(typeof window.Audio);
+
+            if (global.audioPlayerSupported) global.track = new Audio();
 
             SoundcloudServices.getSoundcouldSongs().then(function(data){
                 global.songs = data.data;
@@ -54,6 +59,11 @@
                 }
             };
 
+            global.track.onended = function() {
+                alert('ended');
+                global.playSong(global.selectedTrackIndex + 1);
+            };
+
             global.downloadSong = function(index){
                 window.open(global.songs[index].download_url);
             };
@@ -61,6 +71,10 @@
             global.openPlaylist = function(){
                 angular.element(document.querySelector('.soundcloud-player-wrapper')).toggleClass('soundcloud-player-toggle');
             };
+
+            $scope.$on('navigation:sidebar', function (event, data) {
+                global.isSideBarOpen = data;
+            });
 
             NavBar();
 
