@@ -319,7 +319,7 @@ a:focus {
   height: 100% !important;
 }
 .soundcloud-player-hide {
-  bottom: -81px !important;
+  bottom: -100% !important;
 }
 @media only screen and (max-width: 543px) {
   .section-title,

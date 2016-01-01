@@ -68,6 +68,7 @@
                 var docWindow = angular.element($window);
                 var $nav = angular.element(document.querySelector('.navigation-bar-wrapper'));
                 var $sideBar = angular.element(document.querySelector('.navigation-bar-sidebar-wrapper'));
+                var $soundcloud = angular.element(document.querySelector('.soundcloud-player-wrapper'));
                 var lastPosition = 0;
                 var isScrolled = false;
                 var delta = 5;
@@ -85,12 +86,11 @@
                     if ((top > lastPosition) && (top > $nav.outerHeight())) {
                         $nav.addClass('navigation-bar-toggle');
                         $sideBar.removeClass('navigation-bar-sidebar-toggle');
-                        angular.element(document.querySelector('.soundcloud-player-wrapper')).addClass('soundcloud-player-hide');
-                        angular.element(document.querySelector('.soundcloud-player-wrapper')).removeClass('soundcloud-player-toggle');
+                        $soundcloud.addClass('soundcloud-player-hide');
                     } else {
                         if (top + docWindow.height() < angular.element($document).height()) {
                             $nav.removeClass('navigation-bar-toggle');
-                            angular.element(document.querySelector('.soundcloud-player-wrapper')).removeClass('soundcloud-player-hide');
+                            $soundcloud.removeClass('soundcloud-player-hide');
                         }
                     }
 
