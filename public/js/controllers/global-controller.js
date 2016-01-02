@@ -42,7 +42,9 @@
                     global.track.pause();
                 }
 
-                global.track = new Audio(global.selectedTrack.stream_url);
+                //global.track = new Audio(global.selectedTrack.stream_url);
+                global.track.setAttribute('src', global.selectedTrack.stream_url);
+                global.track.load();
                 global.track.play();
                 global.isAudioPlaying = true;
             };
