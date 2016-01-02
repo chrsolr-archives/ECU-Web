@@ -5,14 +5,9 @@
         function ($scope, $location, NavigationServices, $uibModal, $uibModalStack, GlobalServices, $interval, $window, $document, SoundcloudServices) {
 
             var global = this;
-            global.audioPlayerSupported = ((typeof window.Audio != 'undefined'));
             global.isAudioPlaying = false;
             global.selectedTrackIndex = 0;
-
-            console.log(global.audioPlayerSupported);
-            console.log(typeof window.Audio);
-
-            if (global.audioPlayerSupported) global.track = new Audio();
+            global.track = new Audio();
 
             SoundcloudServices.getSoundcouldSongs().then(function(data){
                 global.songs = data.data;
@@ -76,9 +71,9 @@
                 global.isSideBarOpen = data;
             });
 
-            NavBar();
+            navBar();
 
-            function NavBar() {
+            function navBar() {
                 var docWindow = angular.element($window);
                 var $nav = angular.element(document.querySelector('.navigation-bar-wrapper'));
                 var $sideBar = angular.element(document.querySelector('.navigation-bar-sidebar-wrapper'));
@@ -92,11 +87,13 @@
                 });
 
                 function onHasScrolled() {
+                    //noinspection JSValidateTypes
                     var top = docWindow.scrollTop();
 
                     if (Math.abs(lastPosition - top) <= delta)
                         return;
 
+                    //noinspection JSValidateTypes
                     if ((top > lastPosition) && (top > $nav.outerHeight())) {
                         $nav.addClass('navigation-bar-toggle');
                         $sideBar.removeClass('navigation-bar-sidebar-toggle');
@@ -115,7 +112,6 @@
 
                     if (isScrolled) {
                         onHasScrolled();
-
                         isScrolled = false;
                     }
 

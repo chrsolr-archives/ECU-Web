@@ -137,7 +137,7 @@
             </ul>
         </footer>
 
-        <section class="soundcloud-player-wrapper section-bg-light" ng-class="global.isSideBarOpen ? 'soundcloud-player-hide' : ''" ng-if="global.audioPlayerSupported">
+        <section class="soundcloud-player-wrapper section-bg-light" ng-class="global.isSideBarOpen ? 'soundcloud-player-hide' : ''">
             <div class="mini-player row">
                 <div class="container">
                     <div class="player-buttons-wrapper col-sm-3">
@@ -162,7 +162,9 @@
             </div>
             <div class="playlist-wrapper container">
                 <ul ng-repeat="song in global.songs | limitTo: 12">
-                    <li><span class="hover-pointer" ng-click="global.playSong($index)">{{$index + 1}} &bull; &nbsp;{{song.title}}</span></li>
+                    <li>
+                        <span class="hover-pointer" ng-click="global.playSong($index)">{{$index + 1}} &bull; &nbsp;{{song.title}}</span>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -196,7 +198,6 @@
                 'use strict';
                 $('.banner-title').addClass('animated fadeIn');
                 $('.banner-subtitle').addClass('animated fadeIn');
-
             })(jQuery);
         </script>
     </body>
