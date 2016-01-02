@@ -7,9 +7,9 @@
             var global = this;
             global.isAudioPlaying = false;
             global.selectedTrackIndex = 0;
-            global.track = new Audio();
+            global.track = document.createElement('audio');
 
-            SoundcloudServices.getSoundcouldSongs().then(function(data){
+            SoundcloudServices.getSoundcouldSongs().then(function (data) {
                 global.songs = data.data;
                 global.selectedTrack = global.songs[global.selectedTrackIndex];
             });
@@ -30,7 +30,7 @@
                 })
             };
 
-            global.playSong = function(index) {
+            global.playSong = function (index) {
                 if (index < 0) index = 0;
 
                 if (index >= global.songs.length) index = global.songs.length - 1;
@@ -38,7 +38,7 @@
                 global.selectedTrack = global.songs[index];
                 global.selectedTrackIndex = index;
 
-                if (global.isAudioPlaying){
+                if (global.isAudioPlaying) {
                     global.track.pause();
                 }
 
@@ -47,23 +47,23 @@
                 global.isAudioPlaying = true;
             };
 
-            global.stopSong = function() {
-                if (global.isAudioPlaying){
+            global.stopSong = function () {
+                if (global.isAudioPlaying) {
                     global.track.pause();
                     global.isAudioPlaying = false;
                 }
             };
 
-            global.track.onended = function() {
+            global.track.onended = function () {
                 alert('ended');
                 global.playSong(global.selectedTrackIndex + 1);
             };
 
-            global.downloadSong = function(index){
+            global.downloadSong = function (index) {
                 window.open(global.songs[index].download_url);
             };
 
-            global.openPlaylist = function(){
+            global.openPlaylist = function () {
                 angular.element(document.querySelector('.soundcloud-player-wrapper')).toggleClass('soundcloud-player-toggle');
             };
 
