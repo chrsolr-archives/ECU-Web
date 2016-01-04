@@ -48,7 +48,7 @@
                 global.track.play();
                 global.isAudioPlaying = true;
                 
-                global.openPlaylist();
+                global.togglePlaylist();
             };
 
             global.stopSong = function () {
@@ -67,7 +67,7 @@
                 window.open(global.songs[index].download_url);
             };
 
-            global.openPlaylist = function () {
+            global.togglePlaylist = function () {
                 angular.element(document.querySelector('.soundcloud-player-wrapper')).toggleClass('soundcloud-player-toggle');
             };
 
