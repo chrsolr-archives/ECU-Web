@@ -161,7 +161,7 @@
                 </div>
             </div>
             <div class="playlist-wrapper container">
-                <ul ng-repeat="song in global.songs | limitTo: 12">
+                <ul ng-repeat="song in global.songs | limitTo: 25">
                     <li>
                         <span class="hover-pointer" ng-click="global.playSong($index)">{{$index + 1}} &bull; &nbsp;{{song.title}}</span>
                     </li>
