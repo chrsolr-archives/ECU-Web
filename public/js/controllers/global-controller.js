@@ -69,15 +69,15 @@
 
             global.togglePlaylist = function () {
                 var $playlist = angular.element(document.querySelector('.soundcloud-player-wrapper'));
-                var $body = document.body;
+                //var $body = document.body;
                 var isOpen = $playlist.hasClass('soundcloud-player-show');
                 
                 if (isOpen) {
                     $playlist.removeClass('soundcloud-player-show');
-                    $body.addClass('no-scroll');
+                    $('body,html').addClass('no-scroll');
                 } else {
                     $playlist.addClass('soundcloud-player-show');
-                    $body.removeClass('no-scroll');
+                    $('body,html').removeClass('no-scroll');
                 }
                 
             };
