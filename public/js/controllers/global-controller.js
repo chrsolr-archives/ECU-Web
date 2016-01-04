@@ -69,7 +69,7 @@
 
             global.togglePlaylist = function () {
                 var $playlist = angular.element(document.querySelector('.soundcloud-player-wrapper'));
-                var $body = $document.body;
+                var $body = angular.element(document).fint('body');
                 var isOpen = $playlist.hasClass('soundcloud-player-show');
                 
                 if (isOpen) {
