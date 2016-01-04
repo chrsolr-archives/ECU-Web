@@ -304,6 +304,9 @@ a:focus {
 .soundcloud-player-wrapper .mini-player .options-wrapper a:hover {
   color: #f96816;
 }
+.soundcloud-player-wrapper .no-scroll {
+  overflow: hidden;
+}
 .soundcloud-player-wrapper .playlist-wrapper {
   height: 100%;
   margin-top: 20px;
@@ -633,7 +636,6 @@ body {
   height: 100%;
   margin: 0;
   width: 100%;
-  overflow: hidden;
 }
 body {
   background-color: #181818;

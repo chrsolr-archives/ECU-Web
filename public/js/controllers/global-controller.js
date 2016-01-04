@@ -68,7 +68,15 @@
             };
 
             global.togglePlaylist = function () {
-                angular.element(document.querySelector('.soundcloud-player-wrapper')).toggleClass('soundcloud-player-toggle');
+                var $playlist = angular.element(document.querySelector('.soundcloud-player-wrapper'));
+                var isOpen = $playlist.hasClass('soundcloud-player-toggle');
+                
+                if (isOpen) {
+                    $playlist.removeClass('soundcloud-player-toggle');
+                } else {
+                    $playlist.addClass('soundcloud-player-toggle');
+                }
+                
             };
 
             $scope.$on('navigation:sidebar', function (event, data) {
