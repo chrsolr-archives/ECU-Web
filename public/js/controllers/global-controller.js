@@ -47,6 +47,8 @@
                 global.track.load();
                 global.track.play();
                 global.isAudioPlaying = true;
+                
+                global.openPlaylist();
             };
 
             global.stopSong = function () {
