@@ -166,10 +166,11 @@ module.exports = function (app, express) {
         sendgrid.send({
             to:       ['elcomiteurbanoradio@gmail.com', 'iamrelos@gmail.com'],
             from:     contact.email,
-            subject:  contact.subject,
+            subject:  contact.subject + ' - Via Contact Us',
             text:     'From: ' + contact.name + '\n' + 'Email: ' + contact.email + '\n\n' + contact.body
         }, function (err, json) {
             if (err) throw err;
+            
             return res.status(200).send(json);
         });
 

@@ -3,10 +3,9 @@ module.exports = {
     	port: process.env.PORT || 3000
 	},
 	apis_keys: {
-		youtube: 'AIzaSyDMVu01ka49DBvOGabKYo1vhrykghKJNoI',
+		youtube: '',
 		parse_app_key: 'Mw0dWtJQYVzYlA4vHybSNmuyLJSjzpEpTarhZMEQ',
 		parse_client_key: 'gXEJhvTtHQcSNrryJ7u9IK4euVWOu00QEGnaK7ow',
-		prerender_key: 'QOJeTskhtKEBEdc1ZLD7',
-		soundcloud_client_id: '500f3c5cdcf76cb1bcc8c35e97864840'
+		soundcloud_client_id: ''
 	}
 };

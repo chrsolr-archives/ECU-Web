@@ -18,8 +18,15 @@ module.exports = function () {
     app.use(bodyParser.json());
     
     Parse.initialize(config.apis_keys.parse_app_key, config.apis_keys.parse_client_key);
+    
+    Parse.Config.get().then(function(psConfig) {
+      var api_keys = psConfig.get("api_keys");
+      
+      config.apis_keys.youtube = api_keys.youtube;
+      config.apis_keys.soundcloud_client_id = api_keys.soundcloud_client_id;
 
-    app.use(require('prerender-node').set('prerenderToken', config.apis_keys.prerender_key));
+    });
+
     app.use(morgan('dev'));
 
     // static roots
