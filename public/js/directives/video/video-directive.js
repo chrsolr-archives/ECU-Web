@@ -8,7 +8,7 @@
                 video: '='
             },
             restrict: 'E',
-            templateUrl: 'video-directive.html'
+            templateUrl: '/video-directive.html'
         }
     }]);
 })();
