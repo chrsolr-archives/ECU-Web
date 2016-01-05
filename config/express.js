@@ -32,6 +32,7 @@ module.exports = function () {
 
     // minify files
     var uglified = uglify.minify([
+        './public/libs/souncloud-audio/soundcloud-audio.js',
         './public/js/application.js',
         './public/js/services/navigation-services.js',
         './public/js/services/global-services.js',
