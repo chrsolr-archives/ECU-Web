@@ -1,16 +1,14 @@
-<div>
-    <figure class="media-image-wrapper height-300">
-        <a href="{{url}}">
-            <img src="{{imageUrl}}" alt="{{title}}" class="img-responsive" width="100%">
-        </a>
+<figure class="media-image-wrapper height-300">
+    <a href="{{url}}">
+        <img src="{{imageUrl}}" alt="{{title}}" class="img-responsive" width="100%">
+    </a>
 
-        <div class="content">
-            <span class="title">
-                <a href="{{url}}">{{title | limitTo:50}}...</a>
-            </span>
-            <span class="subtitle">
-                <small>{{description | limitTo:75 }}...</small>
-            </span>
-        </div>
-    </figure>
-</div>
+    <div class="content">
+        <span class="title">
+            <a href="{{url}}">{{title | limitTo:50}}...</a>
+        </span>
+        <span class="subtitle">
+            <small>{{description | limitTo:75 }}...</small>
+        </span>
+    </div>
+</figure>

@@ -11,7 +11,6 @@
                 imageUrl: '&'
             },
             restrict: 'E',
-            replace: true,
             templateUrl: '/js/directives/media/media-image-directive.html'
         }
     }]);
