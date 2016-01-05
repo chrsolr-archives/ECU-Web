@@ -318,6 +318,11 @@ a:focus {
 .soundcloud-player-wrapper .playlist-wrapper::-webkit-scrollbar {
   width: 0;
 }
+.soundcloud-player-wrapper .playlist-wrapper ul li {
+  padding: 10px 0;
+  border-bottom: 2px solid #181818;
+  display: block;
+}
 .soundcloud-player-wrapper .playlist-wrapper ul li span {
   display: block;
   text-align: left;

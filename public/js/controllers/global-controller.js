@@ -5,7 +5,6 @@
         function ($scope, $location, NavigationServices, $uibModal, $uibModalStack, GlobalServices, $interval, $window, $document, SoundcloudServices) {
 
             var global = this;
-            global.isAudioPlaying = false;
             global.selectedTrackIndex = 0;
             global.scPlayer = new SoundCloud('500f3c5cdcf76cb1bcc8c35e97864840');
 
@@ -38,9 +37,8 @@
                 global.selectedTrack = global.songs[index];
                 global.selectedTrackIndex = index;
 
-                if (global.scPlayer.playing) global.scPlayer.pause();
-
                 global.scPlayer.resolve(global.selectedTrack.url, function (err, track) {
+
                     global.scPlayer.play();
 
                     $document.find('.soundcloud-player-wrapper').removeClass('soundcloud-player-show');
@@ -53,6 +51,10 @@
                     global.scPlayer.pause();
                 }
             };
+
+            global.scPlayer.on('ended', function (audio) {
+                global.playSong(global.selectedTrackIndex + 1);
+            });
 
             global.downloadSong = function (index) {
                 window.open(global.songs[index].download_url);

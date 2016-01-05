@@ -176,7 +176,19 @@
     <div class="playlist-wrapper container">
         <ul ng-repeat="song in global.songs">
             <li>
-                <span class="hover-pointer" ng-click="global.playSong($index)">{{$index + 1}} &bull; &nbsp;{{song.title}}</span>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#" ng-click="global.playSong($index)">
+                            <img class="media-object" src="{{song.imageUrl}}" width="100px">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <span class="hover-pointer" ng-click="global.playSong($index)">{{song.title}}</span>
+                        </h4>
+                        <span class="hover-pointer" ng-click="global.downloadSong($index)">Download</span>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
