@@ -5,10 +5,10 @@
         
         return {
             scope: {
-                url: '@',
-                title: '@',
-                description: '@',
-                imageUrl: '@'
+                url: '&',
+                title: '&',
+                description: '&',
+                imageUrl: '&'
             },
             restrict: 'E',
             replace: true,
