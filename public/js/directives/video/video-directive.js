@@ -8,6 +8,7 @@
                 video: '='
             },
             restrict: 'E',
+            replace: true,
             templateUrl: '/js/directives/video/video-directive.html'
         }
     }]);
