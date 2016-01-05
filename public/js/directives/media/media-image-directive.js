@@ -10,13 +10,13 @@
             },
             restrict: 'E',
             templateUrl: '/js/directives/media/media-image-directive.html',
-            controller: function($scope){
+            controller: ['$scope', function($scope){
 
                 if (!$scope.media.url) {
                     var url = $scope.media.permalink || $scope.media.id;
                     $scope.media.url = $scope.destinationUrl + url;
                 }
-            }
+            }]
         }
     }]);
 })();
