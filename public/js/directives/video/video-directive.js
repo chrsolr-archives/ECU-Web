@@ -2,7 +2,7 @@
     'use strict';
     
     angular.module('ecu-video', [])
-    angular.module('ecu-video').directive('ecuVideo', [function(){
+    .directive('ecuVideo', [function(){
         
         return {
             scope: {
