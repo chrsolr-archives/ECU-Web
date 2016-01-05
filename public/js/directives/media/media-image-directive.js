@@ -16,9 +16,9 @@
             controller: function($scope){
                 console.log($scope);
                                 
-                var url = permalink = $scope.media.permalink || $scope.media.id;
+                var url = $scope.media.permalink || $scope.media.id;
                 
-                $scope.media.url = url;
+                $scope.media.url = $scope.destinationUrl + url;
                 
                 console.log(url);
 
