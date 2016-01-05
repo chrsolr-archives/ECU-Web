@@ -87,21 +87,21 @@
 
             <div class="row">
                 <div class="col-sm-6" ng-repeat="video in vm.youtube.videos">
+                    <ecu-video video="video"></ecu-video>
+                    <!--<figure class="media-image-wrapper height-300">-->
+                    <!--    <a href="/videos/details/{{video.id}}">-->
+                    <!--        <img src="{{video.imageUrl}}" alt="{{video.title}}" class="img-responsive" width="100%">-->
+                    <!--    </a>-->
 
-                    <figure class="media-image-wrapper height-300">
-                        <a href="/videos/details/{{video.id}}">
-                            <img src="{{video.imageUrl}}" alt="{{video.title}}" class="img-responsive" width="100%">
-                        </a>
-
-                        <div class="content">
-                            <span class="title">
-                                <a href="/videos/details/{{video.id}}">{{video.title | limitTo:50}}...</a>
-                            </span>
-                            <span class="subtitle">
-                                <small>{{video.description | limitTo:75 }}...</small>
-                            </span>
-                        </div>
-                    </figure>
+                    <!--    <div class="content">-->
+                    <!--        <span class="title">-->
+                    <!--            <a href="/videos/details/{{video.id}}">{{video.title | limitTo:50}}...</a>-->
+                    <!--        </span>-->
+                    <!--        <span class="subtitle">-->
+                    <!--            <small>{{video.description | limitTo:75 }}...</small>-->
+                    <!--        </span>-->
+                    <!--    </div>-->
+                    <!--</figure>-->
 
                 </div>
             </div>
