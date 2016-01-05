@@ -4,13 +4,7 @@
             <span class="section-title">Noticias</span>
             <div class="row">
                 <div class="col-sm-6" ng-repeat="news in vm.news">
-                    
-                    <ecu-media-image url="/news/details/{{news.permalink}}" 
-                        title="news.title" 
-                        description="{{news.description}}" 
-                        image-url="{{news.imageUrl}}">
-                    </ecu-media-image>
-
+                    <ecu-media-image media="news"></ecu-media-image>
                 </div>
             </div>
         </div>
