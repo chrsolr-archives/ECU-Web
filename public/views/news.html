@@ -6,7 +6,7 @@
                 <div class="col-sm-6" ng-repeat="news in vm.news">
                     
                     <ecu-media-image url="/news/details/{{news.permalink}}" 
-                        title="{{news.title}}" 
+                        title="news.title" 
                         description="{{news.description}}" 
                         image-url="{{news.imageUrl}}">
                     </ecu-media-image>
