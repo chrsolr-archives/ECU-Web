@@ -7,7 +7,8 @@
             scope: {
                 url: '@',
                 title: '@',
-                description: '@'
+                description: '@',
+                imageUrl: '@'
             },
             restrict: 'E',
             replace: true,
