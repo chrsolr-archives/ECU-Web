@@ -11,9 +11,11 @@
             restrict: 'E',
             templateUrl: '/js/directives/media/media-image-directive.html',
             controller: function($scope){
-                var url = $scope.media.permalink || $scope.media.id;
-                
-                $scope.media.url = $scope.destinationUrl + url;
+
+                if (!$scope.media.url) {
+                    var url = $scope.media.permalink || $scope.media.id;
+                    $scope.media.url = $scope.destinationUrl + url;
+                }
             }
         }
     }]);

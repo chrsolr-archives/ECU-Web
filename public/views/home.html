@@ -49,20 +49,7 @@
             <span class="section-title">Noticias</span>
             <div class="row">
                 <div class="col-sm-6" ng-repeat="news in vm.news">
-                    <figure class="media-image-wrapper height-350">
-                        <a href="/news/details/{{news.permalink}}">
-                            <img src="{{news.imageUrl}}" alt="News Image" class="img-responsive" width="100%">
-                        </a>
-
-                        <div class="content">
-                            <span class="title">
-                                <a href="/news/details/{{news.permalink}}">{{news.title}}</a>
-                            </span>
-                            <span class="subtitle">
-                                <small>{{news.description | limitTo:75 }}...</small>
-                            </span>
-                        </div>
-                    </figure>
+                    <ecu-media-image media="news" destination-url="/news/details/"></ecu-media-image>
                 </div>
             </div>
         </div>
@@ -87,7 +74,7 @@
 
             <div class="row">
                 <div class="col-sm-6" ng-repeat="video in vm.youtube.videos">
-                    <ecu-video video="video"></ecu-video>
+                    <ecu-media-image media="video" destination-url="/videos/details/"></ecu-media-image>
                 </div>
             </div>
         </div>
@@ -114,17 +101,19 @@
             <span class="section-title">Soundcloud</span>
             <div class="row">
                 <div class="col-sm-6 col-md-4" ng-repeat="song in vm.songs | limitTo:12">
-                    <figure class="media-image-wrapper height-300">
-                        <a href="{{song.url}}" target="_blank">
-                            <img src="{{song.imageUrl}}" alt="Soundcloud Cover" class="img-responsive" width="100%">
-                        </a>
+                    <ecu-media-image media="song"></ecu-media-image>
+                    
+                    <!--<figure class="media-image-wrapper height-300">-->
+                    <!--    <a href="{{song.url}}" target="_blank">-->
+                    <!--        <img src="{{song.imageUrl}}" alt="Soundcloud Cover" class="img-responsive" width="100%">-->
+                    <!--    </a>-->
 
-                        <div class="content">
-                            <span class="title">
-                                <a href="{{song.url}}" target="_blank">{{song.title}}</a>
-                            </span>
-                        </div>
-                    </figure>
+                    <!--    <div class="content">-->
+                    <!--        <span class="title">-->
+                    <!--            <a href="{{song.url}}" target="_blank">{{song.title}}</a>-->
+                    <!--        </span>-->
+                    <!--    </div>-->
+                    <!--</figure>-->
                 </div>
             </div>
         </div>

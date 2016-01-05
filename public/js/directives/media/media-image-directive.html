@@ -7,7 +7,7 @@
         <span class="title">
             <a href="{{media.url}}">{{media.title | limitTo:50}}...</a>
         </span>
-        <span class="subtitle">
+        <span class="subtitle" ng-if="{{media.description}}">
             <small>{{media.description | limitTo:75 }}...</small>
         </span>
     </div>
