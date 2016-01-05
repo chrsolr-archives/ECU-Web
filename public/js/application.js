@@ -6,8 +6,9 @@
     angular.module('services', []);
     angular.module('controllers', []);
     angular.module('filters', []);
+    angular.module('directives', []);
 
-    var modules = ['services', 'controllers', 'filters', 'ngRoute', 'ui.bootstrap', 'angular-loading-bar', 'ngAnimate', 'ngTweets', 'ecu-video'];
+    var modules = ['services', 'controllers', 'filters', 'directives', 'ngRoute', 'ui.bootstrap', 'angular-loading-bar', 'ngAnimate', 'ngTweets'];
 
     angular.module('app', modules)
         .config(['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider',
