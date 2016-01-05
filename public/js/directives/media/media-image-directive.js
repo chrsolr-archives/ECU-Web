@@ -8,10 +8,14 @@
                 url: '@',
                 title: '@',
                 description: '@',
-                imageUrl: '@'
+                imageUrl: '@',
+                media: '='
             },
             restrict: 'E',
-            templateUrl: '/js/directives/media/media-image-directive.html'
+            templateUrl: '/js/directives/media/media-image-directive.html',
+            controller: function($scope){
+                console.log($scope);
+            }
         }
     }]);
 })();
