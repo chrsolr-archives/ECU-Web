@@ -36,6 +36,10 @@ a {
   height: 500px;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .share-title {
   font-size: 3vw;
   font-family: @ubuntu;
@@ -368,17 +372,18 @@ a {
       }
     }
   }
-  
-  .no-scroll {
-    overflow:hidden;
-  }
 
   .playlist-wrapper {
     height: 100%;
     margin-top: @space-level-4;
     border-top: 2px solid @color-bg-primary;
     padding-top: @space-level-4;
+    padding-bottom: @space-level-4 * 3;
     overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
 
     ul {
       li {

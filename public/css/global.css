@@ -26,6 +26,9 @@ a:focus {
 .height-500 {
   height: 500px;
 }
+.no-scroll {
+  overflow: hidden;
+}
 .share-title {
   font-size: 3vw;
   font-family: 'Ubuntu', sans-serif;
@@ -42,7 +45,7 @@ a:focus {
   margin-bottom: 15px;
   display: block;
   text-align: right;
-  border-bottom: 1px dotted #f96816;
+  border-bottom: 1px dotted #F96816;
   padding-bottom: 10px;
 }
 .section-bg-dark {
@@ -56,13 +59,13 @@ a:focus {
 .media-video-wrapper {
   background-color: black;
   box-shadow: 0 0 5px black;
-  border: 1px dotted #f96816;
+  border: 1px dotted #F96816;
 }
 .media-image-wrapper {
   position: relative;
   background-color: black;
   box-shadow: 0 0 5px black;
-  border: 1px dotted #f96816;
+  border: 1px dotted #F96816;
   margin-bottom: 20px;
   overflow: hidden;
 }
@@ -72,7 +75,7 @@ a:focus {
 }
 .media-image-wrapper a:hover,
 .media-image-wrapper a:focus {
-  color: #f96816;
+  color: #F96816;
   text-decoration: none;
 }
 .media-image-wrapper .content {
@@ -101,28 +104,28 @@ a:focus {
 }
 .form-control-ecu-accent {
   background-color: transparent;
-  color: #f96816;
-  border: 1px dotted #f96816;
+  color: #F96816;
+  border: 1px dotted #F96816;
 }
 .form-control-ecu-accent:active,
 .form-control-ecu-accent:focus {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  border: 1px solid #f96816;
+  border: 1px solid #F96816;
   color: white;
   background-color: #280f01;
 }
 .btn-ecu-accent {
   background-color: transparent;
-  color: #f96816;
-  border: 1px dotted #f96816;
+  color: #F96816;
+  border: 1px dotted #F96816;
 }
 .btn-ecu-accent:hover,
 .btn-ecu-accent:active,
 .btn-ecu-accent:focus {
   color: white;
-  background-color: #f96816;
+  background-color: #F96816;
 }
 .btn-oval {
   border-radius: 25px;
@@ -132,7 +135,7 @@ a:focus {
   cursor: pointer;
 }
 #policies-wrapper a {
-  color: #f96816;
+  color: #F96816;
 }
 #policies-wrapper a:hover {
   text-decoration: underline;
@@ -145,7 +148,7 @@ a:focus {
   border: none;
 }
 .modal-dialog .modal-content .modal-header .modal-title {
-  color: #f96816;
+  color: #F96816;
   font-family: 'Ubuntu', sans-serif;
 }
 .modal-dialog .modal-content .modal-body {
@@ -165,8 +168,8 @@ a:focus {
 .pager .previous button,
 .pager .next button {
   background-color: transparent;
-  color: #f96816;
-  border: 1px dotted #f96816;
+  color: #F96816;
+  border: 1px dotted #F96816;
 }
 .pager .previous button:hover,
 .pager .next button:hover,
@@ -175,7 +178,7 @@ a:focus {
 .pager .previous button:focus,
 .pager .next button:focus {
   color: white;
-  background-color: #f96816;
+  background-color: #F96816;
 }
 .pager li > button,
 .pager li > span {
@@ -202,7 +205,7 @@ a:focus {
   cursor: not-allowed;
 }
 #loading-bar .bar {
-  background-color: #f96816;
+  background-color: #F96816;
   height: 3px;
 }
 #loading-bar .peg {
@@ -212,10 +215,10 @@ a:focus {
   top: 0;
   height: 2px;
   opacity: 1;
-  -moz-box-shadow: #f96816 1px 0 6px 1px;
-  -ms-box-shadow: #f96816 1px 0 6px 1px;
-  -webkit-box-shadow: #f96816 1px 0 6px 1px;
-  box-shadow: #f96816 1px 0 6px 1px;
+  -moz-box-shadow: #F96816 1px 0 6px 1px;
+  -ms-box-shadow: #F96816 1px 0 6px 1px;
+  -webkit-box-shadow: #F96816 1px 0 6px 1px;
+  box-shadow: #F96816 1px 0 6px 1px;
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
   border-radius: 100%;
@@ -240,11 +243,11 @@ a:focus {
 }
 .social-media-share li a:hover,
 .social-media-share li a:focus {
-  color: #f96816 !important;
+  color: #F96816 !important;
   text-decoration: none !important;
 }
 #media-details a {
-  color: #f96816;
+  color: #F96816;
 }
 #media-details a:hover,
 #media-details a:focus {
@@ -252,7 +255,7 @@ a:focus {
 }
 .soundcloud-player-wrapper {
   position: fixed;
-  border-top: 1px solid #f96816;
+  border-top: 1px solid #F96816;
   height: 80px;
   bottom: -1px;
   left: 0;
@@ -270,7 +273,7 @@ a:focus {
   text-align: center;
 }
 .soundcloud-player-wrapper span:hover {
-  color: #f96816;
+  color: #F96816;
 }
 .soundcloud-player-wrapper ul {
   list-style: none;
@@ -302,21 +305,25 @@ a:focus {
 }
 .soundcloud-player-wrapper .mini-player .options-wrapper span:hover,
 .soundcloud-player-wrapper .mini-player .options-wrapper a:hover {
-  color: #f96816;
+  color: #F96816;
 }
 .soundcloud-player-wrapper .playlist-wrapper {
   height: 100%;
   margin-top: 20px;
   border-top: 2px solid #181818;
   padding-top: 20px;
+  padding-bottom: 60px;
   overflow: auto;
+}
+.soundcloud-player-wrapper .playlist-wrapper::-webkit-scrollbar {
+  width: 0;
 }
 .soundcloud-player-wrapper .playlist-wrapper ul li span {
   display: block;
   text-align: left;
   margin-bottom: 10px;
 }
-.soundcloud-player-toggle {
+.soundcloud-player-show {
   height: 100% !important;
 }
 .soundcloud-player-hide {

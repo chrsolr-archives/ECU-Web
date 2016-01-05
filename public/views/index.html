@@ -1,204 +1,218 @@
 <!DOCTYPE html>
 <html ng-app="app">
-    <head>
-        <meta charset="UTF-8">
-        <base href="/">
-        <meta name="fragment" content="!">
-        <meta name="robots" content="noodp">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-        <meta name="keywords" content="El Comite Urbano, El Comite Urbano Radio, ECU, El Comite">
-        <meta name="description" content="Somos un programa de Radio en Nyc creado con el proposito de traerles los mas reciente de la musica urbana (Latin Hip Hop, Reggeaton, Dembow Etc.) asi como Entrevistas, Freestyles, Videos y mas.">
-        <meta property="og:title" content="" />
-        <meta property="og:type" content="" />
-        <meta property="og:url" content="" />
-        <meta property="og:image" content="" />
-        <meta property="og:description" content="" />
-        <meta property="twitter:card" content="" >
-        <meta property="twitter:title" content="" >
-        <meta property="twitter:description" content="" >
-        <meta property="twitter:creator" content="@elcomiteurbano" >
-        <meta property="twitter:url" content="" >
-        <meta property="twitter:image" content="" >
-        <script src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,400italic,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <meta name="fragment" content="!">
+    <meta name="robots" content="noodp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="El Comite Urbano, El Comite Urbano Radio, ECU, El Comite">
+    <meta name="description" content="Somos un programa de Radio en Nyc creado con el proposito de traerles los mas reciente de la musica urbana (Latin Hip Hop, Reggeaton, Dembow Etc.) asi como Entrevistas, Freestyles, Videos y mas.">
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="twitter:card" content="">
+    <meta property="twitter:title" content="">
+    <meta property="twitter:description" content="">
+    <meta property="twitter:creator" content="@elcomiteurbano">
+    <meta property="twitter:url" content="">
+    <meta property="twitter:image" content="">
+    <script src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,400italic,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-        <title>El Comite Urbano</title>
+    <title>El Comite Urbano</title>
 
-        <link rel="stylesheet" href="/scripts/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/libs/pe-icon-7-stroke/css/pe-icon-7-stroke.css"/>
-        <link rel="stylesheet" href="/libs/pe-icon-7-stroke/css/helper.css"/>
-        <link rel="stylesheet" href="/css/animate.css"/>
-        <link rel="stylesheet" href="/scripts/angular-loading-bar/build/loading-bar.css"/>
-        <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/scripts/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/pe-icon-7-stroke/css/pe-icon-7-stroke.css"/>
+    <link rel="stylesheet" href="/libs/pe-icon-7-stroke/css/helper.css"/>
+    <link rel="stylesheet" href="/css/animate.css"/>
+    <link rel="stylesheet" href="/scripts/angular-loading-bar/build/loading-bar.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
 
-        <style>
-            [ng\:cloak],
-            [ng-cloak],
-            [data-ng-cloak],
-            [x-ng-cloak],
-            .ng-cloak,
-            .x-ng-cloak {
-                display: none !important;
-            }
-        </style>
-    </head>
-    <body ng-controller="GlobalController as global" ng-cloak>
-        <nav ng-controller="NavigationController as vm">
-        <header class="navigation-bar-wrapper">
-            <div class="container">
-                <div class="navigation-bar-brand">
-                    <a href="/">
+    <style>
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body ng-controller="GlobalController as global" ng-cloak ng-class="global.isSideBarOpen ? 'no-scroll' : ''">
+<nav ng-controller="NavigationController as vm">
+    <header class="navigation-bar-wrapper">
+        <div class="container">
+            <div class="navigation-bar-brand">
+                <a href="/">
                         <span class="navigation-bar-brand-title animated fadeIn">
                             COMITE<span>URBANO</span>
                         </span>
-                    </a>
-                </div>
-                <div class="navigation-menu-icon-wrapper">
+                </a>
+            </div>
+            <div class="navigation-menu-icon-wrapper">
                     <span class="navigation-bar-menu-icon animated fadeIn" ng-click="vm.toggleSideBar()">
                         <i class="glyphicon glyphicon-option-vertical"></i>
                     </span>
-                </div>
-                </div>
-        </header>
-
-        <aside class="navigation-bar-sidebar-wrapper" ng-class="vm.isSideBarOpen ? 'navigation-bar-sidebar-toggle no-scroll' : ''">
-            <a href="/">
-                <i class="pe-7s-home pe-lg pe-va">
-                    <span>HOME</span>
-                </i>
-            </a>
-            <a href="/news">
-                <i class="pe-7s-news-paper pe-lg pe-va">
-                    <span>NEWS</span>
-                </i>
-            </a>
-            <a href="/videos">
-                <i class="pe-7s-video pe-lg pe-va">
-                    <span>VIDEOS</span>
-                </i>
-            </a>
-            <a href="/about">
-                <i class="pe-7s-info pe-lg pe-va">
-                    <span>ABOUT</span>
-                </i>
-            </a>
-            <a style="cursor: pointer" target="_self" ng-click="global.contactUs()">
-                <i class="pe-7s-mail pe-lg pe-va">
-                    <span>CONTACT</span>
-                </i>
-            </a>
-            <div ng-if="vm.isLoggedIn">
-                <a href="/admin/dashboard">
-                    <i class="pe-7s-edit pe-lg pe-va">
-                        <span>Dashboard</span>
-                    </i>
-                </a>
-                <a href="" target="_self" ng-click="vm.logout()">
-                    <i class="pe-7s-close-circle pe-lg pe-va">
-                        <span>Logout</span>
-                    </i>
-                </a>
             </div>
-            <a href="http://www.iamrelos.com" target="_blank">
-                Created By: IamRelos
+        </div>
+    </header>
+
+    <aside class="navigation-bar-sidebar-wrapper" ng-class="vm.isSideBarOpen ? 'navigation-bar-sidebar-toggle' : ''">
+        <a href="/">
+            <i class="pe-7s-home pe-lg pe-va">
+                <span>HOME</span>
+            </i>
+        </a>
+        <a href="/news">
+            <i class="pe-7s-news-paper pe-lg pe-va">
+                <span>NEWS</span>
+            </i>
+        </a>
+        <a href="/videos">
+            <i class="pe-7s-video pe-lg pe-va">
+                <span>VIDEOS</span>
+            </i>
+        </a>
+        <a href="/about">
+            <i class="pe-7s-info pe-lg pe-va">
+                <span>ABOUT</span>
+            </i>
+        </a>
+        <a style="cursor: pointer" target="_self" ng-click="global.contactUs()">
+            <i class="pe-7s-mail pe-lg pe-va">
+                <span>CONTACT</span>
+            </i>
+        </a>
+        <div ng-if="vm.isLoggedIn">
+            <a href="/admin/dashboard">
+                <i class="pe-7s-edit pe-lg pe-va">
+                    <span>Dashboard</span>
+                </i>
             </a>
-        </aside>
-        </nav>
+            <a href="" target="_self" ng-click="vm.logout()">
+                <i class="pe-7s-close-circle pe-lg pe-va">
+                    <span>Logout</span>
+                </i>
+            </a>
+        </div>
+        <a href="http://www.iamrelos.com" target="_blank">
+            Created By: IamRelos
+        </a>
+    </aside>
+</nav>
 
-        <div id="ng-view-main" ng-view autoscroll></div>
+<div id="ng-view-main" ng-view autoscroll></div>
 
-        <!-- footer -->
-        <footer class="footer-wrapper section-bg-light">
-            <div class="container footer-brand">
-                <a href="/" class="text-center">
+<!-- footer -->
+<footer class="footer-wrapper section-bg-light">
+    <div class="container footer-brand">
+        <a href="/" class="text-center">
                     <span class="footer-brand-title">
                         COMITE<span>URBANO</span>
                     </span>
-                </a>
-            </div>
-            <ul>
-                <li><a href="/login">Login</a></li>
-                <li>&bull;</li>
-                <li><a href="/about">About</a></li>
-                <li>&bull;</li>
-                <li><a style="cursor:pointer;" ng-click="global.contactUs()">Contact Us</a></li>
-                <li>&bull;</li>
-                <li><a href="/policies">Policies</a></li>
-                <li>&bull;</li>
-                <li><a href="/termsofuse">Term of Use</a></li>
-            </ul>
+        </a>
+    </div>
+    <ul>
+        <li><a href="/login">Login</a></li>
+        <li>&bull;</li>
+        <li><a href="/about">About</a></li>
+        <li>&bull;</li>
+        <li><a style="cursor:pointer;" ng-click="global.contactUs()">Contact Us</a></li>
+        <li>&bull;</li>
+        <li><a href="/policies">Policies</a></li>
+        <li>&bull;</li>
+        <li><a href="/termsofuse">Term of Use</a></li>
+    </ul>
 
-            <ul>
-                <li>&copy; 2016 EL Comite Urbano. All Rights Reserved</li>
-                <br />
-                <li>Design By: <a href="http://www.iamrelos.com/" target="_blank">&copy; 2016 IamReloS</a></li>
-            </ul>
-        </footer>
+    <ul>
+        <li>&copy; 2016 EL Comite Urbano. All Rights Reserved</li>
+        <br/>
+        <li>Design By: <a href="http://www.iamrelos.com/" target="_blank">&copy; 2016 IamReloS</a></li>
+    </ul>
+</footer>
 
-        <section class="soundcloud-player-wrapper section-bg-light" ng-class="global.isSideBarOpen ? 'soundcloud-player-hide' : ''">
-            <div class="mini-player row">
-                <div class="container">
-                    <div class="player-buttons-wrapper col-sm-3">
-                        <ul>
-                            <li><span class="pe-7s-prev pe-2x pe-va hover-pointer" ng-click="global.playSong(global.selectedTrackIndex - 1)"></span></li>
-                            <li ng-hide="global.isAudioPlaying"><span class="pe-7s-play pe-3x pe-va hover-pointer" ng-click="global.playSong(global.selectedTrackIndex)"></span></li>
-                            <li ng-hide="!global.isAudioPlaying"><span class="pe-7s-close pe-3x pe-va hover-pointer" ng-click="global.stopSong()"></span></li>
-                            <li><span class="pe-7s-next pe-2x pe-va hover-pointer" ng-click="global.playSong(global.selectedTrackIndex + 1)"></span></li>
-                        </ul>
-                    </div>
-                    <div class="album-info-wrapper col-sm-6">
-                        <span class="title">{{global.selectedTrack.title}}</span>
-                    </div>
-                    <div class="options-wrapper col-sm-3">
-                        <ul>
-                            <li><a class="fa fa-2x fa-va fa-soundcloud hover-pointer" target="_blank" href="{{global.selectedTrack.url}}"></a></li>
-                            <li><span class="pe-7s-cloud-download pe-2x pe-va hover-pointer" ng-click="global.downloadSong(global.selectedTrackIndex)"></span></li>
-                            <li><span class="pe-7s-musiclist pe-2x pe-va hover-pointer" ng-click="global.togglePlaylist()"></span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="playlist-wrapper container">
-                <ul ng-repeat="song in global.songs">
+<section class="soundcloud-player-wrapper section-bg-light" ng-class="global.isSideBarOpen ? 'soundcloud-player-hide' : ''">
+    <div class="mini-player row">
+        <div class="container">
+            <div class="player-buttons-wrapper col-sm-3">
+                <ul>
                     <li>
-                        <span class="hover-pointer" ng-click="global.playSong($index)">{{$index + 1}} &bull; &nbsp;{{song.title}}</span>
+                        <span class="pe-7s-prev pe-2x pe-va hover-pointer" ng-click="global.playSong(global.selectedTrackIndex - 1)"></span>
+                    </li>
+                    <li ng-hide="global.scPlayer.playing">
+                        <span class="pe-7s-play pe-3x pe-va hover-pointer" ng-click="global.playSong(global.selectedTrackIndex)"></span>
+                    </li>
+                    <li ng-hide="!global.scPlayer.playing">
+                        <span class="pe-7s-close pe-3x pe-va hover-pointer" ng-click="global.stopSong()"></span></li>
+                    <li>
+                        <span class="pe-7s-next pe-2x pe-va hover-pointer" ng-click="global.playSong(global.selectedTrackIndex + 1)"></span>
                     </li>
                 </ul>
             </div>
-        </section>
+            <div class="album-info-wrapper col-sm-6">
+                <span class="title">{{global.selectedTrack.title}}</span>
+            </div>
+            <div class="options-wrapper col-sm-3">
+                <ul>
+                    <li>
+                        <a class="fa fa-2x fa-va fa-soundcloud hover-pointer" target="_blank" href="{{global.selectedTrack.url}}"></a>
+                    </li>
+                    <li>
+                        <span class="pe-7s-cloud-download pe-2x pe-va hover-pointer" ng-click="global.downloadSong(global.selectedTrackIndex)"></span>
+                    </li>
+                    <li>
+                        <span class="pe-7s-musiclist pe-2x pe-va hover-pointer" ng-click="global.togglePlaylist()"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="playlist-wrapper container">
+        <ul ng-repeat="song in global.songs">
+            <li>
+                <span class="hover-pointer" ng-click="global.playSong($index)">{{$index + 1}} &bull; &nbsp;{{song.title}}</span>
+            </li>
+        </ul>
+    </div>
+</section>
 
-        <!-- Scripts -->
-        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-        <script src="/scripts/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="/scripts/angular/angular.js"></script>
-        <script src="/scripts/angular-route/angular-route.min.js" type="text/javascript"></script>
-        <script src="/scripts/angular-animate/angular-animate.min.js" type="text/javascript"></script>
-        <script src="/scripts/angular-loading-bar/build/loading-bar.min.js"></script>
-        <script src="/scripts/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
-        <script src="/libs/ng-tweets/ng-tweets.min.js"></script>
-        <!--<script src="/js/application.min.js"></script>-->
-        <script src="/js/application.js"></script>
-        <script src="/js/services/navigation-services.js"></script>
-        <script src="/js/services/global-services.js"></script>
-        <script src="/js/services/news-services.js"></script>
-        <script src="/js/services/youtube-services.js"></script>
-        <script src="/js/services/soundcloud-services.js"></script>
-        <script src="/js/controllers/global-controller.js"></script>
-        <script src="/js/controllers/navbar-controller.js"></script>
-        <script src="/js/controllers/home-controller.js"></script>
-        <script src="/js/controllers/news-controller.js"></script>
-        <script src="/js/controllers/news-details-controller.js"></script>
-        <script src="/js/controllers/videos-controller.js"></script>
-        <script src="/js/controllers/videos-details-controller.js"></script>
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="/scripts/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/libs/soundcloud-audio/soundcloud-audio.js"></script>
+<script src="/scripts/angular/angular.js"></script>
+<script src="/scripts/angular-route/angular-route.min.js" type="text/javascript"></script>
+<script src="/scripts/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+<script src="/scripts/angular-loading-bar/build/loading-bar.min.js"></script>
+<script src="/scripts/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="/libs/ng-tweets/ng-tweets.min.js"></script>
+<!--<script src="/js/application.min.js"></script>-->
+<script src="/js/application.js"></script>
+<script src="/js/services/navigation-services.js"></script>
+<script src="/js/services/global-services.js"></script>
+<script src="/js/services/news-services.js"></script>
+<script src="/js/services/youtube-services.js"></script>
+<script src="/js/services/soundcloud-services.js"></script>
+<script src="/js/controllers/global-controller.js"></script>
+<script src="/js/controllers/navbar-controller.js"></script>
+<script src="/js/controllers/home-controller.js"></script>
+<script src="/js/controllers/news-controller.js"></script>
+<script src="/js/controllers/news-details-controller.js"></script>
+<script src="/js/controllers/videos-controller.js"></script>
+<script src="/js/controllers/videos-details-controller.js"></script>
 
-        <script type="text/javascript">
-            (function ($) {
-                'use strict';
-                $('.banner-title').addClass('animated fadeIn');
-                $('.banner-subtitle').addClass('animated fadeIn');
-            })(jQuery);
-        </script>
-    </body>
+<script type="text/javascript">
+    (function ($) {
+        'use strict';
+        $('.banner-title').addClass('animated fadeIn');
+        $('.banner-subtitle').addClass('animated fadeIn');
+    })(jQuery);
+</script>
+</body>
 </html>

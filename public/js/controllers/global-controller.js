@@ -7,7 +7,7 @@
             var global = this;
             global.isAudioPlaying = false;
             global.selectedTrackIndex = 0;
-            global.track = document.createElement('audio');
+            global.scPlayer = new SoundCloud('500f3c5cdcf76cb1bcc8c35e97864840');
 
             SoundcloudServices.getSoundcouldSongs().then(function (data) {
                 global.songs = data.data;
@@ -38,29 +38,20 @@
                 global.selectedTrack = global.songs[index];
                 global.selectedTrackIndex = index;
 
-                if (global.isAudioPlaying) {
-                    global.track.pause();
-                }
+                if (global.scPlayer.playing) global.scPlayer.pause();
 
-                //global.track = new Audio(global.selectedTrack.stream_url);
-                global.track.setAttribute('src', global.selectedTrack.stream_url);
-                global.track.load();
-                global.track.play();
-                global.isAudioPlaying = true;
-                
-                global.togglePlaylist();
+                global.scPlayer.resolve(global.selectedTrack.url, function (err, track) {
+                    global.scPlayer.play();
+
+                    $document.find('.soundcloud-player-wrapper').removeClass('soundcloud-player-show');
+                    $document.find('html, body').removeClass('no-scroll');
+                });
             };
 
             global.stopSong = function () {
-                if (global.isAudioPlaying) {
-                    global.track.pause();
-                    global.isAudioPlaying = false;
+                if (global.scPlayer.playing) {
+                    global.scPlayer.pause();
                 }
-            };
-
-            global.track.onended = function () {
-                alert('ended');
-                global.playSong(global.selectedTrackIndex + 1);
             };
 
             global.downloadSong = function (index) {
@@ -68,18 +59,17 @@
             };
 
             global.togglePlaylist = function () {
-                var $playlist = angular.element(document.querySelector('.soundcloud-player-wrapper'));
-                var $body = $document.find('body');
+                var $playlist = $document.find('.soundcloud-player-wrapper');
+                var $body = $document.find('html, body');
                 var isOpen = $playlist.hasClass('soundcloud-player-show');
                 
                 if (isOpen) {
                     $playlist.removeClass('soundcloud-player-show');
-                    $body.addClass('no-scroll');
+                    $body.removeClass('no-scroll');
                 } else {
                     $playlist.addClass('soundcloud-player-show');
-                    $body.removeClass('no-scroll');
+                    $body.addClass('no-scroll');
                 }
-                
             };
 
             $scope.$on('navigation:sidebar', function (event, data) {
@@ -90,9 +80,9 @@
 
             function navBar() {
                 var docWindow = angular.element($window);
-                var $nav = angular.element(document.querySelector('.navigation-bar-wrapper'));
-                var $sideBar = angular.element(document.querySelector('.navigation-bar-sidebar-wrapper'));
-                var $soundcloud = angular.element(document.querySelector('.soundcloud-player-wrapper'));
+                var $nav = $document.find('.navigation-bar-wrapper');
+                var $sideBar = $document.find('.navigation-bar-sidebar-wrapper');
+                var $soundcloud = $document.find('.soundcloud-player-wrapper');
                 var lastPosition = 0;
                 var isScrolled = false;
                 var delta = 5;
