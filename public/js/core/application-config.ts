@@ -44,7 +44,10 @@
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                video: resolveVideoDetails
+                // video: resolveVideoDetails
+                video: ['$route', 'YoutubeServices', ($route, YoutubeServices): any => {
+                    return YoutubeServices.getYouTubeVideoById($route.current.params.id);
+                }]
             }
         }).when('/about', {
             templateUrl: '/views/about.html',
