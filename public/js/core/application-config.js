@@ -7,6 +7,8 @@
     resolveVideoDetails.$inject = ['$route', 'YoutubeServices'];
 
     function resolveVideoDetails($route, YoutubeServices) {
+        console.log(YoutubeServices);
+        console.log($route.current.params.id);
         return YoutubeServices.getYouTubeVideoById($route.current.params.id);
     }
 
