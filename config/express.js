@@ -77,7 +77,7 @@ module.exports = function () {
         }
     });
 
-    //fs.writeFileSync('./public/js/application.min.js', uglified.code);
+    fs.writeFileSync('./public/js/application.min.js', uglified.code);
 
     // routes
     require('../app/routes/apis')(app, express);
