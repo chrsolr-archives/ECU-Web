@@ -4,6 +4,13 @@
     'use strict';
 
     angular.module('app').config(config);
+    
+    resolveVideoDetails.$inject = ['$route', 'YoutubeServices']
+    
+    function resolveVideoDetails($route, YoutubeServices) {
+        console.log(YoutubeServices);
+        return YoutubeServices.getYouTubeVideoById($route.current.params.id);
+    }
 
     config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider'];
 
@@ -38,11 +45,7 @@
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                //Video: YoutubeServices.getYouTubeVideoById($route.current.params.id)
-                video: ['$route', 'YoutubeServices', function($route, YoutubeServices) {
-                    console.log(YoutubeServices);
-                    return YoutubeServices.getYouTubeVideoById($route.current.params.id);
-                }]
+                video: resolveVideoDetails
             }
         }).when('/about', {
             templateUrl: '/views/about.html',
