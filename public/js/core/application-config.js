@@ -1,4 +1,3 @@
-///<reference path="../../../typings/tsd.d.ts" />
 (function () {
     'use strict';
 
@@ -14,16 +13,24 @@
             controllerAs: 'vm'
         }).when('/news', {
             templateUrl: '/views/news.html',
-            caseInsensitiveMatch: true
+            caseInsensitiveMatch: true,
+            controller: 'NewsController',
+            controllerAs: 'vm'
         }).when('/news/details/:permalink', {
             templateUrl: '/views/news-details.html',
-            caseInsensitiveMatch: true
+            caseInsensitiveMatch: true,
+            controller: 'NewsDetailsController',
+            controllerAs: 'vm'
         }).when('/videos', {
             templateUrl: '/views/videos.html',
-            caseInsensitiveMatch: true
+            caseInsensitiveMatch: true,
+            controller: 'VideosController',
+            controllerAs: 'vm'
         }).when('/videos/details/:id', {
             templateUrl: '/views/videos-details.html',
-            caseInsensitiveMatch: true
+            caseInsensitiveMatch: true,
+            controller: 'VideosDetailsController',
+            controllerAs: 'vm'
         }).when('/about', {
             templateUrl: '/views/about.html',
             caseInsensitiveMatch: true
