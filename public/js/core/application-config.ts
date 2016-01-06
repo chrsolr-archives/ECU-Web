@@ -1,4 +1,4 @@
-//<reference path="../../../typings/tsd.d.ts" />
+///<reference path="../../../typings/tsd.d.ts" />
 
 ((): void => {
     'use strict';
@@ -7,9 +7,7 @@
     
     resolveVideoDetails.$inject = ['$route', 'YoutubeServices']
     
-    function resolveVideoDetails($route, YoutubeServices) {
-        console.log(YoutubeServices);
-        console.log($route.current.params.id);
+    function resolveVideoDetails($route: ng.route.IRoute, YoutubeServices: any) {
         return YoutubeServices.getYouTubeVideoById($route.current.params.id);
     }
 
