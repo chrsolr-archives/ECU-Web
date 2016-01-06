@@ -5,12 +5,12 @@
 
     angular.module('app').config(config);
 
-    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider', 'YoutubeServices', '$route'];
+    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider', '$route'];
 
     function config(
             $routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider, 
             cfpLoadingBarProvider: ng.loadingBar.ILoadingBarProvider, $sceProvider: ng.ISCEProvider, 
-            YoutubeServices: any, $route: ng.route.IRouteService
+            $route: ng.route.IRouteService
         ): void {
         
         $routeProvider.when('/', {
@@ -39,7 +39,10 @@
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                Video: YoutubeServices.getYouTubeVideoById($route.current.params.id)
+                //Video: YoutubeServices.getYouTubeVideoById($route.current.params.id)
+                Video: function(YoutubeServices) {
+                    return YoutubeServices.getYouTubeVideoById($route.current.params.id);
+                }
             }
         }).when('/about', {
             templateUrl: '/views/about.html',

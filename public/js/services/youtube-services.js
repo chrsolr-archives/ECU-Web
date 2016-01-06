@@ -19,7 +19,8 @@
                     });
 
                 return q.promise;
-            }, getYouTubeVideoById: function(id){
+            }, 
+            getYouTubeVideoById: function(id){
                 var q = $q.defer();
 
                 $http.get('/api/youtube/' + id)

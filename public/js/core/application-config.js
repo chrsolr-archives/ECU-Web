@@ -4,9 +4,9 @@
 
     angular.module('app').config(config);
 
-    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider', 'YoutubeServices', '$route'];
+    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider', '$route'];
 
-    function config($routeProvider, $locationProvider, cfpLoadingBarProvider, $sceProvider, YoutubeServices, $route) {
+    function config($routeProvider, $locationProvider, cfpLoadingBarProvider, $sceProvider, $route) {
         $routeProvider.when('/', {
             templateUrl: '/views/home.html',
             caseInsensitiveMatch: true,
@@ -33,7 +33,10 @@
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                Video: YoutubeServices.getYouTubeVideoById($route.current.params.id)
+                //Video: YoutubeServices.getYouTubeVideoById($route.current.params.id)
+                Video: function (YoutubeServices) {
+                    return YoutubeServices.getYouTubeVideoById($route.current.params.id);
+                }
             }
         }).when('/about', {
             templateUrl: '/views/about.html',
