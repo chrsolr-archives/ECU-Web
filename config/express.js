@@ -37,10 +37,20 @@ module.exports = function () {
     app.use('/scripts', express.static(path.resolve('./node_modules')));
     app.use('/views', express.static(path.resolve('./public/views')));
 
-    // minify files
+    // minify js files
     var uglified = uglify.minify([
-        //'./public/libs/souncloud-audio/soundcloud-audio.js',
+        './node_modules/bootstrap/dist/js/bootstrap.min.js',
+        './public/libs/soundcloud-audio/soundcloud-audio.js',
+        './node_modules/angular/angular.js',
+        './node_modules/angular-route/angular-route.min.js',
+        './node_modules/angular-animate/angular-animate.min.js',
+        './node_modules/angular-loading-bar/build/loading-bar.min.js',
+        './node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js',
+        './public/libs/ng-tweets/ng-tweets.min.js',
         './public/js/core/application.js',
+        './public/js/core/application-config.js',
+        './public/js/core/application-run.js',
+        './public/js/directives/media/media-image-directive.js',
         './public/js/services/navigation-services.js',
         './public/js/services/global-services.js',
         './public/js/services/news-services.js',
@@ -56,14 +66,14 @@ module.exports = function () {
     ], {
         mangle: true,
         compress: {
-            //sequences: true,
-            //dead_code: true,
-            //conditionals: true,
-            //booleans: true,
-            //unused: true,
-            //if_return: true,
-            //join_vars: true,
-            //drop_console: true
+            sequences: true,
+            dead_code: true,
+            conditionals: true,
+            booleans: true,
+            unused: true,
+            if_return: true,
+            join_vars: true,
+            drop_console: true
         }
     });
 
