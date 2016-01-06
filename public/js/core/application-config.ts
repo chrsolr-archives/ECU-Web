@@ -39,7 +39,8 @@
             controllerAs: 'vm',
             resolve: {
                 //Video: YoutubeServices.getYouTubeVideoById($route.current.params.id)
-                Video: ['$route', 'YoutubeServices', function($route, YoutubeServices) {
+                video: ['$route', 'YoutubeServices', function($route, YoutubeServices) {
+                    console.log(YoutubeServices);
                     return YoutubeServices.getYouTubeVideoById($route.current.params.id);
                 }]
             }
