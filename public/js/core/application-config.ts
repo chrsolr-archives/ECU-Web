@@ -38,7 +38,7 @@
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                video: ['$route', 'YoutubeServices', ($route, YoutubeServices): any => {
+                video: ['$route', 'YoutubeServices', ($route: ng.route.IRouteService, YoutubeServices: any): any => {
                     return YoutubeServices.getYouTubeVideoById($route.current.params.id);
                 }]
             }

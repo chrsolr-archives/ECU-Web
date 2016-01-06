@@ -1,11 +1,8 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 (function () {
     'use strict';
-
     angular.module('app').config(config);
-
     config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider'];
-
     function config($routeProvider, $locationProvider, cfpLoadingBarProvider, $sceProvider) {
         $routeProvider.when('/', {
             templateUrl: '/views/home.html',
@@ -33,8 +30,7 @@
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                video: [
-                    '$route', 'YoutubeServices', function ($route, YoutubeServices) {
+                video: ['$route', 'YoutubeServices', function ($route, YoutubeServices) {
                         return YoutubeServices.getYouTubeVideoById($route.current.params.id);
                     }]
             }
@@ -50,11 +46,9 @@
         }).otherwise({
             redirectTo: '/'
         });
-
         $locationProvider.html5Mode(true);
-
         cfpLoadingBarProvider.includeSpinner = false;
-
         $sceProvider.enabled(false);
     }
 })();
+//# sourceMappingURL=application-config.js.map

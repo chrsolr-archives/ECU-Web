@@ -52,6 +52,7 @@ module.exports = function () {
         './public/js/core/application-run.js',
         './public/js/directives/media/media-image-directive.js',
         './public/js/services/navigation-services.js',
+        './public/js/services/route-resolve-services.js',
         './public/js/services/global-services.js',
         './public/js/services/news-services.js',
         './public/js/services/youtube-services.js',
@@ -64,7 +65,7 @@ module.exports = function () {
         './public/js/controllers/videos-controller.js',
         './public/js/controllers/videos-details-controller.js'
     ], {
-        mangle: true,
+        mangle: false,
         compress: {
             // sequences: true,
             // dead_code: true,
