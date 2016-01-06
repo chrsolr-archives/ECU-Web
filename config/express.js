@@ -52,7 +52,7 @@ module.exports = function () {
         './public/js/core/application-run.js',
         './public/js/directives/media/media-image-directive.js',
         './public/js/services/navigation-services.js',
-        './public/js/services/route-resolve-services.js',
+        './public/js/services/route-resolver-services.js',
         './public/js/services/global-services.js',
         './public/js/services/news-services.js',
         './public/js/services/youtube-services.js',
