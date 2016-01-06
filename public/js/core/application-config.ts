@@ -10,7 +10,9 @@
     function config($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider, cfpLoadingBarProvider: ng.loadingBar.ILoadingBarProvider, $sceProvider: ng.ISCEProvider): void {
         $routeProvider.when('/', {
             templateUrl: '/views/home.html',
-            caseInsensitiveMatch: true
+            caseInsensitiveMatch: true,
+            controller: 'HomeController',
+            controllerAs: 'vm'
         }).when('/news', {
             templateUrl: '/views/news.html',
             caseInsensitiveMatch: true
