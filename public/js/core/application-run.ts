@@ -5,9 +5,9 @@
 
     run.$inject = ['$rootScope', 'NavigationServices'];
 
-    function run($rootScope: ng.IRootScopeService, NavigationServices) {
+    function run($rootScope: ng.IRootScopeService, NavigationServices): void {
 
-        $rootScope.$on('$routeChangeStart', function(event, next, current) {
+        $rootScope.$on('$routeChangeStart', (event, next, current): void => {
             NavigationServices.closeSideBar();
         });
     }
