@@ -5,12 +5,6 @@
 
     angular.module('app').config(config);
     
-    resolveVideoDetails.$inject = ['$route', 'YoutubeServices']
-    
-    function resolveVideoDetails($route: ng.route.IRoute, YoutubeServices: any) {
-        return YoutubeServices.getYouTubeVideoById($route.current.params.id);
-    }
-
     config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider'];
 
     function config(
@@ -44,7 +38,6 @@
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                // video: resolveVideoDetails
                 video: ['$route', 'YoutubeServices', ($route, YoutubeServices): any => {
                     return YoutubeServices.getYouTubeVideoById($route.current.params.id);
                 }]
