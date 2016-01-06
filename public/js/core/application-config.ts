@@ -1,13 +1,18 @@
-///<reference path="../../../typings/tsd.d.ts" />
+//<reference path="../../../typings/tsd.d.ts" />
 
 ((): void => {
     'use strict';
 
     angular.module('app').config(config);
 
-    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider'];
+    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider', 'YoutubeServices', '$route'];
 
-    function config($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider, cfpLoadingBarProvider: ng.loadingBar.ILoadingBarProvider, $sceProvider: ng.ISCEProvider): void {
+    function config(
+            $routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider, 
+            cfpLoadingBarProvider: ng.loadingBar.ILoadingBarProvider, $sceProvider: ng.ISCEProvider, 
+            YoutubeServices: any, $route: ng.route.IRouteService
+        ): void {
+        
         $routeProvider.when('/', {
             templateUrl: '/views/home.html',
             caseInsensitiveMatch: true,
@@ -32,7 +37,10 @@
             templateUrl: '/views/videos-details.html',
             caseInsensitiveMatch: true,
             controller: 'VideosDetailsController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                Video: YoutubeServices.getYouTubeVideoById($route.current.params.id)
+            }
         }).when('/about', {
             templateUrl: '/views/about.html',
             caseInsensitiveMatch: true
