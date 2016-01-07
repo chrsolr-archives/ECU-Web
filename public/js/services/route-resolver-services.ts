@@ -27,6 +27,7 @@ module app.services {
             return this.$q.all([
                 this.YoutubeServices.getYouTubeVideos(max)
             ]).then((results: any[]): any => {
+                console.log(results);
                 return {
                     videos: results[0].data
                 }

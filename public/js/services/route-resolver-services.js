@@ -24,6 +24,7 @@ var app;
                 return this.$q.all([
                     this.YoutubeServices.getYouTubeVideos(max)
                 ]).then(function (results) {
+                    console.log(results);
                     return {
                         videos: results[0].data
                     };
