@@ -4,17 +4,17 @@ module app.services {
     'use strict';
 
     export interface IYoutubeServices {
-        getYouTubeVideos(max: number, page: string): ng.IPromise;
-        getYouTubeVideoById(id: string): ng.IPromise;
+        getYouTubeVideos(max: number, page: string): ng.IPromise<any>;
+        getYouTubeVideoById(id: string): ng.IPromise<any>;
     }
 
     class YoutubeServices implements IYoutubeServices {
 
-        constructor(private $http: ng.IHttpProvider, private $q: ng.IQService){
+        constructor(private $http: ng.IHttpService, private $q: ng.IQService){
 
         }
 
-        getYouTubeVideos(max:number, page:string):ng.IPromise {
+        getYouTubeVideos(max:number, page:string):ng.IPromise<any> {
             var q = this.$q.defer();
 
             max = max || 10;
@@ -31,7 +31,7 @@ module app.services {
             return q.promise;
         }
 
-        getYouTubeVideoById(id:string):ng.IPromise {
+        getYouTubeVideoById(id:string):ng.IPromise<any> {
             var q = this.$q.defer();
 
             this.$http.get('/api/youtube/' + id)

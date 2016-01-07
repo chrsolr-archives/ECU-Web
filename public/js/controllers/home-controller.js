@@ -24,7 +24,7 @@
                 vm.youtube = data;
             });
 
-            SoundcloudServices.getSoundcouldSongs().then(function(data){
+            SoundcloudServices.getSoundcloudSongs().then(function(data){
                 vm.songs = data.data;
                 vm.selectedTrack = vm.songs[vm.selectedTrackIndex];
             });

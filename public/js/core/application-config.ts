@@ -1,5 +1,7 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 
+import IRouteResolverService = app.services.IRouteResolverService;
+
 ((): void => {
     'use strict';
 
@@ -38,8 +40,8 @@
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                video: ['$route', 'YoutubeServices', ($route: ng.route.IRouteService, YoutubeServices: app.services.IYoutubeServices): any => {
-                    return YoutubeServices.getYouTubeVideoById($route.current.params.id);
+                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverService): any => {
+                    return RouteResolverServices.resolveVideosDetails($route.current.params.id);
                 }]
             }
         }).when('/about', {

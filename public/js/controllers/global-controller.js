@@ -8,7 +8,7 @@
             global.selectedTrackIndex = 0;
             global.scPlayer = new SoundCloud('500f3c5cdcf76cb1bcc8c35e97864840');
 
-            SoundcloudServices.getSoundcouldSongs().then(function (data) {
+            SoundcloudServices.getSoundcloudSongs().then(function (data) {
                 global.songs = data.data;
                 global.selectedTrack = global.songs[global.selectedTrackIndex];
             });

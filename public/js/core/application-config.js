@@ -30,8 +30,8 @@
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                video: ['$route', 'YoutubeServices', function ($route, YoutubeServices) {
-                        return YoutubeServices.getYouTubeVideoById($route.current.params.id);
+                initData: ['$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
+                        return RouteResolverServices.resolveVideosDetails($route.current.params.id);
                     }]
             }
         }).when('/about', {

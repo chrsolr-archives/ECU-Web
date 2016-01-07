@@ -1,10 +1,10 @@
 (function () {
     'use strict';
 
-    angular.module('controllers').controller('VideosDetailsController', ['video',
-        function (video) {
+    angular.module('controllers').controller('VideosDetailsController', ['initData', function (initData) {
 
-            var vm = this;
-            vm.video = video.data;
-        }]);
+        var vm = this;
+        vm.video = initData.video;
+
+    }]);
 })();
