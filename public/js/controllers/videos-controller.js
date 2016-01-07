@@ -6,6 +6,8 @@
 
             var vm = this;
             
+            console.log(vm);
+            
             vm.videos = initData.data.videos;
             vm.prev = initData.data.prev;
             vm.next = initData.data.next;
