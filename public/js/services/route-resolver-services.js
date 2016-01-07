@@ -26,7 +26,7 @@ var app;
                 ]).then(function (results) {
                     console.log(results);
                     return {
-                        videos: results[0].data
+                        videos: results[0]
                     };
                 });
             };

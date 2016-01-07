@@ -6,14 +6,10 @@
 
             var vm = this;
             
-            console.log(initData);
-
-            YoutubeServices.getYouTubeVideos(50).then(function (data) {
-                vm.videos = data.videos;
-                vm.prev = data.prev;
-                vm.next = data.next;
-                animateIn();
-            });
+            vm.videos = initData.videos;
+            vm.prev = initData.prev;
+            vm.next = initData.next;
+            animateIn();
 
             vm.previousVideos = function () {
                 clear();
