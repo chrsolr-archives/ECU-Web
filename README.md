@@ -3,7 +3,7 @@ El Comite Urbano - Website
 
 Website build on NodeJS/ExpressJS/AngularJS/Typescript/LessCss/Parse.
 
-Descripción
+Description
 -----------
 
 Website for urban music radio show in New York City.
