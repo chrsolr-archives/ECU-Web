@@ -6,6 +6,7 @@ module app.services {
 
     export interface IRouteResolverService {
         resolveVideosDetails(videoId: string): ng.IPromise<any>;
+        resolveVideos(max: number): ng.IPromise<any>;
     }
 
     class RouteResolverServices implements IRouteResolverService {
@@ -18,6 +19,16 @@ module app.services {
             ]).then((results: any[]): any => {
                 return {
                     video: results[0].data
+                }
+            });
+        }
+        
+        resolveVideos(max: number):ng.IPromise<any> {
+            return this.$q.all([
+                this.YoutubeServices.getYouTubeVideos(max)
+            ]).then((results: any[]): any => {
+                return {
+                    videos: results[0].data
                 }
             });
         }

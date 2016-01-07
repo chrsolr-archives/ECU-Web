@@ -1,8 +1,11 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 (function () {
     'use strict';
+
     angular.module('app').config(config);
+
     config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider'];
+
     function config($routeProvider, $locationProvider, cfpLoadingBarProvider, $sceProvider) {
         $routeProvider.when('/', {
             templateUrl: '/views/home.html',
@@ -23,14 +26,21 @@
             templateUrl: '/views/videos.html',
             caseInsensitiveMatch: true,
             controller: 'VideosController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                initData: [
+                    '$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
+                        return RouteResolverServices.resolveVideos(50);
+                    }]
+            }
         }).when('/videos/details/:id', {
             templateUrl: '/views/videos-details.html',
             caseInsensitiveMatch: true,
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                initData: ['$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
+                initData: [
+                    '$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
                         return RouteResolverServices.resolveVideosDetails($route.current.params.id);
                     }]
             }
@@ -46,9 +56,11 @@
         }).otherwise({
             redirectTo: '/'
         });
+
         $locationProvider.html5Mode(true);
+
         cfpLoadingBarProvider.includeSpinner = false;
+
         $sceProvider.enabled(false);
     }
 })();
-//# sourceMappingURL=application-config.js.map

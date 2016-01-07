@@ -33,7 +33,12 @@ import IRouteResolverService = app.services.IRouteResolverService;
             templateUrl: '/views/videos.html',
             caseInsensitiveMatch: true,
             controller: 'VideosController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverService): any => {
+                    return RouteResolverServices.resolveVideos(50);
+                }]
+            }
         }).when('/videos/details/:id', {
             templateUrl: '/views/videos-details.html',
             caseInsensitiveMatch: true,

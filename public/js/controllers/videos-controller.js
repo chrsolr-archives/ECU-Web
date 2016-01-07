@@ -1,10 +1,12 @@
 (function () {
     'use strict';
 
-    angular.module('controllers').controller('VideosController', ['YoutubeServices', '$window',
-        function (YoutubeServices, $window) {
+    angular.module('controllers').controller('VideosController', ['initData', 'YoutubeServices', '$window',
+        function (initData, YoutubeServices, $window) {
 
             var vm = this;
+            
+            console.log(initData);
 
             YoutubeServices.getYouTubeVideos(50).then(function (data) {
                 vm.videos = data.videos;
