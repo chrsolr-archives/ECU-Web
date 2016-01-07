@@ -4,14 +4,14 @@ module app.services {
     'use strict';
 
     export interface ISoundcloudServices {
-        getSoundcloudSongs(): ng.IPromise
+        getSoundcloudSongs(): ng.IPromise<any>
     }
 
     class SoundcloudServices implements ISoundcloudServices {
 
         constructor(private $http: ng.IHttpService, private $q: ng.IQService){}
 
-        getSoundcloudSongs(): ng.IPromise {
+        getSoundcloudSongs(): ng.IPromise<any> {
             var q = this.$q.defer();
 
             this.$http.get('/api/soundcloud')
