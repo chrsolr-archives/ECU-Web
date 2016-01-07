@@ -10,6 +10,8 @@
             vm.prev = initData.prev;
             vm.next = initData.next;
             animateIn();
+            
+            console.log(vm);
 
             vm.previousVideos = function () {
                 clear();

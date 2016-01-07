@@ -19,8 +19,8 @@ module.exports = function (app, express) {
                 var json = JSON.parse(response.body);
 
                 var data = {
-                    next: json.nextPageToken,
-                    prev: json.prevPageToken,
+                    next: json.nextPageToken || '',
+                    prev: json.prevPageToken || '',
                     totalItems: json.pageInfo.totalResults,
                     videos: []
                 };
