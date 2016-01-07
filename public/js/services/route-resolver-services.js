@@ -25,7 +25,7 @@ var app;
                     this.YoutubeServices.getYouTubeVideos(max)
                 ]).then(function (results) {
                     return {
-                        videos: results[0]
+                        data: results[0]
                     };
                 });
             };

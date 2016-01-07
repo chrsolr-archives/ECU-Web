@@ -28,7 +28,7 @@ module app.services {
                 this.YoutubeServices.getYouTubeVideos(max)
             ]).then((results: any[]): any => {
                 return {
-                    videos: results[0]
+                    data: results[0]
                 }
             });
         }

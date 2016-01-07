@@ -6,9 +6,9 @@
 
             var vm = this;
             
-            vm.videos = initData.videos;
-            vm.prev = initData.prev;
-            vm.next = initData.next;
+            vm.videos = initData.data.videos;
+            vm.prev = initData.data.prev;
+            vm.next = initData.data.next;
             animateIn();
             
             console.log(vm);
