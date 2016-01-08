@@ -27,10 +27,10 @@
     "bootstrap": "latest",
     "cors": "latest",
     "express": "latest",
-    "morgan": "^1.6.1",
-    "parse": "^1.6.13",
-    "request": "^2.67.0",
-    "sendgrid": "^2.0.0",
-    "uglify-js": "^2.6.1"
+    "morgan": "latest",
+    "parse": "latest",
+    "request": "latest",
+    "sendgrid": "latest",
+    "uglify-js": "latest"
   }
 }
