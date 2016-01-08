@@ -4,7 +4,7 @@ module app.services {
     'use strict';
 
     export interface IYoutubeServices {
-        getYouTubeVideos(max: number, page: string): ng.IPromise<any>;
+        getYouTubeVideos(max: number, page?: string): ng.IPromise<any>;
         getYouTubeVideoById(id: string): ng.IPromise<any>;
     }
 
@@ -14,17 +14,17 @@ module app.services {
 
         }
 
-        getYouTubeVideos(max:number, page:string):ng.IPromise<any> {
+        getYouTubeVideos(max:number, page?:string):ng.IPromise<any> {
             var q = this.$q.defer();
 
             max = max || 10;
             page = page || '';
 
             this.$http.get('/api/youtube?max=' + max + '&page=' + page)
-                .success(function(data){
+                .success((data) => {
                     q.resolve(data);
                 })
-                .error(function(error){
+                .error((error) => {
                     q.reject(error);
                 });
 
@@ -35,10 +35,10 @@ module app.services {
             var q = this.$q.defer();
 
             this.$http.get('/api/youtube/' + id)
-                .success(function(data){
+                .success((data) => {
                     q.resolve(data);
                 })
-                .error(function(error){
+                .error((error) => {
                     q.reject(error);
                 });
 

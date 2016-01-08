@@ -1,10 +1,8 @@
-///<reference path="../../../typings/tsd.d.ts" />
-///<reference path="youtube-services.ts"/>
 var app;
 (function (app) {
+    var services;
     (function (services) {
         'use strict';
-
         var RouteResolverServices = (function () {
             function RouteResolverServices($q, YoutubeServices) {
                 this.$q = $q;
@@ -19,7 +17,6 @@ var app;
                     };
                 });
             };
-
             RouteResolverServices.prototype.resolveVideos = function (max) {
                 return this.$q.all([
                     this.YoutubeServices.getYouTubeVideos(max)
@@ -31,10 +28,7 @@ var app;
             };
             return RouteResolverServices;
         })();
-
-        angular.module('services').factory('RouteResolverServices', ['$q', 'YoutubeServices', function ($q, YoutubeServices) {
-                return new RouteResolverServices($q, YoutubeServices);
-            }]);
-    })(app.services || (app.services = {}));
-    var services = app.services;
+        angular.module('services')
+            .factory('RouteResolverServices', ['$q', 'YoutubeServices', function ($q, YoutubeServices) { return new RouteResolverServices($q, YoutubeServices); }]);
+    })(services = app.services || (app.services = {}));
 })(app || (app = {}));

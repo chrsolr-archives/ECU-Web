@@ -1,4 +1,3 @@
-///<reference path="../../../typings/tsd.d.ts" />
 (function () {
     'use strict';
     angular.module('app').run(run);
@@ -9,4 +8,3 @@
         });
     }
 })();
-//# sourceMappingURL=application-run.js.map
