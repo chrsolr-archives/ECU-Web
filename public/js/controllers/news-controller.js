@@ -1,13 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('controllers').controller('NewsController', ['NewsServices',
-        function (NewsServices) {
-
+    angular.module('controllers').controller('NewsController', ['initData',
+        function (initData) {
             var vm = this;
-
-            NewsServices.getNews(50).then(function (data) {
-                vm.news = data;
-            });
+            vm.news = initData.data;
         }]);
 })();

@@ -1,6 +1,6 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 
-import IRouteResolverService = app.services.IRouteResolverService;
+import IRouteResolverServices = app.services.IRouteResolverServices;
 
 ((): void => {
     'use strict';
@@ -23,19 +23,29 @@ import IRouteResolverService = app.services.IRouteResolverService;
             templateUrl: '/views/news.html',
             caseInsensitiveMatch: true,
             controller: 'NewsController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverServices): any => {
+                    return RouteResolverServices.resolveNews(50);
+                }]
+            }
         }).when('/news/details/:permalink', {
             templateUrl: '/views/news-details.html',
             caseInsensitiveMatch: true,
             controller: 'NewsDetailsController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverServices): any => {
+                    return RouteResolverServices.resolveNewsDetails($route.current.params.permalink);
+                }]
+            }
         }).when('/videos', {
             templateUrl: '/views/videos.html',
             caseInsensitiveMatch: true,
             controller: 'VideosController',
             controllerAs: 'vm',
             resolve: {
-                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverService): any => {
+                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverServices): any => {
                     return RouteResolverServices.resolveVideos(50);
                 }]
             }
@@ -45,7 +55,7 @@ import IRouteResolverService = app.services.IRouteResolverService;
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverService): any => {
+                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverServices): any => {
                     return RouteResolverServices.resolveVideosDetails($route.current.params.id);
                 }]
             }

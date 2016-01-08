@@ -9,3 +9,4 @@
     var modules = ['services', 'controllers', 'filters', 'directives', 'ngRoute', 'ui.bootstrap', 'angular-loading-bar', 'ngAnimate', 'ngTweets'];
     angular.module('app', modules);
 })();
+//# sourceMappingURL=application.js.map

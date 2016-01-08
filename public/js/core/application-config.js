@@ -13,12 +13,22 @@
             templateUrl: '/views/news.html',
             caseInsensitiveMatch: true,
             controller: 'NewsController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                initData: ['$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
+                        return RouteResolverServices.resolveNews(50);
+                    }]
+            }
         }).when('/news/details/:permalink', {
             templateUrl: '/views/news-details.html',
             caseInsensitiveMatch: true,
             controller: 'NewsDetailsController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                initData: ['$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
+                        return RouteResolverServices.resolveNewsDetails($route.current.params.permalink);
+                    }]
+            }
         }).when('/videos', {
             templateUrl: '/views/videos.html',
             caseInsensitiveMatch: true,

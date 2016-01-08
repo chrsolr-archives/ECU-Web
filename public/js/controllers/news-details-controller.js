@@ -1,21 +1,18 @@
 (function () {
     'use strict';
 
-    angular.module('controllers').controller('NewsDetailsController', ['NewsServices', '$routeParams', '$sce',
-        function (NewsServices, $routeParams, $sce) {
-
+    angular.module('controllers').controller('NewsDetailsController', ['initData', '$sce',
+        function (initData, $sce) {
+            
             var vm = this;
-
-            NewsServices.getNewsByPermalink($routeParams.permalink).then(function (data) {
-                vm.news = data;
-                setMetadata();
-            });
+            vm.news = initData.data;
+            setMetadata();
 
             vm.sanitizeHTML = function (html) {
                 return $sce.trustAsHtml(html);
             };
 
-            function setMetadata(){
+            function setMetadata() {
                 document.title = vm.news.title;
 
                 document.querySelector('meta[property="og:title"]').setAttribute('content', vm.news.title);

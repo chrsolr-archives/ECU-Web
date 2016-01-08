@@ -15,10 +15,10 @@ module app.services {
             var q = this.$q.defer();
 
             this.$http.get('/api/soundcloud')
-                .success(function (data) {
+                .success((data) => {
                     q.resolve(data);
                 })
-                .error(function (error) {
+                .error((error) => {
                     q.reject(error);
                 });
 
