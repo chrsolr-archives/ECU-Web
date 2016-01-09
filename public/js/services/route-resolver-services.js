@@ -54,3 +54,4 @@ var app;
             .factory('RouteResolverServices', ['$q', 'YoutubeServices', 'NewsServices', function ($q, YoutubeServices, NewsServices) { return new RouteResolverServices($q, YoutubeServices, NewsServices); }]);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=route-resolver-services.js.map

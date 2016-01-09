@@ -10,65 +10,68 @@ module app.controllers {
         videos: any;
         prev: string;
         next: string;
-        previousVideos: any;
-        nextVideos: any;
+        previousVideos(): void;
+        nextVideos(): void;
         reset(): void;
+        animateOut(): void;
+        animateIn(): void;
     }
 
     class VideosController implements IVideosController {
-        videos: any;
-        prev: string;
-        next: string;
-        previousVideos: any;
-        nextVideos: any;
-        reset(): void;
+        videos:any;
+        prev:string;
+        next:string;
 
         static $inject = ['initData', 'YoutubeServices', '$window'];
-        constructor(initData: any, private YoutubeServices: IYoutubeServices, private $window: ng.IWindowService) {
-            let vm = this;
-            vm.videos = initData.data.videos;
-            vm.prev = initData.data.prev;
-            vm.next = initData.data.next;
 
-            vm.previousVideos = function() {
-                this.reset();
-       
-                if (vm.prev) {
-                    YoutubeServices.getYouTubeVideos(50, vm.prev).then((data) => {
-                        vm.videos = data.videos;
-                        vm.prev = data.prev;
-                        vm.next = data.next;
-                        this.animateIn();
-                    });
-                }
-            };
-
-            vm.nextVideos = function() {
-                this.reset();
-
-                if (vm.next) {
-                    YoutubeServices.getYouTubeVideos(50, vm.next).then((data) => {
-                        vm.videos = data.videos;
-                        vm.prev = data.prev;
-                        vm.next = data.next;
-                        this.animateIn();
-                    });
-                }
-            };
+        constructor(initData:any, private YoutubeServices:IYoutubeServices, private $window:ng.IWindowService) {
+            var _this = this;
+            _this.videos = initData.data.videos;
+            _this.prev = initData.data.prev;
+            _this.next = initData.data.next;
         }
 
-        reset(): void {
-            this.$window.scrollTo(0, 0);
-            this.animateOut();
+        previousVideos():void {
+            var _this = this;
+            _this.reset();
+
+            if (_this.prev) {
+                _this.YoutubeServices.getYouTubeVideos(50, _this.prev).then((data) => {
+                    _this.videos = data.videos;
+                    _this.prev = data.prev;
+                    _this.next = data.next;
+                    _this.animateIn();
+                });
+            }
         }
 
-        animateOut(): void {
+        nextVideos():void {
+            var _this = this;
+            _this.reset();
+
+            if (_this.next) {
+                _this.YoutubeServices.getYouTubeVideos(50, _this.next).then((data) => {
+                    _this.videos = data.videos;
+                    _this.prev = data.prev;
+                    _this.next = data.next;
+                    _this.animateIn();
+                });
+            }
+        }
+
+        reset():void {
+            var _this = this;
+            _this.$window.scrollTo(0, 0);
+            _this.animateOut();
+        }
+
+        animateOut():void {
             angular.element(document.querySelector('#videos-content')).removeClass('fadeIn');
             angular.element(document.querySelector('#videos-content')).addClass('fadeOut');
         }
 
-        animateIn(): void {
-            angular.element(document.querySelector('#videos-content')).removeClass('fadeOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+        animateIn():void {
+            angular.element(document.querySelector('#videos-content')).removeClass('fadeOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                 angular.element(document.querySelector('#videos-content')).addClass('fadeIn');
             });
         }

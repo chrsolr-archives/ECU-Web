@@ -26,3 +26,4 @@ var app;
             .factory('SoundcloudServices', ['$http', '$q', function ($http, $q) { return new SoundcloudServices($http, $q); }]);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=soundcloud-services.js.map

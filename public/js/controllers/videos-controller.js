@@ -9,38 +9,39 @@ var app;
             function VideosController(initData, YoutubeServices, $window) {
                 this.YoutubeServices = YoutubeServices;
                 this.$window = $window;
-                var vm = this;
-                vm.videos = initData.data.videos;
-                vm.prev = initData.data.prev;
-                vm.next = initData.data.next;
-                vm.previousVideos = function () {
-                    var _this = this;
-                    this.reset();
-                    if (vm.prev) {
-                        YoutubeServices.getYouTubeVideos(50, vm.prev).then(function (data) {
-                            vm.videos = data.videos;
-                            vm.prev = data.prev;
-                            vm.next = data.next;
-                            _this.animateIn();
-                        });
-                    }
-                };
-                vm.nextVideos = function () {
-                    var _this = this;
-                    this.reset();
-                    if (vm.next) {
-                        YoutubeServices.getYouTubeVideos(50, vm.next).then(function (data) {
-                            vm.videos = data.videos;
-                            vm.prev = data.prev;
-                            vm.next = data.next;
-                            _this.animateIn();
-                        });
-                    }
-                };
+                var _this = this;
+                _this.videos = initData.data.videos;
+                _this.prev = initData.data.prev;
+                _this.next = initData.data.next;
             }
+            VideosController.prototype.previousVideos = function () {
+                var _this = this;
+                _this.reset();
+                if (_this.prev) {
+                    _this.YoutubeServices.getYouTubeVideos(50, _this.prev).then(function (data) {
+                        _this.videos = data.videos;
+                        _this.prev = data.prev;
+                        _this.next = data.next;
+                        _this.animateIn();
+                    });
+                }
+            };
+            VideosController.prototype.nextVideos = function () {
+                var _this = this;
+                _this.reset();
+                if (_this.next) {
+                    _this.YoutubeServices.getYouTubeVideos(50, _this.next).then(function (data) {
+                        _this.videos = data.videos;
+                        _this.prev = data.prev;
+                        _this.next = data.next;
+                        _this.animateIn();
+                    });
+                }
+            };
             VideosController.prototype.reset = function () {
-                this.$window.scrollTo(0, 0);
-                this.animateOut();
+                var _this = this;
+                _this.$window.scrollTo(0, 0);
+                _this.animateOut();
             };
             VideosController.prototype.animateOut = function () {
                 angular.element(document.querySelector('#videos-content')).removeClass('fadeIn');
@@ -57,3 +58,4 @@ var app;
         angular.module('controllers').controller('VideosController', VideosController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+//# sourceMappingURL=videos-controller.js.map

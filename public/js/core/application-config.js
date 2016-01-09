@@ -1,4 +1,5 @@
 ///<reference path="../../../typings/tsd.d.ts" />
+///<reference path="../services/route-resolver-services.ts" />
 (function () {
     'use strict';
     angular.module('app').config(config);
@@ -66,3 +67,4 @@
         $sceProvider.enabled(false);
     }
 })();
+//# sourceMappingURL=application-config.js.map

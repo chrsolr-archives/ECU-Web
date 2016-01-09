@@ -29,3 +29,4 @@ var app;
         angular.module('services').factory('NavigationServices', ['$rootScope', function ($rootScope) { return new NavigationServices($rootScope); }]);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=navigation-services.js.map

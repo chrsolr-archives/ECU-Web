@@ -2,9 +2,6 @@
 ///<reference path="youtube-services.ts"/>
 ///<reference path="news-services.ts"/>
 
-import IYoutubeServices = app.services.IYoutubeServices;
-import INewsServices = app.services.INewsServices;
-
 module app.services {
     'use strict';
 

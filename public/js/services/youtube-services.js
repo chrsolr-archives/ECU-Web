@@ -39,3 +39,4 @@ var app;
             .factory('YoutubeServices', ['$http', '$q', function ($http, $q) { return new YoutubeServices($http, $q); }]);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=youtube-services.js.map

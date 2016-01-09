@@ -11,12 +11,11 @@ module app.controllers {
         video: any;
         
         static $inject = ['initData'];
-        constructor(initData: any){
-            var vm = this;
-            vm.video = initData.video;
+        constructor(private initData: any){
+            this.video = initData.video;
         }
     }
     
-    angular
-    .module('controllers').controller('VideosDetailsController', VideosDetailsController);
+    angular.module('controllers')
+        .controller('VideosDetailsController', VideosDetailsController);
 }

@@ -58,7 +58,7 @@
     <section class="section-bg-dark">
         <div class="container">
             <uib-carousel id="carousel-tweets" interval="3000" no-wrap="noWrapSlides">
-                <uib-slide ng-repeat="tweet in vm.tweets" active="tweet.active">
+                <uib-slide ng-repeat="tweet in vm.twitter" active="tweet.active">
                     <div class="social-media-post-wrapper container text-center">
                         <span><i class="fa fa-5x fa-twitter"></i></span>
                         <p class="text-center" ng-bind-html="vm.sanitizeHTML(tweet.html)"></p>

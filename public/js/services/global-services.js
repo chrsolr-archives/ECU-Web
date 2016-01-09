@@ -61,3 +61,4 @@ var app;
         angular.module('services').factory('GlobalServices', ['$http', '$q', function ($http, $q) { return new GlobalServices($http, $q); }]);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=global-services.js.map

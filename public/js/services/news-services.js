@@ -49,3 +49,4 @@ var app;
         angular.module('services').factory('NewsServices', ['$q', function ($q) { return new NewsServices($q); }]);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=news-services.js.map
