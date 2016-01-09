@@ -3,25 +3,7 @@
         "target": "es5",
         "module": "amd",
         "sourceMap": true,
-        "outFile": "./public/js/app.js",
+        //"outFile": "./public/js/app.js",
         "removeComments": true
-    }, "files": [
-        "./public/js/core/application.ts",
-        "./public/js/core/application-config.ts",
-        "./public/js/core/application-run.ts",
-        "./public/js/directives/media/media-image-directive.ts",
-        "./public/js/services/navigation-services.ts",
-        "./public/js/services/global-services.ts",
-        "./public/js/services/news-services.ts",
-        "./public/js/services/youtube-services.ts",
-        "./public/js/services/soundcloud-services.ts",
-        "./public/js/services/route-resolver-services.ts"
-        // "./public/js/controllers/global-controller.ts",
-        // "./public/js/controllers/navbar-controller.ts",
-        // "./public/js/controllers/home-controller.ts",
-        // "./public/js/controllers/news-controller.ts",
-        // "./public/js/controllers/news-details-controller.ts",
-        // "./public/js/controllers/videos-controller.ts",
-        // "./public/js/controllers/videos-details-controller.ts"
-    ]
+    }
 }

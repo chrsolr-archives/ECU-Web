@@ -1,20 +1,9 @@
 ///<reference path="../../../typings/tsd.d.ts" />
-///<reference path="../services/route-resolver-services.ts" />
-
-import IRouteResolverServices = app.services.IRouteResolverServices;
-
-((): void => {
+(function () {
     'use strict';
-
     angular.module('app').config(config);
-    
     config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider'];
-
-    function config(
-            $routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider, 
-            cfpLoadingBarProvider: ng.loadingBar.ILoadingBarProvider, $sceProvider: ng.ISCEProvider
-        ): void {
-        
+    function config($routeProvider, $locationProvider, cfpLoadingBarProvider, $sceProvider) {
         $routeProvider.when('/', {
             templateUrl: '/views/home.html',
             caseInsensitiveMatch: true,
@@ -26,9 +15,9 @@ import IRouteResolverServices = app.services.IRouteResolverServices;
             controller: 'NewsController',
             controllerAs: 'vm',
             resolve: {
-                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverServices): any => {
-                    return RouteResolverServices.resolveNews(50);
-                }]
+                initData: ['$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
+                        return RouteResolverServices.resolveNews(50);
+                    }]
             }
         }).when('/news/details/:permalink', {
             templateUrl: '/views/news-details.html',
@@ -36,9 +25,9 @@ import IRouteResolverServices = app.services.IRouteResolverServices;
             controller: 'NewsDetailsController',
             controllerAs: 'vm',
             resolve: {
-                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverServices): any => {
-                    return RouteResolverServices.resolveNewsDetails($route.current.params.permalink);
-                }]
+                initData: ['$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
+                        return RouteResolverServices.resolveNewsDetails($route.current.params.permalink);
+                    }]
             }
         }).when('/videos', {
             templateUrl: '/views/videos.html',
@@ -46,9 +35,9 @@ import IRouteResolverServices = app.services.IRouteResolverServices;
             controller: 'VideosController',
             controllerAs: 'vm',
             resolve: {
-                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverServices): any => {
-                    return RouteResolverServices.resolveVideos(50);
-                }]
+                initData: ['$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
+                        return RouteResolverServices.resolveVideos(50);
+                    }]
             }
         }).when('/videos/details/:id', {
             templateUrl: '/views/videos-details.html',
@@ -56,9 +45,9 @@ import IRouteResolverServices = app.services.IRouteResolverServices;
             controller: 'VideosDetailsController',
             controllerAs: 'vm',
             resolve: {
-                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverServices): any => {
-                    return RouteResolverServices.resolveVideosDetails($route.current.params.id);
-                }]
+                initData: ['$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
+                        return RouteResolverServices.resolveVideosDetails($route.current.params.id);
+                    }]
             }
         }).when('/about', {
             templateUrl: '/views/about.html',
@@ -72,11 +61,8 @@ import IRouteResolverServices = app.services.IRouteResolverServices;
         }).otherwise({
             redirectTo: '/'
         });
-
         $locationProvider.html5Mode(true);
-
         cfpLoadingBarProvider.includeSpinner = false;
-
         $sceProvider.enabled(false);
     }
 })();
