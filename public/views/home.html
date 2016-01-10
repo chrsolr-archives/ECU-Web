@@ -7,6 +7,7 @@
             <span class="banner-title animated fadeInDown">El Comite Urbano</span>
             <span class="banner-subtitle animated fadeInUp">El Mejor Radio Show En NYC</span>
         </div>
+
         <div class="banner-social">
             <ul class="social-media-share-home">
                 <li>
@@ -57,14 +58,17 @@
 
     <section class="section-bg-dark">
         <div class="container">
-            <uib-carousel id="carousel-tweets" interval="3000" no-wrap="noWrapSlides">
-                <uib-slide ng-repeat="tweet in vm.twitter" active="tweet.active">
-                    <div class="social-media-post-wrapper container text-center">
-                        <span><i class="fa fa-5x fa-twitter"></i></span>
-                        <p class="text-center" ng-bind-html="vm.sanitizeHTML(tweet.html)"></p>
-                    </div>
-                </uib-slide>
-            </uib-carousel>
+            <div class="subscribe-wrapper">
+                <div class="content">
+                    <span class="title">Suscribete!!!</span>
+                    <span class="subtitle">Suscribete para recivir notificaciones sobre las ultimas noticias, eventos y proximos shows.</span>
+                    <form name="form" class="form-inline text-center" ng-submit="vm.subscribe()">
+                        <input type="email" class="form-control form-control-ecu-accent" placeholder="email"
+                               name="email" ng-minlength="6" ng-model="vm.subscribeEmail" required>
+                        <input type="submit" class="btn btn-ecu-accent" ng-disabled="form.$invalid" value="Submit">
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -82,17 +86,14 @@
 
     <section class="section-bg-dark">
         <div class="container">
-            <div class="subscribe-wrapper">
-                <div class="content">
-                    <span class="title">Suscribete!!!</span>
-                    <span class="subtitle">Suscribete para recivir notificaciones sobre las ultimas noticias, eventos y proximos shows.</span>
-                    <form name="form" class="form-inline text-center" ng-submit="vm.subscribe()">
-                        <input type="email" class="form-control form-control-ecu-accent" placeholder="email"
-                               name="email" ng-minlength="6" ng-model="vm.subscribeEmail" required>
-                        <input type="submit" class="btn btn-ecu-accent" ng-disabled="form.$invalid" value="Submit">
-                    </form>
-                </div>
-            </div>
+            <uib-carousel id="carousel-tweets" interval="3000" no-wrap="noWrapSlides">
+                <uib-slide ng-repeat="tweet in vm.twitter" active="tweet.active">
+                    <div class="social-media-post-wrapper container text-center">
+                        <span><i class="fa fa-5x fa-twitter"></i></span>
+                        <p class="text-center" ng-bind-html="vm.sanitizeHTML(tweet.html)"></p>
+                    </div>
+                </uib-slide>
+            </uib-carousel>
         </div>
     </section>
 
