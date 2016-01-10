@@ -57,7 +57,7 @@ var app;
             ;
             HomeController.prototype.subscribe = function () {
                 var _this = this;
-                this.GlobalServices.subscribe(this.subscribeEmail).then(function (data) {
+                _this.GlobalServices.subscribe(_this.subscribeEmail).then(function (data) {
                     if (!data.success)
                         console.error(data);
                     alert(data.message);

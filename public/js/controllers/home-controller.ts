@@ -93,12 +93,14 @@ module app.controllers {
         };
 
         subscribe():void {
-            this.GlobalServices.subscribe(this.subscribeEmail).then((data) => {
+            var _this = this;
+
+            _this.GlobalServices.subscribe(_this.subscribeEmail).then((data) => {
                 if (!data.success) console.error(data);
 
                 alert(data.message);
 
-                this.subscribeEmail = '';
+                _this.subscribeEmail = '';
             });
         };
 
