@@ -334,6 +334,10 @@ a:focus {
 .soundcloud-player-hide {
   bottom: -100% !important;
 }
+.soundcloud-playlist-wrapper ul {
+  list-style: none;
+  padding: 0;
+}
 @media only screen and (max-width: 543px) {
   .section-title,
   .share-title {
