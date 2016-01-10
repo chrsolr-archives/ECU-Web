@@ -12,6 +12,7 @@ var app;
                 this.SoundcloudServices = SoundcloudServices;
                 this.tweets = tweets;
                 var _this = this;
+                _this.audio = document.createElement('audio');
                 _this.GlobalServices.getFeaturedVideo().then(function (data) {
                     _this.featuredVideo = data;
                 });
@@ -30,6 +31,26 @@ var app;
                     _this.songs = data.data;
                 });
             }
+            HomeController.prototype.playTrack = function (index) {
+                var _this = this;
+                if (index < 0)
+                    index = 0;
+                if (index >= _this.songs.length)
+                    index = _this.songs.length - 1;
+                if (_this.selectedTrackIndex === index) {
+                    _this.audio.pause();
+                    _this.clearPlayTrackIcons();
+                    return;
+                }
+                _this.selectedTrackIndex = index;
+                _this.audio.setAttribute('src', _this.songs[index].stream_url);
+                _this.audio.play();
+                _this.togglePlayIcons(index);
+            };
+            HomeController.prototype.downloadTrack = function (url) {
+                window.open(url);
+            };
+            ;
             HomeController.prototype.sanitizeHTML = function (html) {
                 return this.$sce.trustAsHtml(html);
             };
@@ -44,6 +65,13 @@ var app;
                 });
             };
             ;
+            HomeController.prototype.togglePlayIcons = function (index) {
+                this.clearPlayTrackIcons();
+                angular.element(document.querySelector('.sc-play-stop-' + index)).removeClass('pe-7s-play').addClass('pe-7s-close');
+            };
+            HomeController.prototype.clearPlayTrackIcons = function () {
+                angular.element(document).find('[class*="sc-play-stop-"]').removeClass('pe-7s-close').addClass('pe-7s-play');
+            };
             HomeController.$inject = ['$sce', 'GlobalServices', 'NewsServices', 'YoutubeServices', 'SoundcloudServices', 'tweets'];
             return HomeController;
         })();

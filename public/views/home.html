@@ -60,9 +60,12 @@
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">
-                                    <span class="hover-pointer" ng-click="global.playSong($index)">{{song.title}}</span>
+                                    <span class="hover-pointer" ng-click="vm.playTrack($index)">{{song.title}}</span>
                                 </h4>
-                                <span class="hover-pointer" ng-click="global.downloadSong($index)">Download</span>
+                                <div class="soundcloud-player-controllers">
+                                    <span class="pe-7s-play pe-3x pe-va hover-pointer sc-play-stop-{{$index}}" ng-click="vm.playTrack($index)"></span>
+                                    <span class="pe-7s-cloud-download pe-2x pe-va hover-pointer" ng-click="vm.downloadTrack(song.download_url)"></span>
+                                </div>
                             </div>
                         </div>
                     </li>
