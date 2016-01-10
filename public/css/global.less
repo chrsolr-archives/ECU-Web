@@ -410,9 +410,37 @@ a {
 }
 
 .soundcloud-playlist-wrapper {
+  height: 100%;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  span {
+    color: @color-font-light;
+    text-align: center;
+
+    &:hover {
+      color: @color-font-accent;
+    }
+  }
+
   ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+
+    li {
+      padding: @space-level-2 0;
+      border-top: 2px solid @color-bg-primary;
+      display: block;
+
+      span {
+        display: block;
+        text-align: left;
+      }
+    }
   }
 }
 

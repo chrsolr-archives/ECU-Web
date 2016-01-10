@@ -47,20 +47,28 @@
 
     <section class="section-bg-light">
         <div class="container">
+
             <span class="section-title">Musica</span>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-6" ng-repeat="song in vm.songs | limitTo: 12">
-                    <div class="soundcloud-playlist-wrapper">
-                        <a href="{{song.imageUrl}}">
-                            <img class="media-object" src="{{song.imageUrl}}" width="100%">
-                        </a>
-                        <h4>
-                            <span class="hover-pointer">{{song.title | limitTo: 35}} <span ng-show="song.title.length > 35">...</span></span>
-                        </h4>
-                        <span class="hover-pointer">Download</span>
-                    </div>
-                </div>
+            <div class="soundcloud-playlist-wrapper">
+                <ul ng-repeat="song in vm.songs | limitTo: 10">
+                    <li>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="{{song.imageUrl}}">
+                                    <img class="media-object" src="{{song.imageUrl}}" width="100px">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <span class="hover-pointer" ng-click="global.playSong($index)">{{song.title}}</span>
+                                </h4>
+                                <span class="hover-pointer" ng-click="global.downloadSong($index)">Download</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
+
         </div>
     </section>
 

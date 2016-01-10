@@ -334,9 +334,33 @@ a:focus {
 .soundcloud-player-hide {
   bottom: -100% !important;
 }
+.soundcloud-playlist-wrapper {
+  height: 100%;
+  overflow: auto;
+}
+.soundcloud-playlist-wrapper::-webkit-scrollbar {
+  width: 0;
+}
+.soundcloud-playlist-wrapper span {
+  color: #fafafa;
+  text-align: center;
+}
+.soundcloud-playlist-wrapper span:hover {
+  color: #F96816;
+}
 .soundcloud-playlist-wrapper ul {
   list-style: none;
   padding: 0;
+  margin: 0;
+}
+.soundcloud-playlist-wrapper ul li {
+  padding: 10px 0;
+  border-top: 2px solid #181818;
+  display: block;
+}
+.soundcloud-playlist-wrapper ul li span {
+  display: block;
+  text-align: left;
 }
 @media only screen and (max-width: 543px) {
   .section-title,
