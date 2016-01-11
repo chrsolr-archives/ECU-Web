@@ -26,8 +26,10 @@ module.exports = function () {
         config.apis_keys.soundcloud_client_id = api_keys.soundcloud_client_id;
 
     });
+    
+    process.env.NODE_ENV = config.server.env;
 
-    app.use(morgan('dev'));
+    if (process.env.NODE_ENV === 'dev') app.use(morgan('dev'));
 
     // static roots
     app.use('/css', express.static(path.resolve('./public/css')));
