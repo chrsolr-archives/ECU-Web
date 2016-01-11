@@ -12,6 +12,8 @@ var uglify = require('uglify-js');
 var app = express();
 
 module.exports = function () {
+    // setup env
+    process.env.NODE_ENV = config.server.env;
 
     // use body parser & cookie parser
     app.use(bodyParser.urlencoded({extended: true}));
@@ -26,8 +28,6 @@ module.exports = function () {
         config.apis_keys.soundcloud_client_id = api_keys.soundcloud_client_id;
 
     });
-    
-    process.env.NODE_ENV = config.server.env;
 
     if (process.env.NODE_ENV === 'dev') app.use(morgan('dev'));
 
