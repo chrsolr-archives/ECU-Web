@@ -41,7 +41,7 @@ module.exports = function () {
     var uglified = uglify.minify([
         './node_modules/bootstrap/dist/js/bootstrap.min.js',
         './public/libs/soundcloud-audio/soundcloud-audio.js',
-        './node_modules/angular/angular.js',
+        './node_modules/angular/angular.min.js',
         './node_modules/angular-route/angular-route.min.js',
         './node_modules/angular-animate/angular-animate.min.js',
         './node_modules/angular-loading-bar/build/loading-bar.min.js',
@@ -79,7 +79,7 @@ module.exports = function () {
         outSourceMap: "app.min.js.map"
     });
 
-    //fs.writeFileSync('./public/js/app.min.js', uglified.code);
+    fs.writeFileSync('./public/js/app.min.js', uglified.code);
 
     // routes
     require('../app/routes/apis')(app, express);
