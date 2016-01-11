@@ -16,7 +16,7 @@
             controller: 'NewsController',
             controllerAs: 'vm',
             resolve: {
-                initData: ['$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
+                initData: ['RouteResolverServices', function (RouteResolverServices) {
                         return RouteResolverServices.resolveNews(50);
                     }]
             }
@@ -36,7 +36,7 @@
             controller: 'VideosController',
             controllerAs: 'vm',
             resolve: {
-                initData: ['$route', 'RouteResolverServices', function ($route, RouteResolverServices) {
+                initData: ['RouteResolverServices', function (RouteResolverServices) {
                         return RouteResolverServices.resolveVideos(50);
                     }]
             }

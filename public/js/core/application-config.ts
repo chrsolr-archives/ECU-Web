@@ -26,7 +26,7 @@ import IRouteResolverServices = app.services.IRouteResolverServices;
             controller: 'NewsController',
             controllerAs: 'vm',
             resolve: {
-                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverServices): any => {
+                initData: ['RouteResolverServices', (RouteResolverServices: IRouteResolverServices): any => {
                     return RouteResolverServices.resolveNews(50);
                 }]
             }
@@ -46,7 +46,7 @@ import IRouteResolverServices = app.services.IRouteResolverServices;
             controller: 'VideosController',
             controllerAs: 'vm',
             resolve: {
-                initData: ['$route', 'RouteResolverServices', ($route: ng.route.IRouteService, RouteResolverServices: IRouteResolverServices): any => {
+                initData: ['RouteResolverServices', (RouteResolverServices: IRouteResolverServices): any => {
                     return RouteResolverServices.resolveVideos(50);
                 }]
             }

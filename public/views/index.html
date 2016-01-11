@@ -119,8 +119,6 @@
         </a>
     </div>
     <ul>
-        <li><a href="/login">Login</a></li>
-        <li>&bull;</li>
         <li><a href="/about">About</a></li>
         <li>&bull;</li>
         <li><a style="cursor:pointer;" ng-click="global.contactUs()">Contact Us</a></li>
@@ -136,63 +134,6 @@
         <li>Design By: <a href="http://www.iamrelos.com/" target="_blank">&copy; 2016 IamReloS</a></li>
     </ul>
 </footer>
-
-<section class="soundcloud-player-wrapper section-bg-light" ng-class="global.isSideBarOpen ? 'soundcloud-player-hide' : ''" ng-if="false">
-    <div class="mini-player row">
-        <div class="container">
-            <div class="player-buttons-wrapper col-sm-3">
-                <ul>
-                    <li>
-                        <span class="pe-7s-prev pe-2x pe-va hover-pointer" ng-click="global.playSong(global.selectedTrackIndex - 1)"></span>
-                    </li>
-                    <li ng-hide="global.scPlayer.playing">
-                        <span class="pe-7s-play pe-3x pe-va hover-pointer" ng-click="global.playSong(global.selectedTrackIndex)"></span>
-                    </li>
-                    <li ng-hide="!global.scPlayer.playing">
-                        <span class="pe-7s-close pe-3x pe-va hover-pointer" ng-click="global.stopSong()"></span></li>
-                    <li>
-                        <span class="pe-7s-next pe-2x pe-va hover-pointer" ng-click="global.playSong(global.selectedTrackIndex + 1)"></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="album-info-wrapper col-sm-6">
-                <span class="title">{{global.selectedTrack.title}}</span>
-            </div>
-            <div class="options-wrapper col-sm-3">
-                <ul>
-                    <li>
-                        <a class="fa fa-2x fa-va fa-soundcloud hover-pointer" target="_blank" href="{{global.selectedTrack.url}}"></a>
-                    </li>
-                    <li>
-                        <span class="pe-7s-cloud-download pe-2x pe-va hover-pointer" ng-click="global.downloadSong(global.selectedTrackIndex)"></span>
-                    </li>
-                    <li>
-                        <span class="pe-7s-musiclist pe-2x pe-va hover-pointer" ng-click="global.togglePlaylist()"></span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="playlist-wrapper container">
-        <ul ng-repeat="song in global.songs">
-            <li>
-                <div class="media">
-                    <div class="media-left">
-                        <a href="#" ng-click="global.playSong($index)">
-                            <img class="media-object" src="{{song.imageUrl}}" width="100px">
-                        </a>
-                    </div>
-                    <div class="media-body media-middle">
-                        <h4 class="media-heading">
-                            <span class="hover-pointer" ng-click="global.playSong($index)">{{song.title}}</span>
-                        </h4>
-                        <span class="hover-pointer" ng-click="global.downloadSong($index)">Download</span>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-</section>
 
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>

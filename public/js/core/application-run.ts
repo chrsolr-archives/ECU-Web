@@ -1,5 +1,8 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 
+import IGlobalServices = app.services.IGlobalServices;
+import INavigationServices = app.services.INavigationServices;
+
 ((): void => {
     'use strict';
 
@@ -7,7 +10,7 @@
 
     run.$inject = ['$rootScope', 'NavigationServices', 'GlobalServices'];
 
-    function run($rootScope: ng.IRootScopeService, NavigationServices, GlobalServices): void {
+    function run($rootScope: ng.IRootScopeService, NavigationServices: INavigationServices, GlobalServices: IGlobalServices): void {
 
         GlobalServices.getParseKeys().then((data) => {
             Parse.initialize(data.app_key, data.client_key);
