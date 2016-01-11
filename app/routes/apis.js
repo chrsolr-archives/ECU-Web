@@ -172,4 +172,14 @@ module.exports = function (app, express) {
         });
 
     });
+
+    api.get('/parse', function(req, res){
+
+        var keys = {
+            app_key: config.apis_keys.parse_app_key,
+            client_key: config.apis_keys.parse_client_key
+        };
+
+        res.send(keys);
+    });
 };

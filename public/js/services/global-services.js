@@ -56,6 +56,17 @@ var app;
                 });
                 return q.promise;
             };
+            GlobalServices.prototype.getParseKeys = function () {
+                var q = this.$q.defer();
+                this.$http.get('/api/parse')
+                    .success(function (data) {
+                    q.resolve(data);
+                })
+                    .error(function (error) {
+                    q.reject(error);
+                });
+                return q.promise;
+            };
             return GlobalServices;
         })();
         angular.module('services').factory('GlobalServices', ['$http', '$q', function ($http, $q) { return new GlobalServices($http, $q); }]);

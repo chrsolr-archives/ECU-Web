@@ -1,7 +1,6 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 (function () {
     'use strict';
-    Parse.initialize("Mw0dWtJQYVzYlA4vHybSNmuyLJSjzpEpTarhZMEQ", "gXEJhvTtHQcSNrryJ7u9IK4euVWOu00QEGnaK7ow");
     angular.module('services', []);
     angular.module('controllers', []);
     angular.module('filters', []);
