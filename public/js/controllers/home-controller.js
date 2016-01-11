@@ -50,11 +50,9 @@ var app;
             HomeController.prototype.downloadTrack = function (url) {
                 window.open(url);
             };
-            ;
             HomeController.prototype.sanitizeHTML = function (html) {
                 return this.$sce.trustAsHtml(html);
             };
-            ;
             HomeController.prototype.subscribe = function () {
                 var _this = this;
                 _this.GlobalServices.subscribe(_this.subscribeEmail).then(function (data) {
@@ -64,7 +62,6 @@ var app;
                     _this.subscribeEmail = '';
                 });
             };
-            ;
             HomeController.prototype.togglePlayIcons = function (index) {
                 this.clearPlayTrackIcons();
                 angular.element(document.querySelector('.sc-play-stop-' + index)).removeClass('pe-7s-play').addClass('pe-7s-close');

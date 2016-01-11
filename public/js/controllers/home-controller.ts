@@ -49,7 +49,7 @@ module app.controllers {
 
             _this.tweets.get({
                 widgetId: '680180390867283968'
-            }).then(function (data) {
+            }).then((data) => {
                 _this.twitter = data.data.tweets;
             });
 
@@ -86,11 +86,11 @@ module app.controllers {
 
         downloadTrack(url: string): void {
             window.open(url);
-        };
+        }
 
         sanitizeHTML(html:string):void {
             return this.$sce.trustAsHtml(html);
-        };
+        }
 
         subscribe():void {
             var _this = this;
@@ -102,7 +102,7 @@ module app.controllers {
 
                 _this.subscribeEmail = '';
             });
-        };
+        }
 
         togglePlayIcons(index: number):void {
             this.clearPlayTrackIcons();
