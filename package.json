@@ -20,6 +20,7 @@
   "homepage": "https://github.com/iamrelos/ECU-Web#readme",
   "dependencies": {
     "body-parser": "latest",
+    "bower": "^1.7.2",
     "cors": "latest",
     "express": "latest",
     "parse": "latest",

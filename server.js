@@ -12,13 +12,6 @@ if (process.env.NODE_ENV === 'dev') {
 
 	// minify js files
 	var uglified = uglify.minify([
-		'./public/libs/jquery/dist/jquery.min.js',
-		'./public/libs/bootstrap/dist/js/bootstrap.min.js',
-		'./public/libs/angular/angular.min.js',
-		'./public/libs/angular-route/angular-route.min.js',
-		'./public/libs/angular-loading-bar/build/loading-bar.min.js',
-		'./public/libs/angular-bootstrap/ui-bootstrap-tpls.min.js',
-		'./public/libs/ng-tweets/ng-tweets.min.js',
 		'./public/js/core/application.js',
 		'./public/js/core/application-config.js',
 		'./public/js/core/application-run.js',
