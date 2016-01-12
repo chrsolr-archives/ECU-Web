@@ -31,11 +31,9 @@ var app;
                     isScrolled = true;
                 });
                 function onHasScrolled() {
-                    //noinspection JSValidateTypes
                     var top = docWindow.scrollTop();
                     if (Math.abs(lastPosition - top) <= delta)
                         return;
-                    //noinspection JSValidateTypes
                     if ((top > lastPosition) && (top > $nav.outerHeight())) {
                         $nav.addClass('navigation-bar-toggle');
                         $sideBar.removeClass('navigation-bar-sidebar-toggle');
