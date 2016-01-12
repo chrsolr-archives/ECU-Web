@@ -24,7 +24,6 @@ if (process.env.NODE_ENV === 'dev') {
 		'./public/js/services/youtube-services.js',
 		'./public/js/services/soundcloud-services.js',
 		'./public/js/controllers/global-controller.js',
-		//'./public/js/controllers/navbar-controller.js',
 		'./public/js/controllers/home-controller.js',
 		'./public/js/controllers/news-controller.js',
 		'./public/js/controllers/news-details-controller.js',
