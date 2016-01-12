@@ -18,19 +18,15 @@
   },
   "homepage": "https://github.com/iamrelos/ECU-Web#readme",
   "dependencies": {
-    "angular": "latest",
-    "angular-animate": "latest",
-    "angular-loading-bar": "latest",
-    "angular-route": "latest",
-    "angular-ui-bootstrap": "latest",
     "body-parser": "latest",
-    "bootstrap": "latest",
     "cors": "latest",
     "express": "latest",
-    "morgan": "latest",
     "parse": "latest",
     "request": "latest",
-    "sendgrid": "latest",
-    "uglify-js": "latest"
+    "sendgrid": "latest"
+  },
+  "devDependencies": {
+    "morgan": "^1.6.1",
+    "uglify-js": "^2.6.1"
   }
 }
