@@ -1,7 +1,6 @@
 var app = require('./config/express')();
 var config = require('./config/config');
 
-
 if (process.env.NODE_ENV === 'dev') {
 	// ONLY ON DEV ENV
 	var morgan = require('morgan');
