@@ -9,14 +9,14 @@
                 </a>
             </div>
             <div class="navigation-menu-icon-wrapper">
-                    <span class="navigation-bar-menu-icon animated fadeIn" ng-click="vm.toggleSideBar()">
+                    <span class="navigation-bar-menu-icon animated fadeIn" ng-click="navbar.toggleSideBar()">
                         <i class="glyphicon glyphicon-option-vertical"></i>
                     </span>
             </div>
         </div>
     </header>
 
-    <aside class="navigation-bar-sidebar-wrapper" ng-class="vm.isSideBarOpen ? 'navigation-bar-sidebar-toggle' : ''">
+    <aside class="navigation-bar-sidebar-wrapper" ng-class="navbar.isSideBarOpen ? 'navigation-bar-sidebar-toggle' : ''">
         <a href="/">
             <i class="pe-7s-home pe-lg pe-va">
                 <span>HOME</span>
@@ -42,18 +42,6 @@
                 <span>CONTACT</span>
             </i>
         </a>
-        <div ng-if="vm.isLoggedIn">
-            <a href="/admin/dashboard">
-                <i class="pe-7s-edit pe-lg pe-va">
-                    <span>Dashboard</span>
-                </i>
-            </a>
-            <a href="" target="_self" ng-click="vm.logout()">
-                <i class="pe-7s-close-circle pe-lg pe-va">
-                    <span>Logout</span>
-                </i>
-            </a>
-        </div>
         <a href="http://www.iamrelos.com" target="_blank">
             Created By: IamRelos
         </a>
