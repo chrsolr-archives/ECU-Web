@@ -1,10 +1,12 @@
 var app = require('./config/express')();
 var config = require('./config/config');
-var morgan = require('morgan');
-var uglify = require('uglify-js');
-var fs = require('fs');
+
 
 if (process.env.NODE_ENV === 'dev') {
+	// ONLY ON DEV ENV
+	var morgan = require('morgan');
+	var uglify = require('uglify-js');
+	var fs = require('fs');
 
 	// logger
 	app.use(morgan('dev'));
