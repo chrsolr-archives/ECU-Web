@@ -19,6 +19,7 @@ module app.services {
             var news = Parse.Object.extend("News");
             var query = new Parse.Query(news);
             query.descending('createdAt');
+            query.equalTo('isActive', true);
 
             query.limit(queryLimit);
 
