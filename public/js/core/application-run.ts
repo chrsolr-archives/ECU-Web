@@ -12,10 +12,6 @@ import INavigationServices = app.services.INavigationServices;
 
     function run($rootScope: ng.IRootScopeService, NavigationServices: INavigationServices, GlobalServices: IGlobalServices): void {
 
-        GlobalServices.getParseKeys().then((data) => {
-            Parse.initialize(data.app_key, data.client_key);
-        });
-
         $rootScope.$on('$routeChangeStart', (event, next, current): void => {
             NavigationServices.closeSideBar();
         });
