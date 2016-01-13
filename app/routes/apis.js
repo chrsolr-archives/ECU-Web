@@ -100,7 +100,8 @@ module.exports = function (app, express) {
                         imageUrl: cover,
                         dateCreated: item.created_at,
                         stream_url: item.stream_url + '?client_id=' + config.apis_keys.soundcloud_client_id,
-                        download_url: item.download_url + '?client_id=' + config.apis_keys.soundcloud_client_id
+                        download_url: item.download_url + '?client_id=' + config.apis_keys.soundcloud_client_id,
+                        download_count: item.download_count || 0
                     };
 
                     songs.push(track);

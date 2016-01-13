@@ -68,6 +68,7 @@
 
 <!-- Scripts -->
 <script src='/libs/jquery/dist/jquery.min.js'></script>
+<script src='/libs/jQuery.dotdotdot/src/js/jquery.dotdotdot.min.js'></script>
 <script src='/libs/bootstrap/dist/js/bootstrap.min.js'></script>
 <script src='/libs/angular/angular.min.js'></script>
 <script src='/libs/angular-recaptcha/release/angular-recaptcha.min.js'></script>
@@ -92,11 +93,27 @@
     ga("create", "UA-65374309-1", "auto");
     ga("send", "pageview");
 
-    (function ($) {
+    $(function () {
         'use strict';
+        //var $dot = $('.truncate');
+
         $('.banner-title').addClass('animated fadeIn');
         $('.banner-subtitle').addClass('animated fadeIn');
-    })(jQuery);
+
+        //console.log($dot);
+
+//        $dot.dotdotdot({
+//            ellipsis: "… ",
+//            watch: true,
+//            wrap: "letter",
+//            height: parseInt($dot.css("line-height"), 10) * 1, // this is the number of lines
+//            lastCharacter: {
+//                remove: [" ", ",", ";", ".", "!", "?"],
+//                noEllipsis: []
+//            }
+//        });
+    });
+
 </script>
 </body>
 </html>

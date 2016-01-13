@@ -21,6 +21,7 @@
     "angular-route": "~1.4.8",
     "angular-loading-bar": "~0.8.0",
     "angular-bootstrap": "angular-ui-bootstrap-bower#~1.0.3",
-    "angular-recaptcha": "~2.2.5"
+    "angular-recaptcha": "~2.2.5",
+    "jQuery.dotdotdot": "~1.7.4"
   }
 }
