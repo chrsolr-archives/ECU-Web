@@ -10,10 +10,13 @@
             <textarea class="form-control form-control-ecu-accent" name="body" placeholder="Enter message" ng-model="global.contact.body" ng-minlength="4" required></textarea>
             <div class="modal-footer">
                 <button class="btn btn-ecu-accent" type="submit" ng-disabled="form.$invalid">Send</button>
-                <button class="btn btn-ecu-accent" ng-click="$close()">Cancel</button>
+                <button class="btn btn-ecu-accent" type="button" ng-click="global.cancelContactUs()">Cancel</button>
             </div>
-            <div vc-recaptcha key="6LccKhUTAAAAAFW7jJVq2_3bch36LmKpThWQ-HDT"></div>
+            <div style="margin-left: 50%; transform: translateX(-50%); margin-top: 10px;" vc-recaptcha theme="'dark'"
+                 key="'6LccKhUTAAAAAFW7jJVq2_3bch36LmKpThWQ-HDT'"
+                 on-create="global.setWidgetId(widgetId)"
+                 on-success="global.setResponse(global.response)"
+                 on-expire="global.cbExpiration()"></div>
         </form>
     </div>
-
 </div>
