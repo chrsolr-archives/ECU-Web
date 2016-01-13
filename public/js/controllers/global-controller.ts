@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('controllers').controller('GlobalController', ['$scope', 'NavigationServices', '$uibModal', '$uibModalStack', 'GlobalServices', 'vcRecaptchaService',
-        function ($scope, NavigationServices, $uibModal, $uibModalStack, GlobalServices, vcRecaptchaService) {
+    angular.module('controllers').controller('GlobalController', ['$scope', 'NavigationServices', '$uibModal', '$uibModalStack', 'GlobalServices',
+        function ($scope, NavigationServices, $uibModal, $uibModalStack, GlobalServices) {
 
             var global = this;
 
@@ -31,16 +31,5 @@
                 global.isSideBarOpen = data;
             });
 
-            global.setWidgetId = function (widgetId) {
-                console.info('Created widget ID: %s', widgetId);
-            };
-
-            global.setResponse = function (response) {
-                console.info('Response available');
-            };
-
-            global.cbExpiration = function () {
-                console.info('Captcha expired. Resetting response object');
-            };
         }]);
 })();
