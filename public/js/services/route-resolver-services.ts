@@ -18,7 +18,7 @@ module app.services {
 
         resolveVideosDetails(videoId: string):ng.IPromise<any> {
             return this.$q.all([
-                this.YoutubeServices.getYouTubeVideoById(videoId)
+                this.YoutubeServices.getYouTubeVideoById(videoId),
             ]).then((results: any[]): any => {
                 return {
                     video: results[0].data

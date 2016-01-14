@@ -14,7 +14,7 @@ var app;
             }
             RouteResolverServices.prototype.resolveVideosDetails = function (videoId) {
                 return this.$q.all([
-                    this.YoutubeServices.getYouTubeVideoById(videoId)
+                    this.YoutubeServices.getYouTubeVideoById(videoId),
                 ]).then(function (results) {
                     return {
                         video: results[0].data

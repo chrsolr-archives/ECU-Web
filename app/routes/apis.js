@@ -93,8 +93,11 @@ module.exports = function (app, express) {
 
                     cover = (cover) ? cover.replace("large", "t500x500") : "https://i1.sndcdn.com/avatars-000138805507-sejp8z-t500x500.jpg";
 
+                    var meta = item.title.split(' - ');
+
                     var track = {
-                        title: item.title,
+                        artists: meta[0],
+                        title: meta[1],
                         trackId: item.id,
                         url: item.permalink_url,
                         imageUrl: cover,

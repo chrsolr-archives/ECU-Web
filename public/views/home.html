@@ -60,10 +60,11 @@
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="media-heading truncate">
-                                        <span class="hover-pointer " style="display: inline; margin-bottom: 5px;" ng-click="vm.playTrack($index)">
-                                            {{song.title}}
-                                        </span>
+                                    <h4 class="media-heading">
+                                        <span class="artist-name" ng-bind="song.artists"></span>
+                                        <span class="track-title truncate"
+                                              ng-click="vm.playTrack($index)"
+                                              ng-bind="song.title"></span>
                                         <br>
                                     </h4>
                                         <small>{{song.playback_count | number}} plays</small>
