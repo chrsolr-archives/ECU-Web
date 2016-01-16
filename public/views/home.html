@@ -137,34 +137,20 @@
     <section class="section-bg-dark">
         <div class="container">
             <uib-carousel id="carousel-tweets" interval="3000" no-wrap="noWrapSlides" class="carousel-fade">
-                <uib-slide ng-repeat="promo in vm.promos" active="promo.active">
+                <uib-slide ng-repeat="content in vm.promos" active="content.active">
 
                     <div class="row">
-
-                        <div class="col-xs-6">
+                        <div class="col-xs-6" ng-repeat="promo in content.content">
                             <div class="promo-wrapper">
-                                <img src="{{promo.content[0].banner}}" class="img-responsive">
+                                <img src="{{promo.banner}}" class="img-responsive">
 
                                 <div class="content">
-                                    <span class="artists" ng-bind="promo.content[0].artists"></span>
-                                    <span class="title" ng-bind="promo.content[0].title"></span>
-                                    <a href="{{promo.content[0].download}}" class="download-link">Download</a>
+                                    <span class="artists" ng-bind="promo.artists"></span>
+                                    <span class="title" ng-bind="promo.title"></span>
+                                    <a href="{{promo.download}}" class="download-link">Download</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-xs-6">
-                            <div class="promo-wrapper">
-                                <img src="{{promo.content[1].banner}}" class="img-responsive">
-
-                                <div class="content">
-                                    <span class="artists" ng-bind="promo.content[1].artists"></span>
-                                    <span class="title" ng-bind="promo.content[1].title"></span>
-                                    <a href="{{promo.content[1].download}}" class="download-link" target="_blank">Download</a>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
                 </uib-slide>
