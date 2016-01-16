@@ -160,20 +160,24 @@
     </section>
 
     <script>
-        setTimeout(function() {
-            var $dot = $('.truncate');
+        (function(){
+            'use strict';
 
-            $dot.dotdotdot({
-                ellipsis: "… ",
-                watch: true,
-                wrap: "letter",
-                height: parseInt($dot.css("line-height"), 10) * 1, // this is the number of lines
-                lastCharacter: {
-                    remove: [" ", ",", ";", ".", "!", "?"],
-                    noEllipsis: []
-                }
-            });
-        }, 3000)
+            setTimeout(function() {
+                var $dot = $('.truncate');
+
+                $dot.dotdotdot({
+                    ellipsis: "… ",
+                    watch: true,
+                    wrap: "letter",
+                    height: parseInt($dot.css("line-height"), 10), // this is the number of lines
+                    lastCharacter: {
+                        remove: [" ", ",", ";", ".", "!", "?"],
+                        noEllipsis: []
+                    }
+                });
+            }, 3000);
+        })();
     </script>
 
 </div>
