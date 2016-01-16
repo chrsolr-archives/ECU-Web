@@ -142,8 +142,9 @@
         </div>
     </section>
 
-    <section class="section-bg-dark">
+    <section class="section-bg-dark" ng-if="vm.promos.length > 0">
         <div class="container">
+            <span class="section-title">Promos</span>
             <uib-carousel id="carousel-tweets" interval="3000" no-wrap="noWrapSlides" class="carousel-fade">
                 <uib-slide ng-repeat="content in vm.promos" active="content.active">
 
