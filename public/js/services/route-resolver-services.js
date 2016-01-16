@@ -1,16 +1,16 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 ///<reference path="youtube-services.ts"/>
-///<reference path="news-services.ts"/>
+///<reference path="data-services.ts"/>
 var app;
 (function (app) {
     var services;
     (function (services) {
         'use strict';
         var RouteResolverServices = (function () {
-            function RouteResolverServices($q, YoutubeServices, NewsServices) {
+            function RouteResolverServices($q, YoutubeServices, DataServices) {
                 this.$q = $q;
                 this.YoutubeServices = YoutubeServices;
-                this.NewsServices = NewsServices;
+                this.DataServices = DataServices;
             }
             RouteResolverServices.prototype.resolveVideosDetails = function (videoId) {
                 return this.$q.all([
@@ -32,7 +32,7 @@ var app;
             };
             RouteResolverServices.prototype.resolveNews = function (max) {
                 return this.$q.all([
-                    this.NewsServices.getNews(max)
+                    this.DataServices.getNews(max)
                 ]).then(function (results) {
                     return {
                         data: results[0]
@@ -41,7 +41,7 @@ var app;
             };
             RouteResolverServices.prototype.resolveNewsDetails = function (permalink) {
                 return this.$q.all([
-                    this.NewsServices.getNewsByPermalink(permalink)
+                    this.DataServices.getNewsByPermalink(permalink)
                 ]).then(function (results) {
                     return {
                         data: results[0]
@@ -51,7 +51,7 @@ var app;
             return RouteResolverServices;
         })();
         angular.module('services')
-            .factory('RouteResolverServices', ['$q', 'YoutubeServices', 'NewsServices', function ($q, YoutubeServices, NewsServices) { return new RouteResolverServices($q, YoutubeServices, NewsServices); }]);
+            .factory('RouteResolverServices', ['$q', 'YoutubeServices', 'DataServices', function ($q, YoutubeServices, DataServices) { return new RouteResolverServices($q, YoutubeServices, DataServices); }]);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
 //# sourceMappingURL=route-resolver-services.js.map

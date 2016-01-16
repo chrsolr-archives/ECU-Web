@@ -4,11 +4,38 @@ var app;
     var services;
     (function (services) {
         'use strict';
-        var NewsServices = (function () {
-            function NewsServices($q) {
+        var DataServices = (function () {
+            function DataServices($http, $q) {
+                this.$http = $http;
                 this.$q = $q;
             }
-            NewsServices.prototype.getNews = function (max) {
+            DataServices.prototype.getPromos = function () {
+                var q = this.$q.defer();
+                var Promo = Parse.Object.extend("Promo");
+                var query = new Parse.Query(Promo);
+                query.descending('createdAt');
+                query.equalTo('isActive', true);
+                query.limit(10);
+                query.find({
+                    success: function (objects) {
+                        var data = [];
+                        for (var i = 0; i < objects.length; i++) {
+                            if (i % 2 === 0) {
+                                var content = { content: [] };
+                                content.content.push(objects[i].toJSON());
+                                content.content.push(objects[i + 1].toJSON());
+                                data.push(content);
+                            }
+                        }
+                        q.resolve(data);
+                    },
+                    error: function (error) {
+                        q.reject("Error: " + error.code + " " + error.message);
+                    }
+                });
+                return q.promise;
+            };
+            DataServices.prototype.getNews = function (max) {
                 var q = this.$q.defer();
                 var queryLimit = max || 50;
                 var news = Parse.Object.extend("News");
@@ -30,7 +57,7 @@ var app;
                 });
                 return q.promise;
             };
-            NewsServices.prototype.getNewsByPermalink = function (permalink) {
+            DataServices.prototype.getNewsByPermalink = function (permalink) {
                 var q = this.$q.defer();
                 var news = Parse.Object.extend("News");
                 var query = new Parse.Query(news);
@@ -45,9 +72,11 @@ var app;
                 });
                 return q.promise;
             };
-            return NewsServices;
+            DataServices.$inject = ['$http', '$q'];
+            return DataServices;
         })();
-        angular.module('services').factory('NewsServices', ['$q', function ($q) { return new NewsServices($q); }]);
+        angular.module('services')
+            .service('DataServices', DataServices);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=news-services.js.map
+//# sourceMappingURL=data-services.js.map

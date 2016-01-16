@@ -1,6 +1,6 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 ///<reference path="youtube-services.ts"/>
-///<reference path="news-services.ts"/>
+///<reference path="data-services.ts"/>
 
 module app.services {
     'use strict';
@@ -14,7 +14,7 @@ module app.services {
 
     class RouteResolverServices implements IRouteResolverServices {
 
-        constructor(private $q: ng.IQService, private YoutubeServices: IYoutubeServices, private NewsServices: INewsServices){ }
+        constructor(private $q: ng.IQService, private YoutubeServices: IYoutubeServices, private DataServices: IDataServices){ }
 
         resolveVideosDetails(videoId: string):ng.IPromise<any> {
             return this.$q.all([
@@ -38,7 +38,7 @@ module app.services {
         
         resolveNews(max: number): ng.IPromise<any> {
             return this.$q.all([
-                this.NewsServices.getNews(max)
+                this.DataServices.getNews(max)
             ]).then((results: any[]): any => {
                 return {
                     data: results[0]
@@ -48,7 +48,7 @@ module app.services {
         
         resolveNewsDetails(permalink: string): ng.IPromise<any> {
             return this.$q.all([
-                this.NewsServices.getNewsByPermalink(permalink)
+                this.DataServices.getNewsByPermalink(permalink)
             ]).then((results: any[]): any => {
                 return {
                     data: results[0]
@@ -59,5 +59,5 @@ module app.services {
 
     angular.module('services')
         .factory('RouteResolverServices',
-            ['$q', 'YoutubeServices', 'NewsServices', ($q, YoutubeServices, NewsServices) => new RouteResolverServices($q, YoutubeServices, NewsServices)]);
+            ['$q', 'YoutubeServices', 'DataServices', ($q, YoutubeServices, DataServices) => new RouteResolverServices($q, YoutubeServices, DataServices)]);
 }

@@ -3,14 +3,53 @@
 module app.services {
     'use strict';
 
-    export interface INewsServices {
+    export interface IDataServices {
+        getPromos(): ng.IPromise<any>;
         getNews(max: number): ng.IPromise<any>;
         getNewsByPermalink(permalink: string): ng.IPromise<any>;
     }
 
-    class NewsServices implements INewsServices {
-        constructor(private $q: ng.IQService) {}
-        
+    class DataServices implements IDataServices {
+
+        static $inject = ['$http', '$q'];
+
+        constructor(private $http:ng.IHttpService, private $q:ng.IQService) {
+
+        }
+
+        getPromos():ng.IPromise<any> {
+            var q = this.$q.defer();
+
+            var Promo = Parse.Object.extend("Promo");
+            var query = new Parse.Query(Promo);
+
+            query.descending('createdAt');
+            query.equalTo('isActive', true);
+            query.limit(10);
+
+            query.find({
+                success: (objects) => {
+                    var data = [];
+
+                    for (let i = 0; i < objects.length; i++) {
+                        if (i%2 === 0) {
+                            var content = { content: [] };
+                            content.content.push(objects[i].toJSON());
+                            content.content.push(objects[i+1].toJSON());
+                            data.push(content);
+                        }
+                    }
+
+                    q.resolve(data);
+                },
+                error: (error) => {
+                    q.reject("Error: " + error.code + " " + error.message);
+                }
+            });
+
+            return q.promise;
+        }
+
         getNews(max: number): ng.IPromise<any>{
             var q = this.$q.defer();
 
@@ -40,7 +79,7 @@ module app.services {
 
             return q.promise;
         }
-        
+
         getNewsByPermalink(permalink: string): ng.IPromise<any>{
             var q = this.$q.defer();
 
@@ -60,5 +99,6 @@ module app.services {
         }
     }
 
-    angular.module('services').factory('NewsServices', ['$q', ($q) => new NewsServices($q)]);
+    angular.module('services')
+        .service('DataServices', DataServices);
 }

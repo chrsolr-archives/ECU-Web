@@ -20,9 +20,9 @@ if (process.env.NODE_ENV === 'dev') {
 		'./public/js/services/navigation-services.js',
 		'./public/js/services/route-resolver-services.js',
 		'./public/js/services/global-services.js',
-		'./public/js/services/news-services.js',
 		'./public/js/services/youtube-services.js',
 		'./public/js/services/soundcloud-services.js',
+		'./public/js/services/data-services.js',
 		'./public/js/controllers/global-controller.js',
 		'./public/js/controllers/home-controller.js',
 		'./public/js/controllers/news-controller.js',
@@ -30,16 +30,16 @@ if (process.env.NODE_ENV === 'dev') {
 		'./public/js/controllers/videos-controller.js',
 		'./public/js/controllers/videos-details-controller.js'
 	], {
-		mangle: false,
+		mangle: true,
 		compress: {
-			sequences: true,
-			dead_code: true,
-			conditionals: true,
-			booleans: true,
-			unused: true,
-			if_return: true,
-			join_vars: true,
-			drop_console: true
+			//sequences: true,
+			//dead_code: true,
+			//conditionals: true,
+			//booleans: true,
+			//unused: true,
+			//if_return: true,
+			//join_vars: true,
+			//drop_console: true
 		},
 		outSourceMap: "app.min.js.map"
 	});

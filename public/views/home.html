@@ -142,12 +142,12 @@
                     <div class="row">
                         <div class="col-xs-6" ng-repeat="promo in content.content">
                             <div class="promo-wrapper">
-                                <img src="{{promo.banner}}" class="img-responsive">
+                                <img src="{{promo.imageUrl}}" class="img-responsive">
 
                                 <div class="content">
                                     <span class="artists" ng-bind="promo.artists"></span>
                                     <span class="title" ng-bind="promo.title"></span>
-                                    <a href="{{promo.download}}" class="download-link">Download</a>
+                                    <a href="{{promo.downloadUrl}}" class="download-link">Download</a>
                                 </div>
                             </div>
                         </div>

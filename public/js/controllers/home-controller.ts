@@ -1,12 +1,13 @@
 ///<reference path="../../../typings/tsd.d.ts" />
+///<reference path="../services/data-services.ts" />
 
 module app.controllers {
 
     import ISCEService = angular.ISCEService;
     import IGlobalServices = app.services.IGlobalServices;
-    import INewsServices = app.services.INewsServices;
     import IYoutubeServices = app.services.IYoutubeServices;
     import ISoundcloudServices = app.services.ISoundcloudServices;
+    import IDataServices = app.services.IDataServices;
 
     interface IHomeController {
         featuredVideo: any;
@@ -19,8 +20,8 @@ module app.controllers {
         promos: any;
         sanitizeHTML(html:string): void;
         subscribe(): void;
-        playTrack(index: number): void;
-        downloadTrack(url: string): void;
+        playTrack(index:number): void;
+        downloadTrack(url:string): void;
     }
 
     class HomeController implements IHomeController {
@@ -30,13 +31,13 @@ module app.controllers {
         youtube:any;
         songs:any;
         subscribeEmail:string;
-        audio: any;
-        selectedTrackIndex: number;
-        promos: any;
+        audio:any;
+        selectedTrackIndex:number;
+        promos:any;
 
-        static $inject = ['$sce', 'GlobalServices', 'NewsServices', 'YoutubeServices', 'SoundcloudServices', 'tweets'];
+        static $inject = ['$sce', 'GlobalServices', 'YoutubeServices', 'SoundcloudServices', 'tweets', 'DataServices'];
 
-        constructor(private $sce:ISCEService, private GlobalServices:IGlobalServices, private NewsServices:INewsServices, private YoutubeServices:IYoutubeServices, private SoundcloudServices:ISoundcloudServices, private tweets:any) {
+        constructor(private $sce:ISCEService, private GlobalServices:IGlobalServices, private YoutubeServices:IYoutubeServices, private SoundcloudServices:ISoundcloudServices, private tweets:any, private DataServices:IDataServices) {
             var _this = this;
 
             _this.audio = document.createElement('audio');
@@ -45,7 +46,7 @@ module app.controllers {
                 _this.featuredVideo = data;
             });
 
-            _this.NewsServices.getNews(8).then((data) => {
+            _this.DataServices.getNews(8).then((data) => {
                 _this.news = data;
             });
 
@@ -63,45 +64,12 @@ module app.controllers {
                 _this.songs = data.data;
             });
 
-            _this.promos = [
-
-                {
-                    content: [
-                        {
-                            title: 'Prohibido Buscarte',
-                            artists: 'Darkiel',
-                            banner: 'https://i1.sndcdn.com/artworks-000127925725-cotg4h-t500x500.jpg',
-                            download: 'https://i1.sndcdn.com/artworks-000127925725-cotg4h-t500x500.jpg'
-                        },
-                        {
-                            title: 'Pablo Escobar',
-                            artists: 'Kartel Montana',
-                            banner: 'https://41.media.tumblr.com/9167887e9d7f1c032d2e35ec2b6e13b5/tumblr_nxs0qckUyn1u7cg9jo1_500.jpg',
-                            download: 'https://41.media.tumblr.com/9167887e9d7f1c032d2e35ec2b6e13b5/tumblr_nxs0qckUyn1u7cg9jo1_500.jpg'
-                        }
-                    ]
-                },
-                {
-                    content: [
-                        {
-                            title: 'Real G',
-                            artists: 'Ñengo Flow',
-                            banner: 'http://hw-img.datpiff.com/m384e5c1/Nengo_Flow_Real_G-front-large.jpg',
-                            download: 'http://hw-img.datpiff.com/m384e5c1/Nengo_Flow_Real_G-front-large.jpg'
-                        },
-                        {
-                            title: 'El Eslabon Mas Grueso',
-                            artists: 'Juanka El Problematik',
-                            banner: 'https://i1.sndcdn.com/avatars-000106334666-3pmyuu-t500x500.jpg',
-                            download: 'https://i1.sndcdn.com/avatars-000106334666-3pmyuu-t500x500.jpg'
-                        }
-                    ]
-                }
-
-            ];
+            _this.DataServices.getPromos().then((data) => {
+                _this.promos = data;
+            });
         }
 
-        playTrack(index: number):void {
+        playTrack(index:number):void {
             var _this = this;
 
             if (index < 0) index = 0;
@@ -123,7 +91,7 @@ module app.controllers {
             _this.togglePlayIcons(index);
         }
 
-        downloadTrack(url: string): void {
+        downloadTrack(url:string):void {
             window.open(url);
         }
 
@@ -143,7 +111,7 @@ module app.controllers {
             });
         }
 
-        togglePlayIcons(index: number):void {
+        togglePlayIcons(index:number):void {
             this.clearPlayTrackIcons();
             angular.element(document.querySelector('.sc-play-stop-' + index)).removeClass('pe-7s-play').addClass('pe-7s-close');
         }
