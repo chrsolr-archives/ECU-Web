@@ -16,6 +16,7 @@ module app.controllers {
         songs: any;
         subscribeEmail: string;
         audio: any;
+        promos: any;
         sanitizeHTML(html:string): void;
         subscribe(): void;
         playTrack(index: number): void;
@@ -31,6 +32,7 @@ module app.controllers {
         subscribeEmail:string;
         audio: any;
         selectedTrackIndex: number;
+        promos: any;
 
         static $inject = ['$sce', 'GlobalServices', 'NewsServices', 'YoutubeServices', 'SoundcloudServices', 'tweets'];
 
@@ -60,6 +62,43 @@ module app.controllers {
             _this.SoundcloudServices.getSoundcloudSongs().then((data) => {
                 _this.songs = data.data;
             });
+
+            _this.promos = [
+
+                {
+                    content: [
+                        {
+                            title: 'Prohibido Buscarte',
+                            artists: 'Darkiel',
+                            banner: 'https://i1.sndcdn.com/artworks-000127925725-cotg4h-t500x500.jpg',
+                            download: 'https://i1.sndcdn.com/artworks-000127925725-cotg4h-t500x500.jpg'
+                        },
+                        {
+                            title: 'Pablo Escobar',
+                            artists: 'Kartel Montana',
+                            banner: 'https://41.media.tumblr.com/9167887e9d7f1c032d2e35ec2b6e13b5/tumblr_nxs0qckUyn1u7cg9jo1_500.jpg',
+                            download: 'https://41.media.tumblr.com/9167887e9d7f1c032d2e35ec2b6e13b5/tumblr_nxs0qckUyn1u7cg9jo1_500.jpg'
+                        }
+                    ]
+                },
+                {
+                    content: [
+                        {
+                            title: 'Real G',
+                            artists: 'Ñengo Flow',
+                            banner: 'http://hw-img.datpiff.com/m384e5c1/Nengo_Flow_Real_G-front-large.jpg',
+                            download: 'http://hw-img.datpiff.com/m384e5c1/Nengo_Flow_Real_G-front-large.jpg'
+                        },
+                        {
+                            title: 'El Eslabon Mas Grueso',
+                            artists: 'Juanka El Problematik',
+                            banner: 'https://i1.sndcdn.com/avatars-000106334666-3pmyuu-t500x500.jpg',
+                            download: 'https://i1.sndcdn.com/avatars-000106334666-3pmyuu-t500x500.jpg'
+                        }
+                    ]
+                }
+
+            ];
         }
 
         playTrack(index: number):void {
