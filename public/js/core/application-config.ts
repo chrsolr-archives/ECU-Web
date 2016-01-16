@@ -7,14 +7,14 @@ import IRouteResolverServices = app.services.IRouteResolverServices;
     'use strict';
 
     angular.module('app').config(config);
-    
+
     config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider'];
 
     function config(
-            $routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider, 
+            $routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider,
             cfpLoadingBarProvider: ng.loadingBar.ILoadingBarProvider, $sceProvider: ng.ISCEProvider
         ): void {
-        
+
         $routeProvider.when('/', {
             templateUrl: '/views/home.html',
             caseInsensitiveMatch: true,
