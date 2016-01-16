@@ -37,13 +37,6 @@ var app;
                     _this.promos = data;
                 });
                 $rootScope.$on("fb.init", function () {
-                    console.log("SDK Ready");
-                    facebook.getUser().then(function (r) {
-                        console.log(r.user); //User data returned;
-                        console.log(r.authResponse); //Token auth, id etc..
-                    }, function (err) {
-                        console.log("Ops, something went wrong...");
-                    });
                 });
             }
             HomeController.prototype.playTrack = function (index) {
@@ -75,6 +68,20 @@ var app;
                         console.error(data);
                     alert(data.message);
                     _this.subscribeEmail = '';
+                });
+            };
+            HomeController.prototype.subscribeWithFacebook = function () {
+                var _this = this;
+                _this.facebook.getUser(null, { fields: 'name, email' }).then(function (data) {
+                    var user = data.user;
+                    _this.GlobalServices.subscribe(user.email, user.name).then(function (data) {
+                        if (!data.success)
+                            console.error(data);
+                        alert(data.message);
+                        _this.subscribeEmail = '';
+                    });
+                }, function (err) {
+                    console.log(err);
                 });
             };
             HomeController.prototype.togglePlayIcons = function (index) {

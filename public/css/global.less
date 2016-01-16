@@ -8,6 +8,13 @@ a {
   }
 }
 
+.on-hover-accent {
+  &:hover {
+    color: @color-font-accent;
+    cursor: pointer;
+  }
+}
+
 .no-padding {
   padding: 0;
 }
@@ -112,6 +119,24 @@ a {
       display: block;
       color: @color-font-dark;
       font-size: @font-size-regular;
+    }
+  }
+}
+
+ul.subscribe-social-media {
+  padding: 0;
+  margin: 10px 0 0 0;
+  text-align: center;
+  list-style: none;
+
+  li {
+
+    span {
+
+      &:hover {
+        color: @color-font-accent;
+        cursor: pointer;
+      }
     }
   }
 }

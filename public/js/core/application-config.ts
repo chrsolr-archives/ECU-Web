@@ -80,6 +80,6 @@ import IRouteResolverServices = app.services.IRouteResolverServices;
         $sceProvider.enabled(false);
 
         facebookProvider.setInitParams('900436863361296',true,true,true,'v2.4');
-        facebookProvider.setPermissions(['email','read_stream']);
+        facebookProvider.setPermissions(['email', 'public_profile']);
     }
 })();

@@ -4,7 +4,7 @@ module app.services {
 
     export interface IGlobalServices {
         getFeaturedVideo(): ng.IPromise<any>;
-        subscribe(email:string): ng.IPromise<any>;
+        subscribe(email:string, name?:string): ng.IPromise<any>;
         contactUs(contact:string): ng.IPromise<any>;
         getParseKeys():ng.IPromise<any>;
     }
@@ -41,10 +41,10 @@ module app.services {
             return q.promise;
         }
 
-        subscribe(email:string):ng.IPromise<any> {
+        subscribe(email:string, name?:string):ng.IPromise<any> {
             var q = this.$q.defer();
 
-            this.$http.post('/api/subscribe', {email: email})
+            this.$http.post('/api/subscribe', {email: email, name: name})
                 .success((data) => {
                     q.resolve(data);
                 })

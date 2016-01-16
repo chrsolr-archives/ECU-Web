@@ -66,7 +66,7 @@
         cfpLoadingBarProvider.includeSpinner = false;
         $sceProvider.enabled(false);
         facebookProvider.setInitParams('900436863361296', true, true, true, 'v2.4');
-        facebookProvider.setPermissions(['email', 'read_stream']);
+        facebookProvider.setPermissions(['email', 'public_profile']);
     }
 })();
 //# sourceMappingURL=application-config.js.map

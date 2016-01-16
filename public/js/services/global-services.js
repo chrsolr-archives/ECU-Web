@@ -34,9 +34,9 @@ var app;
                 }
                 return q.promise;
             };
-            GlobalServices.prototype.subscribe = function (email) {
+            GlobalServices.prototype.subscribe = function (email, name) {
                 var q = this.$q.defer();
-                this.$http.post('/api/subscribe', { email: email })
+                this.$http.post('/api/subscribe', { email: email, name: name })
                     .success(function (data) {
                     q.resolve(data);
                 })

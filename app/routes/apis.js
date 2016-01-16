@@ -119,6 +119,7 @@ module.exports = function (app, express) {
 
     api.post('/subscribe', function(req, res){
         var email = req.body.email;
+        var name = req.body.name || '';
 
         if (!email) res.send({success: false, message: 'Email is empty.'});
 
@@ -138,6 +139,7 @@ module.exports = function (app, express) {
                     var subscription = new Subscription();
 
                     subscription.set("email", email);
+                    subscription.set("name", name);
                     subscription.set("isActive", true);
                     subscription.set("canonical", email.toUpperCase());
 

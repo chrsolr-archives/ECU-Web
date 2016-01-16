@@ -5,6 +5,10 @@ a:hover,
 a:focus {
   text-decoration: none;
 }
+.on-hover-accent:hover {
+  color: #F96816;
+  cursor: pointer;
+}
 .no-padding {
   padding: 0;
 }
@@ -94,6 +98,16 @@ a:focus {
   display: block;
   color: #a1a1a1;
   font-size: 16px;
+}
+ul.subscribe-social-media {
+  padding: 0;
+  margin: 10px 0 0 0;
+  text-align: center;
+  list-style: none;
+}
+ul.subscribe-social-media li span:hover {
+  color: #F96816;
+  cursor: pointer;
 }
 .carousel-indicators li {
   display: none;

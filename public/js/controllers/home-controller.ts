@@ -23,6 +23,7 @@ module app.controllers {
         subscribe(): void;
         playTrack(index:number): void;
         downloadTrack(url:string): void;
+        subscribeWithFacebook(): void;
     }
 
     class HomeController implements IHomeController {
@@ -40,7 +41,7 @@ module app.controllers {
 
         constructor(private $sce:ISCEService, private GlobalServices:IGlobalServices,
                     private YoutubeServices:IYoutubeServices, private SoundcloudServices:ISoundcloudServices,
-                    private tweets:any, private DataServices:IDataServices, private facebook: any, private $rootScope: IRootScopeService) {
+                    private tweets:any, private DataServices:IDataServices, private facebook:any, private $rootScope:IRootScopeService) {
             var _this = this;
 
             _this.audio = document.createElement('audio');
@@ -71,14 +72,8 @@ module app.controllers {
                 _this.promos = data;
             });
 
-            $rootScope.$on("fb.init",function(){
-                console.log("SDK Ready");
-                facebook.getUser().then(function(r){
-                    console.log(r.user); //User data returned;
-                    console.log(r.authResponse); //Token auth, id etc..
-                }, function(err){
-                    console.log("Ops, something went wrong...");
-                });
+            $rootScope.$on("fb.init", () => {
+
             });
         }
 
@@ -121,6 +116,25 @@ module app.controllers {
                 alert(data.message);
 
                 _this.subscribeEmail = '';
+            });
+        }
+
+        subscribeWithFacebook():void {
+            var _this = this;
+
+            _this.facebook.getUser(null, {fields: 'name, email'}).then((data) => {
+                var user = data.user;
+
+                _this.GlobalServices.subscribe(user.email, user.name).then((data) => {
+                    if (!data.success) console.error(data);
+
+                    alert(data.message);
+
+                    _this.subscribeEmail = '';
+                });
+
+            }, (err) => {
+                console.log(err);
             });
         }
 
