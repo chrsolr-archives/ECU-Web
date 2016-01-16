@@ -8,6 +8,7 @@ module app.controllers {
     import IYoutubeServices = app.services.IYoutubeServices;
     import ISoundcloudServices = app.services.ISoundcloudServices;
     import IDataServices = app.services.IDataServices;
+    import IRootScopeService = angular.IRootScopeService;
 
     interface IHomeController {
         featuredVideo: any;
@@ -35,9 +36,11 @@ module app.controllers {
         selectedTrackIndex:number;
         promos:any;
 
-        static $inject = ['$sce', 'GlobalServices', 'YoutubeServices', 'SoundcloudServices', 'tweets', 'DataServices'];
+        static $inject = ['$sce', 'GlobalServices', 'YoutubeServices', 'SoundcloudServices', 'tweets', 'DataServices', 'facebook', '$rootScope'];
 
-        constructor(private $sce:ISCEService, private GlobalServices:IGlobalServices, private YoutubeServices:IYoutubeServices, private SoundcloudServices:ISoundcloudServices, private tweets:any, private DataServices:IDataServices) {
+        constructor(private $sce:ISCEService, private GlobalServices:IGlobalServices,
+                    private YoutubeServices:IYoutubeServices, private SoundcloudServices:ISoundcloudServices,
+                    private tweets:any, private DataServices:IDataServices, private facebook: any, private $rootScope: IRootScopeService) {
             var _this = this;
 
             _this.audio = document.createElement('audio');
@@ -66,6 +69,16 @@ module app.controllers {
 
             _this.DataServices.getPromos().then((data) => {
                 _this.promos = data;
+            });
+
+            $rootScope.$on("fb.init",function(){
+                console.log("SDK Ready");
+                facebook.getUser().then(function(r){
+                    console.log(r.user); //User data returned;
+                    console.log(r.authResponse); //Token auth, id etc..
+                }, function(err){
+                    console.log("Ops, something went wrong...");
+                });
             });
         }
 

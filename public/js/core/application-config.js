@@ -3,8 +3,8 @@
 (function () {
     'use strict';
     angular.module('app').config(config);
-    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider'];
-    function config($routeProvider, $locationProvider, cfpLoadingBarProvider, $sceProvider) {
+    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider', 'facebookProvider'];
+    function config($routeProvider, $locationProvider, cfpLoadingBarProvider, $sceProvider, facebookProvider) {
         $routeProvider.when('/', {
             templateUrl: '/views/home.html',
             caseInsensitiveMatch: true,
@@ -65,6 +65,8 @@
         $locationProvider.html5Mode(true);
         cfpLoadingBarProvider.includeSpinner = false;
         $sceProvider.enabled(false);
+        facebookProvider.setInitParams('900436863361296', true, true, true, 'v2.4');
+        facebookProvider.setPermissions(['email', 'read_stream']);
     }
 })();
 //# sourceMappingURL=application-config.js.map

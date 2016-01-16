@@ -5,13 +5,15 @@ var app;
     var controllers;
     (function (controllers) {
         var HomeController = (function () {
-            function HomeController($sce, GlobalServices, YoutubeServices, SoundcloudServices, tweets, DataServices) {
+            function HomeController($sce, GlobalServices, YoutubeServices, SoundcloudServices, tweets, DataServices, facebook, $rootScope) {
                 this.$sce = $sce;
                 this.GlobalServices = GlobalServices;
                 this.YoutubeServices = YoutubeServices;
                 this.SoundcloudServices = SoundcloudServices;
                 this.tweets = tweets;
                 this.DataServices = DataServices;
+                this.facebook = facebook;
+                this.$rootScope = $rootScope;
                 var _this = this;
                 _this.audio = document.createElement('audio');
                 _this.GlobalServices.getFeaturedVideo().then(function (data) {
@@ -33,6 +35,15 @@ var app;
                 });
                 _this.DataServices.getPromos().then(function (data) {
                     _this.promos = data;
+                });
+                $rootScope.$on("fb.init", function () {
+                    console.log("SDK Ready");
+                    facebook.getUser().then(function (r) {
+                        console.log(r.user); //User data returned;
+                        console.log(r.authResponse); //Token auth, id etc..
+                    }, function (err) {
+                        console.log("Ops, something went wrong...");
+                    });
                 });
             }
             HomeController.prototype.playTrack = function (index) {
@@ -73,7 +84,7 @@ var app;
             HomeController.prototype.clearPlayTrackIcons = function () {
                 angular.element(document).find('[class*="sc-play-stop-"]').removeClass('pe-7s-close').addClass('pe-7s-play');
             };
-            HomeController.$inject = ['$sce', 'GlobalServices', 'YoutubeServices', 'SoundcloudServices', 'tweets', 'DataServices'];
+            HomeController.$inject = ['$sce', 'GlobalServices', 'YoutubeServices', 'SoundcloudServices', 'tweets', 'DataServices', 'facebook', '$rootScope'];
             return HomeController;
         })();
         angular.module('controllers')
