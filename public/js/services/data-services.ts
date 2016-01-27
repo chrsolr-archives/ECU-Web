@@ -54,7 +54,7 @@ module app.services {
 
         getNews(max: number): ng.IPromise<any>{
 
-            var _this = this;
+            var _this = this; 
             var q = this.$q.defer();
 
             if (_this.news) {
