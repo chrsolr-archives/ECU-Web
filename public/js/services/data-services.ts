@@ -4,12 +4,14 @@ module app.services {
     'use strict';
 
     export interface IDataServices {
+        news: any[];
         getPromos(): ng.IPromise<any>;
         getNews(max: number): ng.IPromise<any>;
         getNewsByPermalink(permalink: string): ng.IPromise<any>;
     }
 
     class DataServices implements IDataServices {
+        news: any[];
 
         static $inject = ['$http', '$q'];
 
@@ -51,31 +53,38 @@ module app.services {
         }
 
         getNews(max: number): ng.IPromise<any>{
+
+            var _this = this;
             var q = this.$q.defer();
 
-            var queryLimit = max || 50;
+            if (_this.news) {
+                q.resolve(_this.news);
+            } else {
+                var queryLimit = max || 50;
 
-            var news = Parse.Object.extend("News");
-            var query = new Parse.Query(news);
-            query.descending('createdAt');
-            query.equalTo('isActive', true);
-
-            query.limit(queryLimit);
-
-            query.find({
-                success: (objects) => {
-                    var data = [];
-
-                    angular.forEach(objects, (value, key) => {
-                        data.push(value.toJSON());
-                    });
-
-                    q.resolve(data);
-                },
-                error: (error) => {
-                    q.reject("Error: " + error.code + " " + error.message);
-                }
-            });
+                var news = Parse.Object.extend("News");
+                var query = new Parse.Query(news);
+                query.descending('createdAt');
+                query.equalTo('isActive', true);
+    
+                query.limit(queryLimit);
+    
+                query.find({
+                    success: (objects) => {
+                        var data = [];
+    
+                        angular.forEach(objects, (value, key) => {
+                            data.push(value.toJSON());
+                        });
+                        this.news = data;
+                        
+                        q.resolve(data);
+                    },
+                    error: (error) => {
+                        q.reject("Error: " + error.code + " " + error.message);
+                    }
+                });
+            }
 
             return q.promise;
         }
