@@ -6,7 +6,7 @@ module app.services {
     export interface IDataServices {
         news: any[];
         getPromos(): ng.IPromise<any>;
-        getNews(max: number): ng.IPromise<any>;
+        getNews(max?: number): ng.IPromise<any>;
         getNewsByPermalink(permalink: string): ng.IPromise<any>;
     }
 
@@ -52,14 +52,12 @@ module app.services {
             return q.promise;
         }
 
-        getNews(max: number): ng.IPromise<any>{
+        getNews(max?: number): ng.IPromise<any>{
 
             var _this = this; 
             var q = _this.$q.defer();
-
-            if (_this.news) {
-                q.resolve(_this.news);
-            } else {
+            
+            if (_this.news.length === 0) {
                 var queryLimit = max || 50;
 
                 var news = new Parse.Object("News");
@@ -82,7 +80,11 @@ module app.services {
                     },(error) => {
                         q.reject("Error: " + error.code + " " + error.message);
                     });
+                    
+                    return q.promise;
             }
+
+            q.resolve(_this.news);
 
             return q.promise;
         }

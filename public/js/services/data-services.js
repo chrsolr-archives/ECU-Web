@@ -39,10 +39,7 @@ var app;
             DataServices.prototype.getNews = function (max) {
                 var _this = this;
                 var q = _this.$q.defer();
-                if (_this.news) {
-                    q.resolve(_this.news);
-                }
-                else {
+                if (_this.news.length === 0) {
                     var queryLimit = max || 50;
                     var news = new Parse.Object("News");
                     var query = new Parse.Query(news);
@@ -59,7 +56,9 @@ var app;
                     }, function (error) {
                         q.reject("Error: " + error.code + " " + error.message);
                     });
+                    return q.promise;
                 }
+                q.resolve(_this.news);
                 return q.promise;
             };
             DataServices.prototype.getNewsByPermalink = function (permalink) {
