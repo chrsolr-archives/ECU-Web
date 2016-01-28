@@ -76,7 +76,7 @@ module app.services {
                         angular.forEach(objects, (value, key) => {
                             data.push(value.toJSON());
                         });
-                        this.news = data;
+                        _this.news = data;
                         
                         q.resolve(data);
                     },

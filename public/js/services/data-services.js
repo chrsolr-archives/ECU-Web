@@ -36,25 +36,32 @@ var app;
                 return q.promise;
             };
             DataServices.prototype.getNews = function (max) {
+                var _this = this;
                 var q = this.$q.defer();
-                var queryLimit = max || 50;
-                var news = Parse.Object.extend("News");
-                var query = new Parse.Query(news);
-                query.descending('createdAt');
-                query.equalTo('isActive', true);
-                query.limit(queryLimit);
-                query.find({
-                    success: function (objects) {
-                        var data = [];
-                        angular.forEach(objects, function (value, key) {
-                            data.push(value.toJSON());
-                        });
-                        q.resolve(data);
-                    },
-                    error: function (error) {
-                        q.reject("Error: " + error.code + " " + error.message);
-                    }
-                });
+                if (_this.news) {
+                    q.resolve(_this.news);
+                }
+                else {
+                    var queryLimit = max || 50;
+                    var news = Parse.Object.extend("News");
+                    var query = new Parse.Query(news);
+                    query.descending('createdAt');
+                    query.equalTo('isActive', true);
+                    query.limit(queryLimit);
+                    query.find({
+                        success: function (objects) {
+                            var data = [];
+                            angular.forEach(objects, function (value, key) {
+                                data.push(value.toJSON());
+                            });
+                            _this.news = data;
+                            q.resolve(data);
+                        },
+                        error: function (error) {
+                            q.reject("Error: " + error.code + " " + error.message);
+                        }
+                    });
+                }
                 return q.promise;
             };
             DataServices.prototype.getNewsByPermalink = function (permalink) {
@@ -79,4 +86,3 @@ var app;
             .service('DataServices', DataServices);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=data-services.js.map
