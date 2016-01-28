@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "ElComiteUrbano": {
+      "applicationId": "Mw0dWtJQYVzYlA4vHybSNmuyLJSjzpEpTarhZMEQ"
+    },
+    "_default": {
+      "link": "ElComiteUrbano"
+    }
+  }
+}
