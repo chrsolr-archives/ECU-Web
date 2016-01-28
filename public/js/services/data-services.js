@@ -8,6 +8,7 @@ var app;
             function DataServices($http, $q) {
                 this.$http = $http;
                 this.$q = $q;
+                this.news = [];
             }
             DataServices.prototype.getPromos = function () {
                 var q = this.$q.defer();
@@ -37,29 +38,26 @@ var app;
             };
             DataServices.prototype.getNews = function (max) {
                 var _this = this;
-                var q = this.$q.defer();
+                var q = _this.$q.defer();
                 if (_this.news) {
                     q.resolve(_this.news);
                 }
                 else {
                     var queryLimit = max || 50;
-                    var news = Parse.Object.extend("News");
+                    var news = new Parse.Object("News");
                     var query = new Parse.Query(news);
                     query.descending('createdAt');
                     query.equalTo('isActive', true);
                     query.limit(queryLimit);
-                    query.find({
-                        success: function (objects) {
-                            var data = [];
-                            angular.forEach(objects, function (value, key) {
-                                data.push(value.toJSON());
-                            });
-                            _this.news = data;
-                            q.resolve(data);
-                        },
-                        error: function (error) {
-                            q.reject("Error: " + error.code + " " + error.message);
-                        }
+                    query.find().then(function (objects) {
+                        var data = [];
+                        angular.forEach(objects, function (value, key) {
+                            data.push(value.toJSON());
+                        });
+                        _this.news = data;
+                        q.resolve(_this.news);
+                    }, function (error) {
+                        q.reject("Error: " + error.code + " " + error.message);
                     });
                 }
                 return q.promise;

@@ -16,7 +16,7 @@ module app.services {
         static $inject = ['$http', '$q'];
 
         constructor(private $http:ng.IHttpService, private $q:ng.IQService) {
-
+            this.news = [];
         }
 
         getPromos():ng.IPromise<any> {
@@ -55,35 +55,33 @@ module app.services {
         getNews(max: number): ng.IPromise<any>{
 
             var _this = this; 
-            var q = this.$q.defer();
+            var q = _this.$q.defer();
 
             if (_this.news) {
                 q.resolve(_this.news);
             } else {
                 var queryLimit = max || 50;
 
-                var news = Parse.Object.extend("News");
-                var query = new Parse.Query(news);
+                var news = new Parse.Object("News");
+                var query = new Parse.Query(news)
+                
                 query.descending('createdAt');
                 query.equalTo('isActive', true);
-    
                 query.limit(queryLimit);
     
-                query.find({
-                    success: (objects) => {
+                query.find().then((objects) => {
                         var data = [];
     
                         angular.forEach(objects, (value, key) => {
                             data.push(value.toJSON());
                         });
+                        
                         _this.news = data;
                         
-                        q.resolve(data);
-                    },
-                    error: (error) => {
+                        q.resolve(_this.news);
+                    },(error) => {
                         q.reject("Error: " + error.code + " " + error.message);
-                    }
-                });
+                    });
             }
 
             return q.promise;
