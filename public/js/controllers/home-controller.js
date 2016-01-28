@@ -19,7 +19,7 @@ var app;
                 _this.GlobalServices.getFeaturedVideo().then(function (data) {
                     _this.featuredVideo = data;
                 });
-                _this.DataServices.getNews(8).then(function (data) {
+                _this.DataServices.getNews().then(function (data) {
                     _this.news = data;
                 });
                 _this.tweets.get({
@@ -98,4 +98,3 @@ var app;
             .controller('HomeController', HomeController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
-//# sourceMappingURL=home-controller.js.map

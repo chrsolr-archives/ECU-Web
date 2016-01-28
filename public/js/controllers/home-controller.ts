@@ -50,7 +50,7 @@ module app.controllers {
                 _this.featuredVideo = data;
             });
 
-            _this.DataServices.getNews(8).then((data) => {
+            _this.DataServices.getNews().then((data) => {
                 _this.news = data;
             });
 
