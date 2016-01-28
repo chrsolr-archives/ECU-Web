@@ -90,20 +90,32 @@ module app.services {
         }
 
         getNewsByPermalink(permalink: string): ng.IPromise<any>{
-            var q = this.$q.defer();
+            var _this = this;
+            var q = _this.$q.defer();
+            
+            if (_this.news.length === 0) {
+                var news = new Parse.Object("News");
+                var query = new Parse.Query(news);
+                query.equalTo('permalink', permalink);
+                query.first().then((object) => {
+                        q.resolve(object.toJSON());
+                    }, (error) => {
+                        q.reject("Error: " + error.code + " " + error.message);
+                    });
 
-            var news = Parse.Object.extend("News");
-            var query = new Parse.Query(news);
-            query.equalTo('permalink', permalink);
-            query.first({
-                success: (object) => {
-                    q.resolve(object.toJSON());
-                },
-                error: (error) => {
-                    q.reject("Error: " + error.code + " " + error.message);
+                return q.promise;
+            }
+
+            var data = {};
+            for (var i in _this.news){
+                if (_this.news[i].permalink === permalink) {
+                    data = _this.news[i];
+                    break
                 }
-            });
-
+            }
+            
+            q.resolve(data);
+            
             return q.promise;
         }
     }

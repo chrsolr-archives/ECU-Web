@@ -62,18 +62,27 @@ var app;
                 return q.promise;
             };
             DataServices.prototype.getNewsByPermalink = function (permalink) {
-                var q = this.$q.defer();
-                var news = Parse.Object.extend("News");
-                var query = new Parse.Query(news);
-                query.equalTo('permalink', permalink);
-                query.first({
-                    success: function (object) {
+                var _this = this;
+                var q = _this.$q.defer();
+                if (_this.news.length === 0) {
+                    var news = new Parse.Object("News");
+                    var query = new Parse.Query(news);
+                    query.equalTo('permalink', permalink);
+                    query.first().then(function (object) {
                         q.resolve(object.toJSON());
-                    },
-                    error: function (error) {
+                    }, function (error) {
                         q.reject("Error: " + error.code + " " + error.message);
+                    });
+                    return q.promise;
+                }
+                var data = {};
+                for (var i in _this.news) {
+                    if (_this.news[i].permalink === permalink) {
+                        data = _this.news[i];
+                        break;
                     }
-                });
+                }
+                q.resolve(data);
                 return q.promise;
             };
             DataServices.$inject = ['$http', '$q'];
