@@ -8,11 +8,58 @@ module.exports = function (app, express) {
 
     app.use('/api', api);
 
+    /**
+     * Get Featured Video Url
+     */
+    api.get('/featuredvideo', function (req, res) {
+        var model = require('../models/FeaturedVideo');
+
+        model.findOne({}, function (err, data) {
+
+            if (err) throw err;
+
+            res.status(200).send(data && data.videoUrl);
+        });
+    });
+
+    /**
+     * Get Promos
+     */
+    api.get('/promos', function (req, res) {
+        var model = require('../models/Promo');
+
+        model.find({isActive: true}).sort({'createdAt': -1}).limit(10).exec(function (err, data) {
+
+            if (err) throw err;
+
+            var promos = [];
+
+            data.forEach(function (value) {
+                var promo = {
+                    artists: value.artists,
+                    downloadUrl: value.downloadUrl,
+                    imageUrl: value.imageUrl,
+                    createdAt: value.createdAt,
+                    title: value.title
+                };
+
+                promos.push(promo);
+            });
+
+            res.status(200).send(promos);
+        });
+    });
+
+
+
+
+
+
     api.get('/youtube', function (req, res) {
         var max = req.query.max || 10;
         var page = req.query.page || '';
         var key = config.apis_keys.youtube;
-        var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UU3bdjHToDAsKUghgGq00c8Q&maxResults='+max+'&pageToken='+page+'&key=' + key;
+        var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UU3bdjHToDAsKUghgGq00c8Q&maxResults=' + max + '&pageToken=' + page + '&key=' + key;
 
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -25,7 +72,7 @@ module.exports = function (app, express) {
                     videos: []
                 };
 
-                json.items.forEach(function(item, index, array){
+                json.items.forEach(function (item, index, array) {
                     var imageUrl = "";
 
                     if (item.snippet.thumbnails.maxres != null)
@@ -88,7 +135,7 @@ module.exports = function (app, express) {
                 var songs = [];
                 var json = JSON.parse(response.body);
 
-                json.forEach(function(item, index, array) {
+                json.forEach(function (item, index, array) {
                     var cover = item.artwork_url;
 
                     cover = (cover) ? cover.replace("large", "t500x500") : "https://i1.sndcdn.com/avatars-000138805507-sejp8z-t500x500.jpg";
@@ -117,7 +164,7 @@ module.exports = function (app, express) {
         })
     });
 
-    api.post('/subscribe', function(req, res){
+    api.post('/subscribe', function (req, res) {
         var email = req.body.email;
         var name = req.body.name || '';
 
@@ -127,7 +174,7 @@ module.exports = function (app, express) {
         var query = new Parse.Query(Subscription);
         query.equalTo("canonical", email.toUpperCase());
         query.first({
-            success: function(object) {
+            success: function (object) {
                 if (object) {
                     if (!object.get('isActive')) {
                         res.send({success: false, message: 'Email already found but is not active.'});
@@ -144,22 +191,29 @@ module.exports = function (app, express) {
                     subscription.set("canonical", email.toUpperCase());
 
                     subscription.save(null, {
-                        success: function(subscription) {
-                            res.send({success: true, message: 'Gracias por suscribirte!!!', data: subscription.toJSON()});
+                        success: function (subscription) {
+                            res.send({
+                                success: true,
+                                message: 'Gracias por suscribirte!!!',
+                                data: subscription.toJSON()
+                            });
                         },
-                        error: function(subscription, error) {
-                            res.send({success: false, message: 'Failed to create new object, with error code: ' + error.message});
+                        error: function (subscription, error) {
+                            res.send({
+                                success: false,
+                                message: 'Failed to create new object, with error code: ' + error.message
+                            });
                         }
                     });
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 res.send({success: false, message: 'Error code: ' + error.message});
             }
         });
     });
 
-    api.post('/contactus', function(req, res){
+    api.post('/contactus', function (req, res) {
 
         var contact = req.body.contact;
 
@@ -168,19 +222,19 @@ module.exports = function (app, express) {
         var sendgrid = require('sendgrid')('this.relos', 'this.r3l0s');
 
         sendgrid.send({
-            to:       ['elcomiteurbanoradio@gmail.com', 'iamrelos@gmail.com'],
-            from:     contact.email,
-            subject:  contact.subject + ' - Via Contact Us',
-            text:     'From: ' + contact.name + '\n' + 'Email: ' + contact.email + '\n\n' + contact.body
+            to: ['elcomiteurbanoradio@gmail.com', 'iamrelos@gmail.com'],
+            from: contact.email,
+            subject: contact.subject + ' - Via Contact Us',
+            text: 'From: ' + contact.name + '\n' + 'Email: ' + contact.email + '\n\n' + contact.body
         }, function (err, json) {
             if (err) throw err;
-            
+
             return res.status(200).send(json);
         });
 
     });
 
-    api.get('/parse', function(req, res){
+    api.get('/parse', function (req, res) {
 
         var keys = {
             app_key: config.apis_keys.parse_app_key,

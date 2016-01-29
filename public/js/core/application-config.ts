@@ -8,11 +8,11 @@ import IRouteResolverServices = app.services.IRouteResolverServices;
 
     angular.module('app').config(config);
 
-    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider', 'facebookProvider'];
+    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider', '$sceProvider'];
 
     function config(
             $routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider,
-            cfpLoadingBarProvider: ng.loadingBar.ILoadingBarProvider, $sceProvider: ng.ISCEProvider, facebookProvider:any
+            cfpLoadingBarProvider: ng.loadingBar.ILoadingBarProvider, $sceProvider: ng.ISCEProvider
         ): void {
 
         $routeProvider.when('/', {
@@ -79,7 +79,7 @@ import IRouteResolverServices = app.services.IRouteResolverServices;
 
         $sceProvider.enabled(false);
 
-        facebookProvider.setInitParams('900436863361296',true,true,true,'v2.4');
-        facebookProvider.setPermissions(['email', 'public_profile']);
+        //facebookProvider.setInitParams('900436863361296',true,true,true,'v2.4');
+        //facebookProvider.setPermissions(['email', 'public_profile']);
     }
 })();

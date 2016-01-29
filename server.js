@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 var app = require('./config/express')();
 var config = require('./config/config');
 
@@ -47,7 +48,14 @@ if (process.env.NODE_ENV === 'dev') {
 	fs.writeFileSync('./public/js/app.min.js', uglified.code);
 }
 
-// listen
+/**
+ * Connect to mongolab
+ */
+mongoose.connect(config.server.db);
+
+/**
+ *
+ */
 app.listen(config.server.port, function (err) {
 	if (err) throw err;
 

@@ -5,18 +5,17 @@ var app;
     var controllers;
     (function (controllers) {
         var HomeController = (function () {
-            function HomeController($sce, GlobalServices, YoutubeServices, SoundcloudServices, tweets, DataServices, facebook, $rootScope) {
+            function HomeController($sce, GlobalServices, YoutubeServices, SoundcloudServices, tweets, DataServices, $rootScope) {
                 this.$sce = $sce;
                 this.GlobalServices = GlobalServices;
                 this.YoutubeServices = YoutubeServices;
                 this.SoundcloudServices = SoundcloudServices;
                 this.tweets = tweets;
                 this.DataServices = DataServices;
-                this.facebook = facebook;
                 this.$rootScope = $rootScope;
                 var _this = this;
                 _this.audio = document.createElement('audio');
-                _this.GlobalServices.getFeaturedVideo().then(function (data) {
+                _this.DataServices.getFeaturedVideo().then(function (data) {
                     _this.featuredVideo = data;
                 });
                 _this.DataServices.getNews().then(function (data) {
@@ -36,8 +35,9 @@ var app;
                 _this.DataServices.getPromos().then(function (data) {
                     _this.promos = data;
                 });
-                $rootScope.$on("fb.init", function () {
-                });
+                //$rootScope.$on("fb.init", () => {
+                //
+                //});
             }
             HomeController.prototype.playTrack = function (index) {
                 var _this = this;
@@ -71,18 +71,22 @@ var app;
                 });
             };
             HomeController.prototype.subscribeWithFacebook = function () {
-                var _this = this;
-                _this.facebook.getUser(null, { fields: 'name, email' }).then(function (data) {
-                    var user = data.user;
-                    _this.GlobalServices.subscribe(user.email, user.name).then(function (data) {
-                        if (!data.success)
-                            console.error(data);
-                        alert(data.message);
-                        _this.subscribeEmail = '';
-                    });
-                }, function (err) {
-                    console.log(err);
-                });
+                //var _this = this;
+                //
+                //_this.facebook.getUser(null, {fields: 'name, email'}).then((data) => {
+                //    var user = data.user;
+                //
+                //    _this.GlobalServices.subscribe(user.email, user.name).then((data) => {
+                //        if (!data.success) console.error(data);
+                //
+                //        alert(data.message);
+                //
+                //        _this.subscribeEmail = '';
+                //    });
+                //
+                //}, (err) => {
+                //    console.log(err);
+                //});
             };
             HomeController.prototype.togglePlayIcons = function (index) {
                 this.clearPlayTrackIcons();
@@ -91,10 +95,11 @@ var app;
             HomeController.prototype.clearPlayTrackIcons = function () {
                 angular.element(document).find('[class*="sc-play-stop-"]').removeClass('pe-7s-close').addClass('pe-7s-play');
             };
-            HomeController.$inject = ['$sce', 'GlobalServices', 'YoutubeServices', 'SoundcloudServices', 'tweets', 'DataServices', 'facebook', '$rootScope'];
+            HomeController.$inject = ['$sce', 'GlobalServices', 'YoutubeServices', 'SoundcloudServices', 'tweets', 'DataServices', '$rootScope'];
             return HomeController;
         })();
         angular.module('controllers')
             .controller('HomeController', HomeController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+//# sourceMappingURL=home-controller.js.map

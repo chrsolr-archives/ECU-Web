@@ -4,84 +4,126 @@ module app.services {
     'use strict';
 
     export interface IDataServices {
-        news: any[];
+        getFeaturedVideo(): ng.IPromise<any>;
         getPromos(): ng.IPromise<any>;
-        getNews(max?: number): ng.IPromise<any>;
-        getNewsByPermalink(permalink: string): ng.IPromise<any>;
+        getNews(max?:number): ng.IPromise<any>;
+        getNewsByPermalink(permalink:string): ng.IPromise<any>;
     }
 
     class DataServices implements IDataServices {
-        news: any[];
+        news:any[];
+        promos:any[];
+        featuredVideo:any;
 
         static $inject = ['$http', '$q'];
 
         constructor(private $http:ng.IHttpService, private $q:ng.IQService) {
             this.news = [];
+            this.promos = [];
         }
 
-        getPromos():ng.IPromise<any> {
-            var q = this.$q.defer();
+        /**
+         * Gets featured video. if the show is on air,
+         * then it return the ustream url
+         * @returns {IPromise<T>}
+         */
+        getFeaturedVideo():ng.IPromise<any> {
+            var _this = this;
+            var q = _this.$q.defer();
 
-            var Promo = Parse.Object.extend("Promo");
-            var query = new Parse.Query(Promo);
+            if ((new Date().getUTCDay() === 1 && new Date().getUTCHours() >= 23) ||
+                (new Date().getUTCDay() === 2 && new Date().getUTCHours() <= 2)) {
+                _this.featuredVideo = {
+                    title: 'Live Stream',
+                    url: 'http://www.ustream.tv/embed/10266764?v=3&amp;wmode=direct'
+                };
 
-            query.descending('createdAt');
-            query.equalTo('isActive', true);
-            query.limit(10);
+                q.resolve(_this.featuredVideo);
 
-            query.find({
-                success: (objects) => {
-                    var data = [];
+                return q.promise;
+            }
 
-                    for (let i = 0; i < objects.length; i++) {
-                        if (i%2 === 0) {
-                            var content = { content: [] };
-                            content.content.push(objects[i].toJSON());
-                            content.content.push(objects[i+1].toJSON());
-                            data.push(content);
-                        }
-                    }
+            if (_this.featuredVideo) {
+                q.resolve(_this.featuredVideo);
 
-                    q.resolve(data);
-                },
-                error: (error) => {
-                    q.reject("Error: " + error.code + " " + error.message);
-                }
-            });
+                return q.promise;
+            }
+
+            _this.$http.get('/api/featuredvideo')
+                .success((res: string) => {
+                    _this.featuredVideo = {
+                        title: 'Video del Dia',
+                        url: res
+                    };
+                    q.resolve(_this.featuredVideo);
+                });
 
             return q.promise;
         }
 
-        getNews(max?: number): ng.IPromise<any>{
-
-            var _this = this; 
+        /**
+         * Get Latest Promos
+         * @returns {IPromise<T>}
+         */
+        getPromos():ng.IPromise<any> {
+            var _this = this;
             var q = _this.$q.defer();
-            
+
+            if (_this.promos.length === 0) {
+
+                _this.$http.get('/api/promos').success((res:any[]) => {
+
+                    for (let i = 0; i < res.length; i++) {
+                        if (i % 2 === 0) {
+                            var content = {content: []};
+                            content.content.push(res[i]);
+                            content.content.push(res[i + 1]);
+
+                            _this.promos.push(content);
+                        }
+                    }
+
+                    q.resolve(_this.promos);
+                });
+
+                return q.promise;
+            }
+
+            q.resolve(_this.promos);
+
+            return q.promise;
+        }
+
+        getNews(max?:number):ng.IPromise<any> {
+
+            var _this = this;
+            var q = _this.$q.defer();
+
             if (_this.news.length === 0) {
                 var queryLimit = max || 50;
 
                 var news = new Parse.Object("News");
                 var query = new Parse.Query(news)
-                
+
                 query.descending('createdAt');
                 query.equalTo('isActive', true);
                 query.limit(queryLimit);
-    
+
                 query.find().then((objects) => {
-                        var data = [];
-    
-                        angular.forEach(objects, (value, key) => {
-                            data.push(value.toJSON());
-                        });
-                        
-                        _this.news = data;
-                        
-                        q.resolve(_this.news);
-                    },(error) => {
-                        q.reject("Error: " + error.code + " " + error.message);
+                    var data = [];
+
+                    angular.forEach(objects, (value, key) => {
+                        data.push(value.toJSON());
                     });
-                    
-                    return q.promise;
+
+                    _this.news = data;
+
+                    q.resolve(_this.news);
+                }, (error) => {
+                    q.reject("Error: " + error.code + " " + error.message);
+                });
+
+                return q.promise;
             }
 
             q.resolve(_this.news);
@@ -89,33 +131,33 @@ module app.services {
             return q.promise;
         }
 
-        getNewsByPermalink(permalink: string): ng.IPromise<any>{
+        getNewsByPermalink(permalink:string):ng.IPromise<any> {
             var _this = this;
             var q = _this.$q.defer();
-            
+
             if (_this.news.length === 0) {
                 var news = new Parse.Object("News");
                 var query = new Parse.Query(news);
                 query.equalTo('permalink', permalink);
                 query.first().then((object) => {
-                        q.resolve(object.toJSON());
-                    }, (error) => {
-                        q.reject("Error: " + error.code + " " + error.message);
-                    });
+                    q.resolve(object.toJSON());
+                }, (error) => {
+                    q.reject("Error: " + error.code + " " + error.message);
+                });
 
                 return q.promise;
             }
 
             var data = {};
-            for (var i in _this.news){
+            for (var i in _this.news) {
                 if (_this.news[i].permalink === permalink) {
                     data = _this.news[i];
                     break
                 }
             }
-            
+
             q.resolve(data);
-            
+
             return q.promise;
         }
     }

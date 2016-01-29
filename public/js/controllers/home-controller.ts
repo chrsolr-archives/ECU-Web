@@ -10,23 +10,7 @@ module app.controllers {
     import IDataServices = app.services.IDataServices;
     import IRootScopeService = angular.IRootScopeService;
 
-    interface IHomeController {
-        featuredVideo: any;
-        news: any;
-        twitter: any;
-        youtube: any;
-        songs: any;
-        subscribeEmail: string;
-        audio: any;
-        promos: any;
-        sanitizeHTML(html:string): void;
-        subscribe(): void;
-        playTrack(index:number): void;
-        downloadTrack(url:string): void;
-        subscribeWithFacebook(): void;
-    }
-
-    class HomeController implements IHomeController {
+    class HomeController {
         featuredVideo:any;
         news:any;
         twitter:any;
@@ -37,16 +21,16 @@ module app.controllers {
         selectedTrackIndex:number;
         promos:any;
 
-        static $inject = ['$sce', 'GlobalServices', 'YoutubeServices', 'SoundcloudServices', 'tweets', 'DataServices', 'facebook', '$rootScope'];
+        static $inject = ['$sce', 'GlobalServices', 'YoutubeServices', 'SoundcloudServices', 'tweets', 'DataServices', '$rootScope'];
 
         constructor(private $sce:ISCEService, private GlobalServices:IGlobalServices,
                     private YoutubeServices:IYoutubeServices, private SoundcloudServices:ISoundcloudServices,
-                    private tweets:any, private DataServices:IDataServices, private facebook:any, private $rootScope:IRootScopeService) {
+                    private tweets:any, private DataServices:IDataServices, private $rootScope:IRootScopeService) {
             var _this = this;
 
             _this.audio = document.createElement('audio');
 
-            _this.GlobalServices.getFeaturedVideo().then((data) => {
+            _this.DataServices.getFeaturedVideo().then((data) => {
                 _this.featuredVideo = data;
             });
 
@@ -72,9 +56,9 @@ module app.controllers {
                 _this.promos = data;
             });
 
-            $rootScope.$on("fb.init", () => {
-
-            });
+            //$rootScope.$on("fb.init", () => {
+            //
+            //});
         }
 
         playTrack(index:number):void {
@@ -120,22 +104,22 @@ module app.controllers {
         }
 
         subscribeWithFacebook():void {
-            var _this = this;
-
-            _this.facebook.getUser(null, {fields: 'name, email'}).then((data) => {
-                var user = data.user;
-
-                _this.GlobalServices.subscribe(user.email, user.name).then((data) => {
-                    if (!data.success) console.error(data);
-
-                    alert(data.message);
-
-                    _this.subscribeEmail = '';
-                });
-
-            }, (err) => {
-                console.log(err);
-            });
+            //var _this = this;
+            //
+            //_this.facebook.getUser(null, {fields: 'name, email'}).then((data) => {
+            //    var user = data.user;
+            //
+            //    _this.GlobalServices.subscribe(user.email, user.name).then((data) => {
+            //        if (!data.success) console.error(data);
+            //
+            //        alert(data.message);
+            //
+            //        _this.subscribeEmail = '';
+            //    });
+            //
+            //}, (err) => {
+            //    console.log(err);
+            //});
         }
 
         togglePlayIcons(index:number):void {
