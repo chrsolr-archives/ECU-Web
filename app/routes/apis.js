@@ -55,8 +55,9 @@ module.exports = function (app, express) {
      */
     api.get('/news', function(req, res) {
         var model = require('../models/News');
+        var limit = req.query.limit || 50;
         
-        model.find({isActive: true}).sort({'createdAt': -1}).limit(50).exec(function(err, data) {
+        model.find({isActive: true}).sort({'createdAt': -1}).limit(limit).exec(function(err, data) {
             
             if (err) throw err;
             
