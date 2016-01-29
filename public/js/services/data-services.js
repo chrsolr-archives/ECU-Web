@@ -71,9 +71,9 @@ var app;
                 var q = _this.$q.defer();
                 if (_this.news.length === 0) {
                     var limit = max || 50;
-                    _this.$http.get('/api/news?limit=' + limit).success(function (data) {
-                        console.log(data);
-                        q.resolve(data);
+                    _this.$http.get('/api/news').success(function (res) {
+                        console.log(res);
+                        q.resolve(res);
                     });
                     return q.promise;
                 }
