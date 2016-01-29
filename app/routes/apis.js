@@ -50,7 +50,25 @@ module.exports = function (app, express) {
         });
     });
 
-
+    /**
+     * Get Latest News
+     */
+    api.get('/api/news', function(req, res) {
+        var model = require('../models/News');
+        
+        model.find({isActive: true}).sort({'createdAt': -1}).limit(50).exec(function(err, data) {
+            
+            if (err) throw err;
+            
+            var news = [];
+            
+            data.forEach(function(value){
+                news.push(value.toVM());
+            });
+            
+            res.status(200).send(news);
+        });
+    });
 
 
 

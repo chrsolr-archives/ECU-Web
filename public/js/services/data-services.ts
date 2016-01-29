@@ -96,29 +96,20 @@ module app.services {
 
         getNews(max?:number):ng.IPromise<any> {
 
+
+
+
+
+
             var _this = this;
             var q = _this.$q.defer();
 
             if (_this.news.length === 0) {
-                var queryLimit = max || 50;
-
-                var news = new Parse.Object("News");
-                var query = new Parse.Query(news)
-
-                query.descending('createdAt');
-                query.equalTo('isActive', true);
-                query.limit(queryLimit);
-
-                query.find().then((objects) => {
-                    var data = [];
-
-                    angular.forEach(objects, (value, key) => {
-                        data.push(value.toJSON());
-                    });
-
-                    _this.news = data;
-
-                    q.resolve(_this.news);
+                var limit = max || 50;
+                
+                _this.$http.get('/api/news?limit=' + limit).succes((data) => {
+                    console.log(data);
+                    q.resolve(data);
                 }, (error) => {
                     q.reject("Error: " + error.code + " " + error.message);
                 });
@@ -129,6 +120,44 @@ module app.services {
             q.resolve(_this.news);
 
             return q.promise;
+
+
+
+
+
+            // var _this = this;
+            // var q = _this.$q.defer();
+
+            // if (_this.news.length === 0) {
+            //     var queryLimit = max || 50;
+
+            //     var news = new Parse.Object("News");
+            //     var query = new Parse.Query(news)
+
+            //     query.descending('createdAt');
+            //     query.equalTo('isActive', true);
+            //     query.limit(queryLimit);
+
+            //     query.find().then((objects) => {
+            //         var data = [];
+
+            //         angular.forEach(objects, (value, key) => {
+            //             data.push(value.toJSON());
+            //         });
+
+            //         _this.news = data;
+
+            //         q.resolve(_this.news);
+            //     }, (error) => {
+            //         q.reject("Error: " + error.code + " " + error.message);
+            //     });
+
+            //     return q.promise;
+            // }
+
+            // q.resolve(_this.news);
+
+            // return q.promise;
         }
 
         getNewsByPermalink(permalink:string):ng.IPromise<any> {
