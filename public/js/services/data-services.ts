@@ -110,8 +110,6 @@ module app.services {
                 _this.$http.get('/api/news?limit=' + limit).success((data) => {
                     console.log(data);
                     q.resolve(data);
-                }, (error) => {
-                    q.reject("Error: " + error.code + " " + error.message);
                 });
 
                 return q.promise;
