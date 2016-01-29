@@ -53,7 +53,7 @@ module.exports = function (app, express) {
     /**
      * Get Latest News
      */
-    api.get('/api/news', function(req, res) {
+    api.get('/news', function(req, res) {
         var model = require('../models/News');
         
         model.find({isActive: true}).sort({'createdAt': -1}).limit(50).exec(function(err, data) {
