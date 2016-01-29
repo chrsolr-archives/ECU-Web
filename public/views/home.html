@@ -36,10 +36,10 @@
 
     <section class="section-bg-dark">
         <div class="container">
-            <span class="section-title">{{vm.featuredVideo.title}}</span>
+            <span class="section-title" ng-bind="::vm.featuredVideo.title"></span>
             <div class="embed-responsive embed-responsive-16by9 media-video-wrapper">
                 <iframe class="embed-responsive-item"
-                        src="{{vm.featuredVideo.url}}"
+                        src="{{::vm.featuredVideo.url}}"
                         frameborder="0" style="border: 0px none transparent;"></iframe>
             </div>
         </div>
