@@ -66,42 +66,22 @@ var app;
                 q.resolve(_this.promos);
                 return q.promise;
             };
+            /**
+             * Get Latest 50 News
+             */
             DataServices.prototype.getNews = function (max) {
                 var _this = this;
                 var q = _this.$q.defer();
                 if (_this.news.length === 0) {
                     var limit = max || 50;
-                    _this.$http.get('/api/news').success(function (res) {
-                        console.log(res);
-                        q.resolve(res);
+                    _this.$http.get('/api/news?limit=' + limit).success(function (res) {
+                        _this.news = res;
+                        q.resolve(_this.news);
                     });
                     return q.promise;
                 }
                 q.resolve(_this.news);
                 return q.promise;
-                // var _this = this;
-                // var q = _this.$q.defer();
-                // if (_this.news.length === 0) {
-                //     var queryLimit = max || 50;
-                //     var news = new Parse.Object("News");
-                //     var query = new Parse.Query(news)
-                //     query.descending('createdAt');
-                //     query.equalTo('isActive', true);
-                //     query.limit(queryLimit);
-                //     query.find().then((objects) => {
-                //         var data = [];
-                //         angular.forEach(objects, (value, key) => {
-                //             data.push(value.toJSON());
-                //         });
-                //         _this.news = data;
-                //         q.resolve(_this.news);
-                //     }, (error) => {
-                //         q.reject("Error: " + error.code + " " + error.message);
-                //     });
-                //     return q.promise;
-                // }
-                // q.resolve(_this.news);
-                // return q.promise;
             };
             DataServices.prototype.getNewsByPermalink = function (permalink) {
                 var _this = this;
