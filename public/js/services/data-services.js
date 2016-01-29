@@ -74,8 +74,6 @@ var app;
                     _this.$http.get('/api/news?limit=' + limit).success(function (data) {
                         console.log(data);
                         q.resolve(data);
-                    }, function (error) {
-                        q.reject("Error: " + error.code + " " + error.message);
                     });
                     return q.promise;
                 }
