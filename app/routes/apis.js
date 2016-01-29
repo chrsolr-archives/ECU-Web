@@ -1,6 +1,5 @@
 var config = require('../../config/config');
 var request = require('request');
-var Parse = require('parse/node').Parse;
 
 module.exports = function (app, express) {
 
@@ -70,14 +69,34 @@ module.exports = function (app, express) {
             res.status(200).send(news);
         });
     });
+    
+    /**
+     * Get News by permalink
+     */
+    api.get('/news/:permalink', function(req, res) {
+        var model = require('../models/News');
+        var permalink = req.params.permalink;
+        
+        if (!permalink) throw "No permalink provided";
+        
+        model.findOne({permalink: permalink}).exec(function(err, data) {
+            
+            if (err) throw err;
+            
+            var news = data.toVM();
+            
+            res.status(200).send(news);
+        });
+    });
 
 
-
-
+    /**
+     * Get Youtube videos
+     */
     api.get('/youtube', function (req, res) {
         var max = req.query.max || 10;
         var page = req.query.page || '';
-        var key = config.apis_keys.youtube;
+        var key = config.apis_keys.YOUTUBE_ID;
         var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UU3bdjHToDAsKUghgGq00c8Q&maxResults=' + max + '&pageToken=' + page + '&key=' + key;
 
         request(url, function (error, response, body) {
@@ -125,7 +144,7 @@ module.exports = function (app, express) {
 
     api.get('/youtube/:id', function (req, res) {
         var id = req.params.id;
-        var key = config.apis_keys.youtube;
+        var key = config.apis_keys.YOUTUBE_ID;
         var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + id + '&key=' + key;
 
         request(url, function (error, response, body) {
@@ -147,7 +166,7 @@ module.exports = function (app, express) {
 
     api.get('/soundcloud', function (req, res) {
 
-        var url = 'http://api.soundcloud.com/users/146006073/tracks.json?client_id=' + config.apis_keys.soundcloud_client_id;
+        var url = 'http://api.soundcloud.com/users/146006073/tracks.json?client_id=' + config.apis_keys.SC_CLIENT_ID;
 
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -183,6 +202,11 @@ module.exports = function (app, express) {
         })
     });
 
+
+
+
+
+/**
     api.post('/subscribe', function (req, res) {
         var email = req.body.email;
         var name = req.body.name || '';
@@ -252,14 +276,5 @@ module.exports = function (app, express) {
         });
 
     });
-
-    api.get('/parse', function (req, res) {
-
-        var keys = {
-            app_key: config.apis_keys.parse_app_key,
-            client_key: config.apis_keys.parse_client_key
-        };
-
-        res.send(keys);
-    });
+*/
 };

@@ -21,10 +21,8 @@
   "dependencies": {
     "body-parser": "latest",
     "bower": "^1.7.2",
-    "cors": "latest",
     "express": "latest",
     "mongoose": "^4.3.7",
-    "parse": "latest",
     "request": "latest",
     "sendgrid": "latest"
   },

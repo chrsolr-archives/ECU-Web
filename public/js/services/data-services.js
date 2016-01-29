@@ -68,6 +68,8 @@ var app;
             };
             /**
              * Get Latest 50 News
+             * @param {Number} max
+             * @returns {IPromise<T>}
              */
             DataServices.prototype.getNews = function (max) {
                 var _this = this;
@@ -83,21 +85,21 @@ var app;
                 q.resolve(_this.news);
                 return q.promise;
             };
+            /**
+             * Get News by Permalink
+             * @param {Number} permalink
+             * @returns {IPromise<T>}
+             */
             DataServices.prototype.getNewsByPermalink = function (permalink) {
                 var _this = this;
+                var data = {};
                 var q = _this.$q.defer();
                 if (_this.news.length === 0) {
-                    var news = new Parse.Object("News");
-                    var query = new Parse.Query(news);
-                    query.equalTo('permalink', permalink);
-                    query.first().then(function (object) {
-                        q.resolve(object.toJSON());
-                    }, function (error) {
-                        q.reject("Error: " + error.code + " " + error.message);
+                    _this.$http.get('/api/news/' + permalink).success(function (res) {
+                        q.resolve(res);
                     });
                     return q.promise;
                 }
-                var data = {};
                 for (var i in _this.news) {
                     if (_this.news[i].permalink === permalink) {
                         data = _this.news[i];

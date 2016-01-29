@@ -96,6 +96,8 @@ module app.services {
         
         /**
          * Get Latest 50 News
+         * @param {Number} max 
+         * @returns {IPromise<T>}
          */ 
         getNews(max?:number):ng.IPromise<any> {
             var _this = this;
@@ -117,28 +119,29 @@ module app.services {
             return q.promise;
         }
 
+        /**
+         * Get News by Permalink
+         * @param {Number} permalink
+         * @returns {IPromise<T>}
+         */
         getNewsByPermalink(permalink:string):ng.IPromise<any> {
             var _this = this;
+            var data = {};
             var q = _this.$q.defer();
 
             if (_this.news.length === 0) {
-                var news = new Parse.Object("News");
-                var query = new Parse.Query(news);
-                query.equalTo('permalink', permalink);
-                query.first().then((object) => {
-                    q.resolve(object.toJSON());
-                }, (error) => {
-                    q.reject("Error: " + error.code + " " + error.message);
+                
+                _this.$http.get('/api/news/' + permalink).success((res: any) => {
+                    q.resolve(res);
                 });
-
+                
                 return q.promise;
             }
 
-            var data = {};
             for (var i in _this.news) {
                 if (_this.news[i].permalink === permalink) {
                     data = _this.news[i];
-                    break
+                    break;
                 }
             }
 
