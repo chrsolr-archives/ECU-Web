@@ -2,10 +2,7 @@
 
 ((): void => {
     'use strict';
-
-    //Parse.initialize('Mw0dWtJQYVzYlA4vHybSNmuyLJSjzpEpTarhZMEQ', 'gXEJhvTtHQcSNrryJ7u9IK4euVWOu00QEGnaK7ow');
-    Parse.initialize('aWSciE1mXkreaNl9lC95hkW66oeZZRwdmIXCcD7Y', 'mEMpRwvnHUNKRf9wjyzvEmRSWu1uxb5BcxI0fsRL');
-
+    
     angular.module('services', []);
     angular.module('controllers', []);
     angular.module('filters', []);

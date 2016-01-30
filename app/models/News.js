@@ -14,8 +14,8 @@ var News = new mongoose.Schema({
 
 News.methods.toVM = function() {
     var _this = this;
-    
-    var news = {
+
+    return {
         permalink: _this.permalink,
         createdAt: _this.createdAt,
         updatedAt: _this.updatedAt,
@@ -25,8 +25,6 @@ News.methods.toVM = function() {
         sourceTitle: _this.sourceTitle,
         sourceUrl: _this.sourceUrl
     };
-    
-    return news;
-}
+};
 
 module.exports = mongoose.model('News', News, 'News');

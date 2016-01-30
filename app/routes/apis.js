@@ -17,7 +17,7 @@ module.exports = function (app, express) {
 
             if (err) throw err;
 
-            res.status(200).send(data && data.videoUrl);
+            return res.status(200).send(data && data.videoUrl);
         });
     });
 
@@ -45,50 +45,49 @@ module.exports = function (app, express) {
                 promos.push(promo);
             });
 
-            res.status(200).send(promos);
+            return res.status(200).send(promos);
         });
     });
 
     /**
      * Get Latest News
      */
-    api.get('/news', function(req, res) {
+    api.get('/news', function (req, res) {
         var model = require('../models/News');
         var limit = req.query.limit || 50;
-        
-        model.find({isActive: true}).sort({'createdAt': -1}).limit(limit).exec(function(err, data) {
-            
+
+        model.find({isActive: true}).sort({'createdAt': -1}).limit(limit).exec(function (err, data) {
+
             if (err) throw err;
-            
+
             var news = [];
-            
-            data.forEach(function(value){
+
+            data.forEach(function (value) {
                 news.push(value.toVM());
             });
-            
-            res.status(200).send(news);
-        });
-    });
-    
-    /**
-     * Get News by permalink
-     */
-    api.get('/news/:permalink', function(req, res) {
-        var model = require('../models/News');
-        var permalink = req.params.permalink;
-        
-        if (!permalink) throw "No permalink provided";
-        
-        model.findOne({permalink: permalink}).exec(function(err, data) {
-            
-            if (err) throw err;
-            
-            var news = data.toVM();
-            
-            res.status(200).send(news);
+
+            return res.status(200).send(news);
         });
     });
 
+    /**
+     * Get News by permalink
+     */
+    api.get('/news/:permalink', function (req, res) {
+        var model = require('../models/News');
+        var permalink = req.params.permalink;
+
+        if (!permalink) throw "No permalink provided";
+
+        model.findOne({permalink: permalink}).exec(function (err, data) {
+
+            if (err) throw err;
+
+            var news = data.toVM();
+
+            return res.status(200).send(news);
+        });
+    });
 
     /**
      * Get Youtube videos
@@ -137,11 +136,14 @@ module.exports = function (app, express) {
                     data.videos.push(video);
                 });
 
-                res.send(data);
+                return res.send(data);
             }
         })
     });
 
+    /**
+     * Get Youtube videos by id
+     */
     api.get('/youtube/:id', function (req, res) {
         var id = req.params.id;
         var key = config.apis_keys.YOUTUBE_ID;
@@ -159,11 +161,14 @@ module.exports = function (app, express) {
                     description: json.items[0].snippet.description
                 };
 
-                res.json({success: true, message: '', data: data});
+                return res.json({success: true, message: '', data: data});
             }
         })
     });
 
+    /**
+     * Get Soundcloud tracks
+     */
     api.get('/soundcloud', function (req, res) {
 
         var url = 'http://api.soundcloud.com/users/146006073/tracks.json?client_id=' + config.apis_keys.SC_CLIENT_ID;
@@ -196,66 +201,46 @@ module.exports = function (app, express) {
                     songs.push(track);
                 });
 
-                res.send({success: true, message: '', data: songs});
+                return res.send({success: true, message: '', data: songs});
             }
 
         })
     });
 
-
-
-
-
-/**
+    /**
+     * Subscribe to updates
+     */
     api.post('/subscribe', function (req, res) {
+        var model = require('../models/Subscription');
         var email = req.body.email;
-        var name = req.body.name || '';
 
         if (!email) res.send({success: false, message: 'Email is empty.'});
 
-        var Subscription = Parse.Object.extend("Subscription");
-        var query = new Parse.Query(Subscription);
-        query.equalTo("canonical", email.toUpperCase());
-        query.first({
-            success: function (object) {
-                if (object) {
-                    if (!object.get('isActive')) {
-                        res.send({success: false, message: 'Email already found but is not active.'});
-                    }
+        var subs = new model({
+            email: email,
+            canonical: email.toUpperCase()
+        });
 
-                    res.send({success: false, message: 'Email already found.'});
-                } else {
-                    var Subscription = Parse.Object.extend("Subscription");
-                    var subscription = new Subscription();
+        subs.save(function (err) {
 
-                    subscription.set("email", email);
-                    subscription.set("name", name);
-                    subscription.set("isActive", true);
-                    subscription.set("canonical", email.toUpperCase());
-
-                    subscription.save(null, {
-                        success: function (subscription) {
-                            res.send({
-                                success: true,
-                                message: 'Gracias por suscribirte!!!',
-                                data: subscription.toJSON()
-                            });
-                        },
-                        error: function (subscription, error) {
-                            res.send({
-                                success: false,
-                                message: 'Failed to create new object, with error code: ' + error.message
-                            });
-                        }
-                    });
-                }
-            },
-            error: function (error) {
-                res.send({success: false, message: 'Error code: ' + error.message});
+            if (err) {
+                return res.status(200).send({
+                    success: false,
+                    message: 'Email already found.'
+                })
             }
+
+            return res.status(200).send({
+                success: true,
+                message: 'Gracias por suscribirte!!!'
+            });
+
         });
     });
 
+    /**
+     * Send contact email
+     */
     api.post('/contactus', function (req, res) {
 
         var contact = req.body.contact;
@@ -276,5 +261,5 @@ module.exports = function (app, express) {
         });
 
     });
-*/
+
 };
