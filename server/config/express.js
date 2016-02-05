@@ -1,7 +1,7 @@
 // modules
 var express = require('express');
 var bodyParser = require('body-parser');
-var config = require('../config/config');
+var config = require('./config');
 var path = require('path');
 
 // instantiate express app
@@ -20,8 +20,8 @@ module.exports = function () {
     app.use('/scripts', express.static(path.resolve('./node_modules')));
 
     // routes
-    require('../app/routes/apis')(app, express);
-    require('../app/routes/routes')(app);
+    require('../routes/apis')(app, express);
+    require('../routes/routes')(app);
 
     // return instance of express
     return app;
