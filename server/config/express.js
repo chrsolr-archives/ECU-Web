@@ -6,6 +6,7 @@ var path = require('path');
 
 // instantiate express app
 var app = express();
+var api = express.Router();
 
 module.exports = function () {
     // setup env
@@ -20,8 +21,11 @@ module.exports = function () {
     app.use('/scripts', express.static(path.resolve('./node_modules')));
 
     // routes
+    app.use('/api', api);
+    
     require('../routes/apis')(app, express);
-    require('../routes/routes')(app);
+    require('../routes/node-routes')(app);
+    require('../routes/news-routes')(api);
 
     // return instance of express
     return app;
