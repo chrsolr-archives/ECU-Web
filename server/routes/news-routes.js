@@ -1,3 +1,5 @@
+// modules
+var NewsModel = require('../models/News');
 
 /**
  * News api routes
@@ -8,12 +10,14 @@ function newsApis(api) {
      * Get Latest News
      */
     api.get('/news', function (req, res) {
-        var model = require('../models/News');
+        
         var limit = req.query.limit || 50;
+        var query = {limit: limit, isActive: true};
 
-        model.find({isActive: true}).sort({'createdAt': -1}).limit(limit).exec(function (err, data) {
+        NewsModel.getNews(query, function(err, data){
 
-            if (err) throw err;
+            if (err) 
+                return res.status(200).send({success: false, error: err});
 
             var news = [];
 

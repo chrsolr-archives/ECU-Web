@@ -27,4 +27,12 @@ News.methods.toVM = function() {
     };
 };
 
+News.statics.getNews = function(query, callback) {
+    var _this = this;
+    
+    _this.find(query).sort({'createdAt': -1}).limit(query.limit).exec(function(err, data){
+        return callback(err, data);
+    });
+};
+
 module.exports = mongoose.model('News', News, 'News');
