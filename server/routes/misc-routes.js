@@ -7,13 +7,14 @@ module.exports = function (api) {
      * Get Featured Video Url
      */
     api.get('/featuredvideo', function (req, res) {
-        var model = require('../models/FeaturedVideo');
+        var FeatVideoModel = require('../models/FeaturedVideo');
 
-        model.findOne({}, function (err, data) {
+        FeatVideoModel.getFeaturedVideo(function (err, data) {
 
-            if (err) throw err;
+            if (err)
+                return res.status(500).send(err);
 
-            return res.status(200).send(data && data.videoUrl);
+            return res.status(200).send(data.videoUrl);
         });
     });
 
@@ -21,27 +22,13 @@ module.exports = function (api) {
      * Get Promos
      */
     api.get('/promos', function (req, res) {
-        var model = require('../models/Promo');
+        var PromoModel = require('../models/Promo');
 
-        model.find({isActive: true}).sort({'createdAt': -1}).limit(10).exec(function (err, data) {
+        PromoModel.getPromos({isActive: true}, 10, function (err, data) {
 
             if (err) throw err;
 
-            var promos = [];
-
-            data.forEach(function (value) {
-                var promo = {
-                    artists: value.artists,
-                    downloadUrl: value.downloadUrl,
-                    imageUrl: value.imageUrl,
-                    createdAt: value.createdAt,
-                    title: value.title
-                };
-
-                promos.push(promo);
-            });
-
-            return res.status(200).send(promos);
+            return res.status(200).send(data);
         });
     });
 
