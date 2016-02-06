@@ -12,20 +12,14 @@ function newsApis(api) {
     api.get('/news', function (req, res) {
         
         var limit = req.query.limit || 50;
-        var query = {limit: limit, isActive: true};
+        var query = {isActive: true};
 
-        NewsModel.getNews(query, function(err, data){
+        NewsModel.getNews(query, limit, function(err, data){
 
             if (err) 
                 return res.status(200).send({success: false, error: err});
 
-            var news = [];
-
-            data.forEach(function (value) {
-                news.push(value.toVM());
-            });
-
-            return res.status(200).send(news);
+            return res.status(200).send(data);
         });
     });
 
@@ -33,20 +27,20 @@ function newsApis(api) {
      * Get News by permalink
      */
     api.get('/news/:permalink', function (req, res) {
-        var model = require('../models/News');
+        var NewsModel = require('../models/News');
         var permalink = req.params.permalink;
 
-        if (!permalink) throw "No permalink provided";
+        if (!permalink)
+            return res.status(404).send({success: false, error: "No permalink provided"});
 
-        model.findOne({permalink: permalink}).exec(function (err, data) {
+        NewsModel.getNewsByPermalink({permalink: permalink}, function (err, data) {
 
-            if (err) throw err;
+            if (err)
+                return res.status(200).send({success: false, error: err});
 
-            var news = data.toVM();
-
-            return res.status(200).send(news);
+            return res.status(200).send(data);
         });
     });
-};
+}
 
 module.exports = newsApis;

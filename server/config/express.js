@@ -23,9 +23,10 @@ module.exports = function () {
     // routes
     app.use('/api', api);
     
-    require('../routes/apis')(app, express);
     require('../routes/node-routes')(app);
+    require('../routes/misc-routes')(api);
     require('../routes/news-routes')(api);
+    require('../routes/external-api-routes')(api);
 
     // return instance of express
     return app;
