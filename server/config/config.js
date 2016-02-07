@@ -20,7 +20,7 @@ var config = (function(){
         SC_CLIENT_ID: process.env.SC_CLIENT_ID || '500f3c5cdcf76cb1bcc8c35e97864840',
         YOUTUBE_ID: process.env.YOUTUBE_ID || 'AIzaSyDMVu01ka49DBvOGabKYo1vhrykghKJNoI',
         recaptcha_verify_key: process.env.recaptcha_verify_key || 'recaptcha_verify_key'
-    }
+    };
     
     return {
         server: server,

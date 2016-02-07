@@ -36,12 +36,13 @@ module.exports = function (api) {
      * Subscribe to updates
      */
     api.post('/subscribe', function (req, res) {
-        var model = require('../models/Subscription');
+        var SubscriptionModel = require('../models/Subscription');
         var email = req.body.email;
 
-        if (!email) res.send({success: false, message: 'Email is empty.'});
+        if (!email)
+            return res.send({success: false, message: 'Email is empty.'});
 
-        var subs = new model({
+        var subs = new SubscriptionModel({
             email: email,
             canonical: email.toUpperCase()
         });
@@ -51,8 +52,9 @@ module.exports = function (api) {
             if (err) {
                 return res.status(200).send({
                     success: false,
-                    message: 'Email already found.'
-                })
+                    message: 'Email already found.',
+                    error: err
+                });
             }
 
             return res.status(200).send({
@@ -67,12 +69,11 @@ module.exports = function (api) {
      * Send contact email
      */
     api.post('/contactus', function (req, res) {
-
+        var sendgrid = require('sendgrid')('this.relos', 'this.r3l0s');
         var contact = req.body.contact;
 
-        if (!contact) res.send({success: false, message: 'Contact information is empty.'});
-
-        var sendgrid = require('sendgrid')('this.relos', 'this.r3l0s');
+        if (!contact)
+            return res.send({success: false, message: 'Contact information is empty.'});
 
         sendgrid.send({
             to: ['elcomiteurbanoradio@gmail.com', 'iamrelos@gmail.com'],
@@ -80,7 +81,13 @@ module.exports = function (api) {
             subject: contact.subject + ' - Via Contact Us',
             text: 'From: ' + contact.name + '\n' + 'Email: ' + contact.email + '\n\n' + contact.body
         }, function (err, json) {
-            if (err) throw err;
+            if (err) {
+                return res.status(200).send({
+                    success: false,
+                    message: 'Something went wrong while sending email.',
+                    error: err
+                });
+            }
 
             return res.status(200).send(json);
         });
