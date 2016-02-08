@@ -27,6 +27,9 @@ Promo.methods.toVM = function() {
     };
 };
 
+/**
+ * Get Promos. Default limit is 50
+ */
 Promo.statics.getPromos = function(query, limit, callback) {
     var _this = this;
     _this.limit = limit || 50;

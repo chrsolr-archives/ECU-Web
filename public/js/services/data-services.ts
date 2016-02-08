@@ -50,10 +50,10 @@ module app.services {
             }
 
             _this.$http.get('/api/featuredvideo')
-                .success((res: string) => {
+                .then((res: any) => {
                     _this.featuredVideo = {
                         title: 'Video del Dia',
-                        url: res
+                        url: res.data.data
                     };
                     q.resolve(_this.featuredVideo);
                 });
@@ -106,8 +106,8 @@ module app.services {
             if (_this.news.length === 0) {
                 var limit = max || 50;
                 
-                _this.$http.get('/api/news?limit=' + limit).success((res:any[]) => {
-                    _this.news = res;
+                _this.$http.get('/api/news?limit=' + limit).then((res:any) => {
+                    _this.news = res.data.data;
                     q.resolve(_this.news);
                 });
 
@@ -131,8 +131,9 @@ module app.services {
 
             if (_this.news.length === 0) {
                 
-                _this.$http.get('/api/news/' + permalink).success((res: any) => {
-                    q.resolve(res);
+                _this.$http.get('/api/news/' + permalink).then((res: any) => {
+                    data = res.data.data;
+                    q.resolve(data);
                 });
                 
                 return q.promise;

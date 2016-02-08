@@ -1,7 +1,12 @@
+// modules
 var config = require('../config/config');
 var request = require('request');
+var utils = require('../modules/ecu-utils');
 
-module.exports = function (api) {
+/**
+ * Misc api routes
+ */
+function miscApis(api) {
 
     /**
      * Get Featured Video Url
@@ -10,11 +15,14 @@ module.exports = function (api) {
         var FeatVideoModel = require('../models/FeaturedVideo');
 
         FeatVideoModel.getFeaturedVideo(function (err, data) {
-
-            if (err)
-                return res.status(500).send(err);
-
-            return res.status(200).send(data.videoUrl);
+            var response = utils.toResponse(false, '', data, err);
+            
+            if (err) {
+                response.message = 'DB Error while trying to retrieve featured video.';
+                return res.send(response);
+            }
+                
+            return res.send(response);
         });
     });
 
@@ -24,7 +32,7 @@ module.exports = function (api) {
     api.get('/promos', function (req, res) {
         var PromoModel = require('../models/Promo');
 
-        PromoModel.getPromos({isActive: true}, 10, function (err, data) {
+        PromoModel.getPromos({ isActive: true }, 10, function (err, data) {
 
             if (err) throw err;
 
@@ -40,7 +48,7 @@ module.exports = function (api) {
         var email = req.body.email;
 
         if (!email)
-            return res.send({success: false, message: 'Email is empty.'});
+            return res.send({ success: false, message: 'Email is empty.' });
 
         var subs = new SubscriptionModel({
             email: email,
@@ -73,7 +81,7 @@ module.exports = function (api) {
         var contact = req.body.contact;
 
         if (!contact)
-            return res.send({success: false, message: 'Contact information is empty.'});
+            return res.send({ success: false, message: 'Contact information is empty.' });
 
         sendgrid.send({
             to: ['elcomiteurbanoradio@gmail.com', 'iamrelos@gmail.com'],
@@ -95,3 +103,5 @@ module.exports = function (api) {
     });
 
 };
+
+module.exports = miscApis;

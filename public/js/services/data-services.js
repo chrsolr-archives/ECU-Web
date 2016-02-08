@@ -33,10 +33,10 @@ var app;
                     return q.promise;
                 }
                 _this.$http.get('/api/featuredvideo')
-                    .success(function (res) {
+                    .then(function (res) {
                     _this.featuredVideo = {
                         title: 'Video del Dia',
-                        url: res
+                        url: res.data.data
                     };
                     q.resolve(_this.featuredVideo);
                 });
@@ -76,8 +76,8 @@ var app;
                 var q = _this.$q.defer();
                 if (_this.news.length === 0) {
                     var limit = max || 50;
-                    _this.$http.get('/api/news?limit=' + limit).success(function (res) {
-                        _this.news = res;
+                    _this.$http.get('/api/news?limit=' + limit).then(function (res) {
+                        _this.news = res.data.data;
                         q.resolve(_this.news);
                     });
                     return q.promise;
@@ -95,8 +95,9 @@ var app;
                 var data = {};
                 var q = _this.$q.defer();
                 if (_this.news.length === 0) {
-                    _this.$http.get('/api/news/' + permalink).success(function (res) {
-                        q.resolve(res);
+                    _this.$http.get('/api/news/' + permalink).then(function (res) {
+                        data = res.data.data;
+                        q.resolve(data);
                     });
                     return q.promise;
                 }
@@ -116,4 +117,3 @@ var app;
             .service('DataServices', DataServices);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=data-services.js.map

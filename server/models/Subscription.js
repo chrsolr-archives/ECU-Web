@@ -1,5 +1,9 @@
+// modules
 var mongoose = require('mongoose');
 
+/**
+ * Model Schema
+ */
 var Subscription = new mongoose.Schema({
     email: {type: String, required: true, index: {unique: true}, min: 6},
     createdAt: {type: Date, default: Date.now},
@@ -8,6 +12,9 @@ var Subscription = new mongoose.Schema({
     isActive: {type: Boolean, default: true}
 });
 
+/**
+ * Convert Model to ViewModel
+ */
 Subscription.methods.toVM = function() {
     var _this = this;
 
