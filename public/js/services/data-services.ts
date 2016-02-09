@@ -53,7 +53,7 @@ module app.services {
                 .then((res: any) => {
                     _this.featuredVideo = {
                         title: 'Video del Dia',
-                        url: res.data.data
+                        url: res.data.data.videoUrl
                     };
                     q.resolve(_this.featuredVideo);
                 });
@@ -71,13 +71,14 @@ module app.services {
 
             if (_this.promos.length === 0) {
 
-                _this.$http.get('/api/promos').success((res:any[]) => {
+                _this.$http.get('/api/promos').then((res:any) => {
+                    var data = res.data.data;
 
-                    for (let i = 0; i < res.length; i++) {
+                    for (let i = 0; i < data.length; i++) {
                         if (i % 2 === 0) {
                             var content = {content: []};
-                            content.content.push(res[i]);
-                            content.content.push(res[i + 1]);
+                            content.content.push(data[i]);
+                            content.content.push(data[i + 1]);
 
                             _this.promos.push(content);
                         }

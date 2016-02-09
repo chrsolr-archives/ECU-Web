@@ -1,6 +1,9 @@
 // modules
 
 
+/**
+ * ECU Helper functions
+ */
 var Utils = (function() {
     function Utils() {
 

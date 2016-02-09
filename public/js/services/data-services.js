@@ -36,7 +36,7 @@ var app;
                     .then(function (res) {
                     _this.featuredVideo = {
                         title: 'Video del Dia',
-                        url: res.data.data
+                        url: res.data.data.videoUrl
                     };
                     q.resolve(_this.featuredVideo);
                 });
@@ -50,12 +50,13 @@ var app;
                 var _this = this;
                 var q = _this.$q.defer();
                 if (_this.promos.length === 0) {
-                    _this.$http.get('/api/promos').success(function (res) {
-                        for (var i = 0; i < res.length; i++) {
+                    _this.$http.get('/api/promos').then(function (res) {
+                        var data = res.data.data;
+                        for (var i = 0; i < data.length; i++) {
                             if (i % 2 === 0) {
                                 var content = { content: [] };
-                                content.content.push(res[i]);
-                                content.content.push(res[i + 1]);
+                                content.content.push(data[i]);
+                                content.content.push(data[i + 1]);
                                 _this.promos.push(content);
                             }
                         }
@@ -117,3 +118,4 @@ var app;
             .service('DataServices', DataServices);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=data-services.js.map

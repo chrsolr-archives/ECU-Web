@@ -33,10 +33,14 @@ function miscApis(api) {
         var PromoModel = require('../models/Promo');
 
         PromoModel.getPromos({ isActive: true }, 10, function (err, data) {
+            var response = utils.toResponse(false, '', data, err);
 
-            if (err) throw err;
+            if (err) {
+                response.message = 'DB Error while trying to retrieve featured promos.';
+                return res.send(response);
+            }
 
-            return res.status(200).send(data);
+            return res.send(response);
         });
     });
 
@@ -44,11 +48,14 @@ function miscApis(api) {
      * Subscribe to updates
      */
     api.post('/subscribe', function (req, res) {
+        var response = utils.toResponse();
         var SubscriptionModel = require('../models/Subscription');
         var email = req.body.email;
 
-        if (!email)
-            return res.send({ success: false, message: 'Email is empty.' });
+        if (!email) {
+            response.message = 'Email is empty';
+            return res.send(response);
+        }
 
         var subs = new SubscriptionModel({
             email: email,
@@ -56,20 +63,14 @@ function miscApis(api) {
         });
 
         subs.save(function (err) {
+            response = utils.toResponse(true, 'Gracias por suscribirte!!!', undefined, err);
 
             if (err) {
-                return res.status(200).send({
-                    success: false,
-                    message: 'Email already found.',
-                    error: err
-                });
+                response.toResponse(false, 'Email already found.', undefined, err);
+                return res.send(response);
             }
 
-            return res.status(200).send({
-                success: true,
-                message: 'Gracias por suscribirte!!!'
-            });
-
+            return res.send(response);
         });
     });
 
@@ -102,6 +103,6 @@ function miscApis(api) {
 
     });
 
-};
+}
 
 module.exports = miscApis;
